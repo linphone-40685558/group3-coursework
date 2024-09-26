@@ -1,3 +1,5 @@
+![workflow](https://github.com/linphone-40685558/group3-coursework/actions/workflows/main.yml/badge.svg)
+
 # **🚀 Population Information Reporting System**
 
 ## **📖 Project Overview**
