@@ -1,4 +1,4 @@
-name: A workflow Population Reporting System
+name: A workflow for Population Reporting System
 on: push
 
 jobs:
