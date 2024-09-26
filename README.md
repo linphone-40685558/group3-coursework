@@ -1,4 +1,4 @@
-![workflow](https://github.com/linphone-40685558/group3-coursework/actions/workflows/master.yml/badge.svg)
+![workflow](https://github.com/linphone-40685558/group3-coursework/actions/workflows/main.yml/badge.svg)
 ![LICENSE](https://img.shields.io/badge/license-Apache-brightgreen?style=flat-square)
 ![Releases](https://img.shields.io/badge/releases-workInProgress-blue?style=flat-square)
 
