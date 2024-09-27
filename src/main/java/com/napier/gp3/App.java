@@ -80,13 +80,13 @@ public class App
     public static void main(String[] args)
     {
         // Create a new app call con
-        App con = new App();
+        App conn = new App();
 
         // Connect to the world.sql database
-        con.connect_function();
+        conn.connect_function();
 
         // Disconnect the database
-        con.disconnect_function();
+        conn.disconnect_function();
     }
 
 }
