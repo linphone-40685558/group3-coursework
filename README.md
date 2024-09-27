@@ -17,17 +17,7 @@ Key features include:
 
 ---
 
-## **📝 Product Backlog**
-
-| **Feature**                                            | **Priority** | **Status** |
-|--------------------------------------------------------|--------------|-----------|
-|               |          |   |
-|           |          |    |
-|              |        |    |
-|    |        |    |
-|                         |          |  |
-
-For a detailed breakdown, refer to the [GitHub Project Board](#).
+For a detailed breakdown, refer to the Zube.io.
 
 ---
 
