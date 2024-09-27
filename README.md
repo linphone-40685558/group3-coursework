@@ -4,8 +4,6 @@
 
 [![Releases](https://img.shields.io/github/release/linphone-40685558/group3-coursework/all.svg?style=flat-square)](https://github.com/linphone-40685558/group3-coursework/releases)
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/linphone-40685558/group3-coursework/main.yml?branch=develop&label=Branch%20build)
-
 # **🚀 Population Information Reporting System**
 
 ## **📖 Project Overview**
