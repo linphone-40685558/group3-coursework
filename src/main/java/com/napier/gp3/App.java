@@ -17,7 +17,7 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect_function()
     {
         try
         {
@@ -58,7 +58,7 @@ public class App
     /**
      * Disconnect from the MySQL database.
      */
-    public void disconnect()
+    public void disconnect_function()
     {
         if (con != null)
         {
@@ -79,14 +79,14 @@ public class App
      */
     public static void main(String[] args)
     {
-        // Create new Application
-        App a = new App();
+        // Create a new app call con
+        App con = new App();
 
-        // Connect to database
-        a.connect();
+        // Connect to the world.sql database
+        con.connect_function();
 
-        // Disconnect from database
-        a.disconnect();
+        // Disconnect the database
+        con.disconnect_function();
     }
 
 }
