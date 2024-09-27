@@ -1,4 +1,4 @@
 FROM openjdk:17-oracle
-COPY ./target/classes/com /tmp/com
+COPY ./target/group3-coursework-1.0.0-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "com.napier.gp3.App"]
+ENTRYPOINT ["java", "-jar", "group3-coursework-1.0.0-jar-with-dependencies.jar"]
