@@ -10,12 +10,12 @@ import java.sql.*;
 public class App
 {
     /**
-     * Connection to MySQL database.
+     * Make a connection to the database
      */
     private Connection con = null;
 
     /**
-     * Connect to the MySQL database.
+     * connect function to make a connection
      */
     public void connect_function()
     {
@@ -26,21 +26,21 @@ public class App
         }
         catch (ClassNotFoundException e)
         {
-            System.out.println("Could not load SQL driver");
+            System.out.println("SQL drive Loading Fail!");
             System.exit(-1);
         }
 
         int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
-            System.out.println("Connecting to database...");
+            System.out.println("Connecting to world database...");
             try
             {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "group3");
-                System.out.println("Successfully connected");
+                System.out.println("Successfully,Connected with database");
                 break;
             }
             catch (SQLException sqle)
@@ -56,7 +56,7 @@ public class App
     }
 
     /**
-     * Disconnect from the MySQL database.
+     * Disconnect function to disconnect from the MySQL database.
      */
     public void disconnect_function()
     {
