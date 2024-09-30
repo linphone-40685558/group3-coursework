@@ -1,8 +1,8 @@
 package com.napier.gp3;
 
-    /**
-     * Representation of city
-     */
+/**
+ * Representation of city
+ */
 public class City {
     private int id;
     private String name;
@@ -30,6 +30,7 @@ public class City {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -37,6 +38,7 @@ public class City {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -44,6 +46,7 @@ public class City {
     public String getCountryCode() {
         return countryCode;
     }
+
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
@@ -51,6 +54,7 @@ public class City {
     public String getDistrict() {
         return district;
     }
+
     public void setDistrict(String district) {
         this.district = district;
     }
@@ -58,6 +62,7 @@ public class City {
     public int getPopulation() {
         return population;
     }
+
     public void setPopulation(int population) {
         this.population = population;
     }

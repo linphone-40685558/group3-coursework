@@ -71,6 +71,8 @@ public class App {
 
         // Create an instance of CountryDAO
         CountryDAO countryDAO = new CountryDAO(conn.con);
+        // Create an instance of CityDAO
+        CityDAO cityDAO = new CityDAO(conn.con);
 
         // Call each function and display results
 
@@ -117,6 +119,29 @@ public class App {
         List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
         for (Country country : topNInRegion) {
             System.out.println(country.getName() + ": " + country.getPopulation());
+        }
+
+        // Get all capital cities by population
+        System.out.println("\n\nAll capital cities by population:");
+        List<City> allCapitalCities = cityDAO.getAllCapitalCitiesByPopulation();
+        for (City city : allCapitalCities) {
+            System.out.println(city.getName() + ": " + city.getPopulation());
+        }
+
+        // Get capital cities by continent (example: "Asia")
+        String continentForCapital = "Asia";
+        System.out.println("\nAll capital cities in " + continent + " by population:");
+        List<City> capitalCitiesInContinent = cityDAO.getCapitalCitiesByContinent(continent);
+        for (City city : capitalCitiesInContinent) {
+            System.out.println(city.getName() + ": " + city.getPopulation());
+        }
+
+        // Get capital cities by region (example: "Southeast Asia")
+        String regionForCapital = "Southeast Asia";
+        System.out.println("\nAll capital cities in " + region + " by population:");
+        List<City> capitalCitiesInRegion = cityDAO.getCapitalCitiesByRegion(region);
+        for (City city : capitalCitiesInRegion) {
+            System.out.println(city.getName() + ": " + city.getPopulation());
         }
 
         // Disconnect from the database
