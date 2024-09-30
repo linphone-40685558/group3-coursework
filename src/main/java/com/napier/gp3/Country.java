@@ -1,5 +1,7 @@
 package com.napier.gp3;
-
+    /**
+     * Representation of country
+     */
 public class Country {
     private String code;
     private String name;
@@ -16,6 +18,10 @@ public class Country {
     private String headOfState;
     private int capital;
     private String code2;
+
+    /**
+     * Generate Constructor function for Country
+     */
 
     public Country(String code, String name, String continent, String region, double surfaceArea, int indepYear, long population, double lifeExpectancy, double gnp, double gnpOld, String localName, String governmentForm, String headOfState, int capital, String code2) {
         this.code = code;
@@ -35,10 +41,13 @@ public class Country {
         this.code2 = code2;
     }
 
+    /**
+     * Getter and Setter code for City
+     */
+
     public String getCode() {
         return code;
     }
-
     public void setCode(String code) {
         this.code = code;
     }
@@ -46,7 +55,6 @@ public class Country {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -54,7 +62,6 @@ public class Country {
     public String getContinent() {
         return continent;
     }
-
     public void setContinent(String continent) {
         this.continent = continent;
     }
@@ -62,7 +69,6 @@ public class Country {
     public String getRegion() {
         return region;
     }
-
     public void setRegion(String region) {
         this.region = region;
     }
@@ -70,7 +76,6 @@ public class Country {
     public double getSurfaceArea() {
         return surfaceArea;
     }
-
     public void setSurfaceArea(double surfaceArea) {
         this.surfaceArea = surfaceArea;
     }
@@ -78,7 +83,6 @@ public class Country {
     public int getIndepYear() {
         return indepYear;
     }
-
     public void setIndepYear(int indepYear) {
         this.indepYear = indepYear;
     }
@@ -86,7 +90,6 @@ public class Country {
     public long getPopulation() {
         return population;
     }
-
     public void setPopulation(long population) {
         this.population = population;
     }
@@ -94,7 +97,6 @@ public class Country {
     public double getLifeExpectancy() {
         return lifeExpectancy;
     }
-
     public void setLifeExpectancy(double lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
     }
@@ -102,7 +104,6 @@ public class Country {
     public double getGnp() {
         return gnp;
     }
-
     public void setGnp(double gnp) {
         this.gnp = gnp;
     }
@@ -110,7 +111,6 @@ public class Country {
     public double getGnpOld() {
         return gnpOld;
     }
-
     public void setGnpOld(double gnpOld) {
         this.gnpOld = gnpOld;
     }
@@ -118,7 +118,6 @@ public class Country {
     public String getLocalName() {
         return localName;
     }
-
     public void setLocalName(String localName) {
         this.localName = localName;
     }
@@ -126,7 +125,6 @@ public class Country {
     public String getGovernmentForm() {
         return governmentForm;
     }
-
     public void setGovernmentForm(String governmentForm) {
         this.governmentForm = governmentForm;
     }
@@ -134,7 +132,6 @@ public class Country {
     public String getHeadOfState() {
         return headOfState;
     }
-
     public void setHeadOfState(String headOfState) {
         this.headOfState = headOfState;
     }
@@ -142,7 +139,6 @@ public class Country {
     public int getCapital() {
         return capital;
     }
-
     public void setCapital(int capital) {
         this.capital = capital;
     }
@@ -150,7 +146,6 @@ public class Country {
     public String getCode2() {
         return code2;
     }
-
     public void setCode2(String code2) {
         this.code2 = code2;
     }
