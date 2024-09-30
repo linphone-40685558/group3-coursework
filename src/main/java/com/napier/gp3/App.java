@@ -73,6 +73,8 @@ public class App {
         CountryDAO countryDAO = new CountryDAO(conn.con);
         // Create an instance of CityDAO
         CityDAO cityDAO = new CityDAO(conn.con);
+        // Create an instance of City_report
+        City_report cityReport = new City_report(conn.con);
 
         // Call each function and display results
 
@@ -143,6 +145,18 @@ public class App {
         for (City city : capitalCitiesInRegion) {
             System.out.println(city.getName() + ": " + city.getPopulation());
         }
+
+
+        // City Report
+        cityReport.printAllCitiesByPopulation();
+        cityReport.printCitiesByContinent("Asia");
+        cityReport.printCitiesByRegion("Southern Europe");
+        cityReport.printCitiesByCountry("USA");
+        cityReport.printCitiesByDistrict("California");
+
+
+
+
 
         // Disconnect from the database
         conn.disconnect_function();
