@@ -151,8 +151,8 @@ public class App {
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent("Asia");
         cityReport.printCitiesByRegion("Southern Europe");
-        cityReport.printCitiesByCountry("USA");
-        cityReport.printCitiesByDistrict("California");
+        cityReport.printCitiesByCountry("GBR");
+        cityReport.printCitiesByDistrict("England");
 
 
 
