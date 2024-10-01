@@ -69,93 +69,29 @@ public class App {
         // Connect to the world.sql database
         conn.connect_function();
 
-        // Create an instance of CountryDAO
-        CountryDAO countryDAO = new CountryDAO(conn.con);
-        // Create an instance of CityDAO
-        CityDAO cityDAO = new CityDAO(conn.con);
         // Create an instance of City_report
         City_report cityReport = new City_report(conn.con);
+        // Create an instance of Country_report
+        Country_report countryReport = new Country_report(conn.con);
 
         // Call each function and display results
-
-        // 1. Get all countries by population
-        System.out.println("All countries by population:");
-        List<Country> allCountries = countryDAO.getAllCountriesByPopulation();
-        for (Country country : allCountries) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // 2. Get countries by continent (example: "Asia")
-        String continent = "Asia";
-        System.out.println("\nAll countries in " + continent + " by population:");
-        List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
-        for (Country country : countriesInContinent) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // 3. Get countries by region (example: "Southeast Asia")
-        String region = "Southeast Asia";
-        System.out.println("\nAll countries in " + region + " by population:");
-        List<Country> countriesInRegion = countryDAO.getCountriesByRegion(region);
-        for (Country country : countriesInRegion) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // 4. Get top N populated countries in the world (e.g., top 5)
-        int N = 5; // You can change this number as needed
-        List<Country> topNCountries = countryDAO.getTopNPopulatedCountries(N);
-        System.out.println("\nTop " + N + " populated countries:");
-        for (Country country : topNCountries) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // 5. Get top N populated countries in a continent (e.g., Asia, top 5)
-        System.out.println("\nTop " + N + " populated countries in " + continent + ":");
-        List<Country> topNInContinent = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
-        for (Country country : topNInContinent) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // 6. Get top N populated countries in a region (e.g., Southeast Asia, top 5)
-        System.out.println("\nTop " + N + " populated countries in " + region + ":");
-        List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
-        for (Country country : topNInRegion) {
-            System.out.println(country.getName() + ": " + country.getPopulation());
-        }
-
-        // Get all capital cities by population
-        System.out.println("\n\nAll capital cities by population:");
-        List<City> allCapitalCities = cityDAO.getAllCapitalCitiesByPopulation();
-        for (City city : allCapitalCities) {
-            System.out.println(city.getName() + ": " + city.getPopulation());
-        }
-
-        // Get capital cities by continent (example: "Asia")
-        String continentForCapital = "Asia";
-        System.out.println("\nAll capital cities in " + continent + " by population:");
-        List<City> capitalCitiesInContinent = cityDAO.getCapitalCitiesByContinent(continent);
-        for (City city : capitalCitiesInContinent) {
-            System.out.println(city.getName() + ": " + city.getPopulation());
-        }
-
-        // Get capital cities by region (example: "Southeast Asia")
-        String regionForCapital = "Southeast Asia";
-        System.out.println("\nAll capital cities in " + region + " by population:");
-        List<City> capitalCitiesInRegion = cityDAO.getCapitalCitiesByRegion(region);
-        for (City city : capitalCitiesInRegion) {
-            System.out.println(city.getName() + ": " + city.getPopulation());
-        }
-
+        // Country Report
+        countryReport.printAllCountriesByPopulation();
+        countryReport.printAllCountriesByContinent("Asia");
+        countryReport.printAllCountriesByRegion("Southeast Asia");
+        countryReport.printTopNCountries(5);
+        countryReport.printTopNCountriesByContinent(5, "Asia");
+        countryReport.printTopNCountriesByRegion(5, "Southeast Asia");
 
         // City Report
-        cityReport.printAllCitiesByPopulation();
-        cityReport.printCitiesByContinent("Asia");
-        cityReport.printCitiesByRegion("Southern Europe");
-        cityReport.printCitiesByCountry("GBR");
-        cityReport.printCitiesByDistrict("England");
-
-
-
+//        cityReport.printAllCitiesByPopulation();
+//        cityReport.printCitiesByContinent("Asia");
+//        cityReport.printCitiesByRegion("Southern Europe");
+//        cityReport.printCitiesByCountry("GBR");
+//        cityReport.printCitiesByDistrict("England");
+//        cityReport.printCapitalsByPopulation();
+//        cityReport.printCapitalsByContinent("Asia");
+//        cityReport.printCapitalsByRegion("Southeast Asia");
 
 
         // Disconnect from the database
