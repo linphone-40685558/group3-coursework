@@ -3,6 +3,9 @@ package com.napier.gp3;
 import java.sql.Connection;
 import java.util.List;
 
+/**
+ * The City_report class provides printing methods to generate city reports.
+ */
 public class City_report {
     private CityDAO cityDAO;
 

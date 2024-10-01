@@ -1,7 +1,8 @@
 package com.napier.gp3;
 
 /**
- * Representation of city
+ * Represents a cities with its attributes such as name, country,
+ * countryCode,district, population
  */
 public class City {
     private int id;
@@ -13,7 +14,7 @@ public class City {
 
 
     /**
-     * Generate Constructor function
+     * Constructs a City object with the specified attributes.
      */
 
     public City(int id, String name, String country, String countryCode, String district, int population) {
@@ -28,6 +29,7 @@ public class City {
     /**
      * Getter and Setter code of City table
      */
+    // Getters and Setters
 
     public int getId() {
         return id;

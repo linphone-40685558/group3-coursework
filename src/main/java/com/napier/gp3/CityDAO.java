@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CityDAO has database manipulations to retrieve city-related information.
+ * It has methods to fetch cities by population, continent, region, and top N populated countries.
+ */
 public class CityDAO {
     private Connection con;
 

@@ -25,7 +25,9 @@ public class Country {
         this.capital = capital;       // Capital ID from Country Table
         this.capitalName = capitalName; // Capital name from City Table
     }
-
+    /**
+     * Getter and Setter code of Country table
+     */
     // Getters and Setters
     public String getCode() {
         return code;
