@@ -7,6 +7,12 @@ import java.util.List;
 /**
  * CityDAO has database manipulations to retrieve city-related information.
  * It has methods to fetch cities by population, continent, region, and top N populated countries.
+ * tasks
+ * All the cities in the world organised by largest population to smallest.
+ * All the cities in a continent organised by largest population to smallest.
+ * All the cities in a region organised by largest population to smallest.
+ * All the cities in a country organised by largest population to smallest.
+ * All the cities in a district organised by largest population to smallest.
  */
 public class CityDAO {
     private Connection con;
@@ -14,14 +20,6 @@ public class CityDAO {
     public CityDAO(Connection connection) {
         this.con = connection;
     }
-
-    /**
-     * All the cities in the world organised by largest population to smallest.
-     * All the cities in a continent organised by largest population to smallest.
-     * All the cities in a region organised by largest population to smallest.
-     * All the cities in a country organised by largest population to smallest.
-     * All the cities in a district organised by largest population to smallest.
-     */
 
     // 7 Method to get all cities in the world organized by largest population
     public List<City> getAllCitiesByPopulation() {
