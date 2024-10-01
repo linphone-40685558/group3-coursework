@@ -224,4 +224,80 @@ public class CityDAO {
         }
         return cities;
     }
+
+    // Last 6 queries
+    // Method to get the top N populated capital cities in the world
+    public List<City> getTopNCapitalCitiesInWorld(int N) {
+        List<City> cities = new ArrayList<>();
+        try {
+            String strSelect = "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population FROM city JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC LIMIT ?";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setInt(1, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get top N capital cities in the world: " + e.getMessage());
+        }
+        return cities;
+    }
+
+    // Method to get the top N populated capital cities in a continent
+    public List<City> getTopNCapitalCitiesInContinent(String continent, int N) {
+        List<City> cities = new ArrayList<>();
+        try {
+            String strSelect = "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population FROM city JOIN country ON city.ID = country.Capital WHERE country.Continent = ? ORDER BY city.Population DESC LIMIT ?";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, continent);
+            pstmt.setInt(2, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get top N capital cities in continent: " + e.getMessage());
+        }
+        return cities;
+    }
+
+    // Method to get the top N populated capital cities in a region
+    public List<City> getTopNCapitalCitiesInRegion(String region, int N) {
+        List<City> cities = new ArrayList<>();
+        try {
+            String strSelect = "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population FROM city JOIN country ON city.ID = country.Capital WHERE country.Region = ? ORDER BY city.Population DESC LIMIT ?";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, region);
+            pstmt.setInt(2, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get top N capital cities in region: " + e.getMessage());
+        }
+        return cities;
+    }
+
 }
