@@ -42,7 +42,9 @@ public class CapitalDAO {
     public List<City> getCapitalCitiesByContinent(String continent) {
         List<City> cities = new ArrayList<>();
         try {
-            String strSelect = "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population FROM city JOIN country ON city.ID = country.Capital WHERE country.Continent = ? ORDER BY city.Population DESC";
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city JOIN country ON city.ID = country.Capital " +
+                    "WHERE country.Continent = ? ORDER BY city.Population DESC";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             pstmt.setString(1, continent);
             ResultSet rset = pstmt.executeQuery();
@@ -67,7 +69,9 @@ public class CapitalDAO {
     public List<City> getCapitalCitiesByRegion(String region) {
         List<City> cities = new ArrayList<>();
         try {
-            String strSelect = "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population FROM city JOIN country ON city.ID = country.Capital WHERE country.Region = ? ORDER BY city.Population DESC";
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city JOIN country ON city.ID = country.Capital " +
+                    "WHERE country.Region = ? ORDER BY city.Population DESC";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             pstmt.setString(1, region);
             ResultSet rset = pstmt.executeQuery();
