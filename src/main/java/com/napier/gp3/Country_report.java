@@ -25,9 +25,9 @@ public class Country_report {
         printReportHeader();
         List<Country> allCountries = countryDAO.getAllCountriesByPopulation();
         for (Country country : allCountries) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
     }
 
@@ -39,9 +39,9 @@ public class Country_report {
         printReportHeader();
         List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
         for (Country country : countriesInContinent) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
     }
 
@@ -53,9 +53,9 @@ public class Country_report {
         printReportHeader();
         List<Country> countriesInRegion = countryDAO.getCountriesByRegion(region);
         for (Country country : countriesInRegion) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
     }
 
@@ -67,9 +67,9 @@ public class Country_report {
         printReportHeader();
         List<Country> topNCountries = countryDAO.getTopNPopulatedCountries(N);
         for (Country country : topNCountries) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
     }
 
@@ -81,9 +81,9 @@ public class Country_report {
         printReportHeader();
         List<Country> topNInContinent = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
         for (Country country : topNInContinent) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
     }
 
@@ -95,9 +95,9 @@ public class Country_report {
         printReportHeader();
         List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
         for (Country country : topNInRegion) {
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
+            System.out.printf("%-5s %-40s %-15s %-30s %-15d %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), country.getPopulation(), country.getCapital());
+                    country.getRegion(), country.getPopulation(), country.getCapitalName());  // Changed %d to %s for capitalName
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
     }
