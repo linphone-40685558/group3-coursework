@@ -6,6 +6,7 @@ package com.napier.gp3;
 public class City {
     private int id;
     private String name;
+    private String country;
     private String countryCode;
     private String district;
     private int population;
@@ -15,9 +16,10 @@ public class City {
      * Generate Constructor function
      */
 
-    public City(int id, String name, String countryCode, String district, int population) {
+    public City(int id, String name, String country, String countryCode, String district, int population) {
         this.id = id;
         this.name = name;
+        this.country = country;
         this.countryCode = countryCode;
         this.district = district;
         this.population = population;
@@ -41,6 +43,14 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCountryCode() {

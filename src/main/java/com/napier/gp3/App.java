@@ -83,12 +83,13 @@ public class App {
         countryReport.printTopNCountriesByContinent(5, "Asia");
         countryReport.printTopNCountriesByRegion(5, "Southeast Asia");
 
+        // Call each function and display results
         // City Report
-//        cityReport.printAllCitiesByPopulation();
-//        cityReport.printCitiesByContinent("Asia");
-//        cityReport.printCitiesByRegion("Southern Europe");
-//        cityReport.printCitiesByCountry("GBR");
-//        cityReport.printCitiesByDistrict("England");
+        cityReport.printAllCitiesByPopulation();
+        cityReport.printCitiesByContinent("Asia");
+        cityReport.printCitiesByRegion("Southern Europe");
+        cityReport.printCitiesByCountry("GBR");
+        cityReport.printCitiesByDistrict("England");
 //        cityReport.printCapitalsByPopulation();
 //        cityReport.printCapitalsByContinent("Asia");
 //        cityReport.printCapitalsByRegion("Southeast Asia");
