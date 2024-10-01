@@ -11,6 +11,12 @@ public class CapitalDAO {
         this.con = connection;
     }
 
+    /**
+     * All the capital cities in the world organised by largest population to smallest.
+     * All the capital cities in a continent organised by largest population to smallest.
+     * All the capital cities in a region organised by largest to smallest.
+     */
+
     // 17 Method to get all capital cities in the world organized by largest population to smallest
     public List<City> getAllCapitalCitiesByPopulation() {
         List<City> cities = new ArrayList<>();
