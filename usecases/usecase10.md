@@ -14,11 +14,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all cities in the country (Eg. Myanmar).
+The system contains data for all cities in the country (Eg. Myanmar).
 
 ## Success End Condition
 
-A report listing all cities in the country (Eg. Myanmar) from largest to smallest population is generated.
+A report listing cities' information organized by population in the selected country (Eg. Myanmar) is generated.
 
 ## Failed End Condition
 
@@ -30,17 +30,17 @@ Researcher
 
 ## Trigger
 
-A request for a country population report is made.
+A request for cities report with country-specific information (Eg. Myanmar) is made.
 
 ## Main Success Scenario
 
-- Researcher requests a report on the population of cities in the country (Eg. Myanmar).
+- User provides a country (Eg. Myanmar) and requests a cities information report organized by population.
 
 - The system retrieves population data for all cities.
 
 - The system sorts cities by population in descending order.
 
-- A report is generated and made available for analysis.
+- The report is generated for the selected country.
 
 ## Extensions
 
