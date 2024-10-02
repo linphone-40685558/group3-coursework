@@ -14,11 +14,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all cities in the continent (Eg. Asia).
+The system contains data for all cities in the continent (Eg. Asia).
 
 ## Success End Condition
 
-A report listing all cities in a provided continent (Eg. Asia) from largest to smallest population is generated.
+A report listing all cities information ordered by population in a provided continent (Eg. Asia) is generated.
 
 ## Failed End Condition
 
@@ -30,17 +30,17 @@ Researcher
 
 ## Trigger
 
-A request for a provided continent population report is made.
+A request for a countries' information with continent-specific (Eg. Asia) data is made.
 
 ## Main Success Scenario
 
-- Researcher requests a report on the population of cities in the provided continent (Eg. Asia).
+- User provides a continent and requests a cities information report organized by population.
 
-- The system retrieves population data for all cities.
+- The system retrieves cities' data within the provided continent.
 
 - The system sorts cities by population in descending order.
 
-- A report is generated and made available for analysis.
+- The city report is generated for the selected continent.
 
 ## Extensions
 

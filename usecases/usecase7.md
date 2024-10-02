@@ -14,11 +14,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all cities in the world.
+The system contains data for all cities in the world.
 
 ## Success End Condition
 
-A report listing all cities in the world from largest to smallest population is generated.
+A report listing all cities information in the world from largest to smallest population is generated.
 
 ## Failed End Condition
 
@@ -30,11 +30,11 @@ Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for a cities' information in the world data is made.
 
 ## Main Success Scenario
 
-- Researcher requests a report on the population of cities in the world.
+- User requests a report on the cities' information ordered by population in the world.
 
 - The system retrieves population data for all cities.
 
@@ -44,7 +44,7 @@ A request for a global population report is made.
 
 ## Extensions
 
-All the available cities in the world will be printed
+All the available cities in the world will be printed outed.
 
 ## Sub-Variations
 
