@@ -44,7 +44,7 @@ A request for a provided region population report is made.
 
 ## Extensions
 
-test
+If the provided region is not in the database, the system will print an error.
 
 ## Sub-Variations
 

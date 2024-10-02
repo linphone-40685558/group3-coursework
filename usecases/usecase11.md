@@ -44,7 +44,7 @@ A request for a district population report is made.
 
 ## Extensions
 
-test
+If the provided district is not in the database, the system will print an error.
 
 ## Sub-Variations
 

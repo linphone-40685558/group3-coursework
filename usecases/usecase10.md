@@ -44,7 +44,7 @@ A request for a country population report is made.
 
 ## Extensions
 
-test
+If the provided country is not in the database, the system will print an error.
 
 ## Sub-Variations
 

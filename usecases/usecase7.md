@@ -44,7 +44,7 @@ A request for a global population report is made.
 
 ## Extensions
 
-test
+All the available cities in the world will be printed
 
 ## Sub-Variations
 
