@@ -40,11 +40,11 @@ A request for a top N (Eg. Top 5) populated cities around the world report is ma
 
 - The system sorts cities by population in descending order and limit the number of rows depending on the N (5).
 
-- The system displays the top N (5) populated cities data around the world.
+- The system displays the top N (5) populated cities around the world.
 
 ## Extensions
 
-If N exceeds the number of cities data around the world, the system returns the maximum number of cities data available.
+If N exceeds the number of cities around the world, the system returns the maximum number of cities data available.
 
 ## Sub-Variations
 

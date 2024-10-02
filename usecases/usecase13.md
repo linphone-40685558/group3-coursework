@@ -44,7 +44,7 @@ A request for a top N (Eg. Top 5) populated cities in a continent (Asia) report 
 
 ## Extensions
 
-If N exceeds the number of cities in the continent data, the system returns the maximum number of cities data available.
+If N exceeds the number of cities in the continent, the system returns the maximum number of cities data available.
 
 ## Sub-Variations
 
