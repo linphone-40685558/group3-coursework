@@ -44,7 +44,7 @@ A request for countries' information with continent-specific (Eg.Asia) data is m
 
 ## Extensions
 
-If the provided continent is not in the database, the system returns an error.
+If the provided continent is not in the database: The system returns an error message - "Continent not found. Please check the continent name and try again."
 
 ## Sub-Variations
 
@@ -52,4 +52,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024

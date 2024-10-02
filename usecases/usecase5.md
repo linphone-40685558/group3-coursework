@@ -14,7 +14,8 @@ Primary task
 
 ## Preconditions
 
-The system contains countries' data in the world within the continents.
+- The system contains countries' data in the world within the continents.
+- The user provides a valid value for N (e.g., 5) and specifies the continent.
 
 ## Success End Condition
 
@@ -44,7 +45,7 @@ A request for a Top N (5) populated countries in a continent report is made.
 
 ## Extensions
 
-If N exceeds the number of countries in the continent, the system returns an error.
+If N exceeds the total number of countries in the continent, the system returns a report containing all available countries in the continent with a message indicating that fewer countries exist than requested.
 
 ## Sub-Variations
 
@@ -52,4 +53,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024
