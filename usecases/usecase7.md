@@ -2,7 +2,7 @@
 
 ## Goal in Context
 
-As a user, I want to view all cities in the world organized by largest population to smallest so that I can see largest populated cities across the world.
+As a researcher, I want to view all cities in the world organized by largest population to smallest so that I can see largest populated cities across the world.
 
 ## Scope
 
@@ -26,7 +26,7 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
@@ -34,7 +34,7 @@ A request for a global population report is made.
 
 ## Main Success Scenario
 
-- User requests a report on the population of cities in the world.
+- Researcher requests a report on the population of cities in the world.
 
 - The system retrieves population data for all cities.
 

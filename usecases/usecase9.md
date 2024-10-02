@@ -26,7 +26,7 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
@@ -34,7 +34,7 @@ A request for a provided region population report is made.
 
 ## Main Success Scenario
 
-- User requests a report on the population of cities in the provided region (Eg. Southeast Asia).
+- Researcher requests a report on the population of cities in the provided region (Eg. Southeast Asia).
 
 - The system retrieves population data for all cities.
 

@@ -2,7 +2,7 @@
 
 ## Goal in Context
 
-As a user, I want to view all the cities in a continent organized by largest population to smallest so that I can see largest populated cities in that continent.
+As a researcher, I want to view all the cities in a continent organized by largest population to smallest so that I can see largest populated cities in that continent.
 
 ## Scope
 
@@ -26,7 +26,7 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
@@ -34,7 +34,7 @@ A request for a provided continent population report is made.
 
 ## Main Success Scenario
 
-- User requests a report on the population of cities in the provided continent (Eg. Asia).
+- Researcher requests a report on the population of cities in the provided continent (Eg. Asia).
 
 - The system retrieves population data for all cities.
 
