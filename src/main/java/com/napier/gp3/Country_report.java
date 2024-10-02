@@ -3,6 +3,9 @@ package com.napier.gp3;
 import java.sql.Connection;
 import java.util.List;
 
+/**
+ * The Country_report class provides printing methods to generate country reports.
+ */
 public class Country_report {
     private CountryDAO countryDAO;
 

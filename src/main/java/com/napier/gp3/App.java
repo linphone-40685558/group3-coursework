@@ -73,6 +73,8 @@ public class App {
         City_report cityReport = new City_report(conn.con);
         // Create an instance of Country_report
         Country_report countryReport = new Country_report(conn.con);
+        // Create an instance of Capital_report
+        Capital_report capitalReport = new Capital_report(conn.con);
 
         // Call each function and display results
         // Country Report
@@ -83,15 +85,19 @@ public class App {
         countryReport.printTopNCountriesByContinent(5, "Asia");
         countryReport.printTopNCountriesByRegion(5, "Southeast Asia");
 
+        // Call each function and display results
         // City Report
-//        cityReport.printAllCitiesByPopulation();
-//        cityReport.printCitiesByContinent("Asia");
-//        cityReport.printCitiesByRegion("Southern Europe");
-//        cityReport.printCitiesByCountry("GBR");
-//        cityReport.printCitiesByDistrict("England");
-//        cityReport.printCapitalsByPopulation();
-//        cityReport.printCapitalsByContinent("Asia");
-//        cityReport.printCapitalsByRegion("Southeast Asia");
+        cityReport.printAllCitiesByPopulation();
+        cityReport.printCitiesByContinent("Asia");
+        cityReport.printCitiesByRegion("Southern Europe");
+        cityReport.printCitiesByCountry("GBR");
+        cityReport.printCitiesByDistrict("England");
+
+        // Call each function and display results
+        // Capital City Report
+        capitalReport.printCapitalsByPopulation();
+        capitalReport.printCapitalsByContinent("Asia");
+        capitalReport.printCapitalsByRegion("Southeast Asia");
 
 
         // Disconnect from the database

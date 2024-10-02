@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CountryDAO has database manipulations to retrieve country-related information.
+ * It has methods to fetch countries by population, continent, region, and top N populated countries.
+ */
 public class CountryDAO {
     private Connection con;
 
@@ -11,7 +15,7 @@ public class CountryDAO {
         this.con = connection;
     }
 
-    // Method to get all countries by population with capital name
+    // 1) Method to get all countries by population with capital name
     public List<Country> getAllCountriesByPopulation() {
         List<Country> countries = new ArrayList<>();
         try {
@@ -42,7 +46,7 @@ public class CountryDAO {
         return countries;
     }
 
-    // Method to get all countries by continent with capital name
+    // 2) Method to get all countries by continent with capital name
     public List<Country> getCountriesByContinent(String continent) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -75,7 +79,7 @@ public class CountryDAO {
         return countries;
     }
 
-    // Method to get all countries by region with capital name
+    // 3) Method to get all countries by region with capital name
     public List<Country> getCountriesByRegion(String region) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -108,7 +112,7 @@ public class CountryDAO {
         return countries;
     }
 
-    // Method to get top N populated countries in the world
+    // 4) Method to get top N populated countries in the world
     public List<Country> getTopNPopulatedCountries(int N) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -140,7 +144,7 @@ public class CountryDAO {
         return countries;
     }
 
-    // Method to get top N populated countries in a continent
+    // 5) Method to get top N populated countries in a continent
     public List<Country> getTopNPopulatedCountriesInContinent(String continent, int N) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -174,7 +178,7 @@ public class CountryDAO {
         return countries;
     }
 
-    // Method to get top N populated countries in a region
+    // 6) Method to get top N populated countries in a region
     public List<Country> getTopNPopulatedCountriesInRegion(String region, int N) {
         List<Country> countries = new ArrayList<>();
         try {
