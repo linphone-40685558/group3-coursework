@@ -14,11 +14,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all countries within continents.
+The system contains data for all countries within continents.
 
 ## Success End Condition
 
-A report listing countries by population in the selected continent is generated.
+A report listing countries information ordered by population in the selected continent is generated.
 
 ## Failed End Condition
 
@@ -30,25 +30,25 @@ Researcher
 
 ## Trigger
 
-A request for continent-specific (Eg.Asia) population data is made.
+A request for countries' information with continent-specific (Eg.Asia) data is made.
 
 ## Main Success Scenario
 
-- User provides a continent and requests a population report.
+- User provides a continent and requests a country information report organized by population.
 
-- The system retrieves population data for countries within the provided continent.
+- The system retrieves countries' data within the provided continent.
 
 - The system sorts countries by population in descending order.
 
-- The report is generated for the selected continent.
+- The country report is generated for the selected continent.
 
 ## Extensions
 
-If the provided continent is not in the database, the system returns all available countries.
+If the provided continent is not in the database, the system returns an error.
 
 ## Sub-Variations
 
-None.
+None
 
 ## Schedule
 
