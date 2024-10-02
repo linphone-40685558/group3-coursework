@@ -14,11 +14,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all countries within the regions.
+The system contains countries data within the regions.
 
 ## Success End Condition
 
-A report listing the top N (Eg. Top 5) populated countries in the region (Eg. Southeast Asia) is generated.
+A country report listing the top N (Eg. Top 5) populated countries in the region (Eg. Southeast Asia) is generated.
 
 ## Failed End Condition
 
@@ -36,7 +36,7 @@ A request for a top N (Eg. Top 5) populated countries in a region (Southeast Asi
 
 - User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests Top N(5) countries population report in a region.
 
-- The system retrieves population data for countries in a region.
+- The system retrieves countries' data in a region.
 
 - The system sorts countries by population in descending order and limit the number of rows depending on the N (5).
 
@@ -44,7 +44,7 @@ A request for a top N (Eg. Top 5) populated countries in a region (Southeast Asi
 
 ## Extensions
 
-If N exceeds the number of countries in the region, the system returns the maximum number of countries available.
+If N exceeds the number of countries in the region, the system returns an error.
 
 ## Sub-Variations
 

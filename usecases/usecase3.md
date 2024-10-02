@@ -14,11 +14,11 @@ Primary task.
 
 ## Preconditions
 
-The system contains population data for all countries within the regions.
+The system contains data for all countries within the regions.
 
 ## Success End Condition
 
-A report listing countries by population in the selected region is generated.
+A report listing countries' information organized by population in the selected region is generated.
 
 ## Failed End Condition
 
@@ -30,13 +30,13 @@ Researcher
 
 ## Trigger
 
-A request for region-specific (Eg.Southeast Asia) population data is made.
+A request for country report with region-specific information (Eg.Southeast Asia) is made.
 
 ## Main Success Scenario
 
-- User selects a region and requests a population report.
+- User selects a region and requests a country report.
 
-- The system retrieves population data for countries within the region.
+- The system retrieves countries' data within the region.
 
 - The system sorts countries by population in descending order.
 
@@ -44,11 +44,11 @@ A request for region-specific (Eg.Southeast Asia) population data is made.
 
 ## Extensions
 
-If the provided region is not in the database, the system returns all available countries.
+If the provided region is not in the database, the system returns an error.
 
 ## Sub-Variations
 
-None.
+None
 
 ## Schedule
 
