@@ -45,7 +45,7 @@ A request for a global population report is made.
 
 ## Extensions
 
-All the available countries in the database will be printed.
+All the available countries in the database will be printed out.
 
 ## Sub-Variations
 
