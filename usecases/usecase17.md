@@ -2,7 +2,7 @@
 
 ## Goal in Context
 
-As a user, I want to view all the capital cities around the world organized by largest population to smallest so that I can analyze all the capital cities data around the world.
+As a researcher, I want to view all the capital cities around the world organized by largest population to smallest so that I can analyze all the capital cities data around the world.
 
 ## Scope
 
@@ -26,25 +26,25 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for a global population for capitals report is made.
 
 ## Main Success Scenario
 
-Administrator requests a report on the population of capital cities in the world.
+- User requests a report on the population of capital cities in the world.
 
-The system retrieves population data for all countries.
+- The system retrieves population data for all countries.
 
-The system sorts countries by population in descending order.
+- The system sorts countries by population in descending order.
 
-A report is generated and made available for analysis.
+- A report is generated and made available for analysis.
 
 ## Extensions
 
-If no population data exists for one or more countries, the system marks them as "-"
+If no population data exists for one or more countries, the system will print only the available ones.
 
 ## Sub-Variations
 
