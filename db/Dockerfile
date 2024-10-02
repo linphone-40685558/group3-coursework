@@ -8,5 +8,5 @@ COPY world.sql /tmp/
 # Scripts and SQL files in this folder are executed on container startup.
 # This is specific to MySQL.
 COPY world.sql /docker-entrypoint-initdb.d
-# Set the root password
+# Give the root password
 ENV MYSQL_ROOT_PASSWORD group3
