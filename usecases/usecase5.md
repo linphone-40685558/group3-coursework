@@ -14,7 +14,7 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all countries in the world within the continents.
+The system contains countries' data in the world within the continents.
 
 ## Success End Condition
 
@@ -34,9 +34,9 @@ A request for a Top N (5) populated countries in a continent report is made.
 
 ## Main Success Scenario
 
-- User requests a report for Top N (5) populated countries in a continent.
+- User requests a country report for Top N (5) populated countries in a continent (Eg. Asia).
 
-- The system retrieves population data for N (5) countries in a continent.
+- The system retrieves countries' data for Top N (5) countries in a continent.
 
 - The system sorts countries by population in descending order.
 
@@ -44,7 +44,7 @@ A request for a Top N (5) populated countries in a continent report is made.
 
 ## Extensions
 
-If N exceeds the number of countries in the continent, the system returns the maximum number of countries available.
+If N exceeds the number of countries in the continent, the system returns an error.
 
 ## Sub-Variations
 
