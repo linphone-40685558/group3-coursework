@@ -15,7 +15,8 @@ Primary task
 
 ## Preconditions
 
-The system contains data for all cities in the continent (Eg. Asia).
+- The system contains data for all cities in the continent
+- The user has to provide a valid continent name(Eg. Asia).
 
 ## Success End Condition
 
@@ -31,7 +32,7 @@ Researcher
 
 ## Trigger
 
-A request for a countries' information with continent-specific (Eg. Asia) data is made.
+A request for a cities' information with continent-specific (Eg. Asia) data is made.
 
 ## Main Success Scenario
 
@@ -45,7 +46,7 @@ A request for a countries' information with continent-specific (Eg. Asia) data i
 
 ## Extensions
 
-If the provided continent is not in the database, the system will print an error.
+If the provided continent is not in the database, the system will print an error message "Continent not found. Please check the continent name and try again."
 
 ## Sub-Variations
 

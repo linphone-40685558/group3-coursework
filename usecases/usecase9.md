@@ -17,7 +17,8 @@ Primary task.
 
 ## Preconditions
 
-The system contains data for all cities in the region (Eg. Southeast Asia).
+- The system contains data for all cities in the region.
+- The user has to provide a valid region name (Eg. Southeast Asia).
 
 ## Success End Condition
 
@@ -33,7 +34,7 @@ Researcher
 
 ## Trigger
 
-A request for cities report with region-specific information (Eg.Southeast Asia) is made.
+A request for cities' information with region-specific (Eg.Southeast Asia) data is made.
 
 ## Main Success Scenario
 
@@ -43,11 +44,11 @@ A request for cities report with region-specific information (Eg.Southeast Asia)
 
 - The system sorts cities by population in descending order.
 
-- The report is generated for the selected region.
+- The city report is generated for the selected region.
 
 ## Extensions
 
-If the provided region is not in the database, the system will print an error.
+If the provided region is not in the database, the system will print an error message - "Region not found. Please check the region name and try again."
 
 ## Sub-Variations
 

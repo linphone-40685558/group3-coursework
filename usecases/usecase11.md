@@ -15,7 +15,8 @@ Primary task
 
 ## Preconditions
 
-The system contains data for all cities in the district (Eg. Mandalay).
+- The system contains data for all cities in the district.
+- The user provided a valid district name (Eg. Mandalay).
 
 ## Success End Condition
 
@@ -45,7 +46,7 @@ A request for cities report with district-specific information (Eg. Mandalay) is
 
 ## Extensions
 
-If the provided district is not in the database, the system will print an error.
+If the provided district is not in the database, the system will print an error message "District is not found. Please check the district name and try again.".
 
 ## Sub-Variations
 

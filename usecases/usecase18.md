@@ -2,12 +2,12 @@
 
 ## Goal in Context
 
-As a user, I want to view all the capital cities in a specific continent organized by largest to smallest population so
+As a researcher, I want to view all the capital cities in a specific continent organized by largest to smallest population so
 that I can analyze capital cities data in that continent.
 
 ## Scope
 
-Continent
+Continent (Eg. Asia)
 
 ## Level
 
@@ -15,11 +15,12 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all capital cities in the continent.
+- The system contains population data for all capital cities in the continent.
+- The user has to provide a valid continent name (Eg. Asia).
 
 ## Success End Condition
 
-A report listing all capital cities from largest to smallest population is generated.
+A report listing all capital cities information ordered by population in a selected continent (Eg. Asia) is generated.
 
 ## Failed End Condition
 
@@ -27,25 +28,25 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for a capital cities' information with continent-specific (Eg. Asia) data is made.
 
 ## Main Success Scenario
 
-Administrator requests a report on the population of capital cities in the world.
+- User provides a continent and requests a capital cities information report organized by population.
 
-The system retrieves population data for all countries.
+- The system retrieves capital cities' data within the provided continent.
 
-The system sorts countries by population in descending order.
+- The system sorts capital cities by population in descending order.
 
-A report is generated and made available for analysis.
+- A capital city report is generated for selected continent and made available for analysis.
 
 ## Extensions
 
-If no population data exists for one or more countries, the system marks them as "-"
+If the provided continent is not in the database, the system will print an error message "Continent not found. Please check the continent name and try again."
 
 ## Sub-Variations
 
