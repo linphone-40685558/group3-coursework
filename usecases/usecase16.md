@@ -1,4 +1,4 @@
-# USE CASE 6: Produce a Report on the Top N (Eg. 5) Populated cities in a district (Eg. Mandalay)
+# USE CASE 16: Produce a Report on the Top N (Eg. 5) Populated cities in a district (Eg. Mandalay)
 
 ## Goal in Context
 
