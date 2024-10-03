@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce the top (N) populated countries in a specific region (Southeast Asia) so that I can analyze the top N (5) populated countries in that region.
+As a researcher, I want to produce the top (N) populated countries in a specific region (Southeast Asia) so that I can
+analyze the top N (5) populated countries in that region.
 
 ## Scope
 
@@ -35,7 +36,8 @@ A request for a top N (Eg. Top 5) populated countries in a region (Southeast Asi
 
 ## Main Success Scenario
 
-- User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests Top N(5) countries population report in a region.
+- User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests Top N(5) countries population report
+  in a region.
 
 - The system retrieves countries' data in a region.
 
@@ -45,7 +47,8 @@ A request for a top N (Eg. Top 5) populated countries in a region (Southeast Asi
 
 ## Extensions
 
-If N exceeds the total number of countries in the region the system returns a report containing all available countries in the region with a message indicating that fewer countries exist than requested.
+If N exceeds the total number of countries in the region the system returns a report containing all available countries
+in the region with a message indicating that fewer countries exist than requested.
 
 ## Sub-Variations
 

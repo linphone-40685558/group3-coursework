@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the cities in a specific district (Eg. Mandalay) organized by largest population to smallest so that I can analyze all cities in that district.
+As a researcher, I want to view all the cities in a specific district (Eg. Mandalay) organized by largest population to
+smallest so that I can analyze all cities in that district.
 
 ## Scope
 

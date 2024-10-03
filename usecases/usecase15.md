@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce top N populated cities data in a specific country so that I can analyze the top N populated cities in that country.
+As a researcher, I want to produce top N populated cities data in a specific country so that I can analyze the top N
+populated cities in that country.
 
 ## Scope
 
@@ -34,7 +35,8 @@ A request for a top N (Eg. Top 5) populated cities in a country (Myanmar) report
 
 ## Main Success Scenario
 
-- User provides a value for N (Eg. 5) and country (Eg. Myanmar) to requests Top N(5) populated cities report in a country.
+- User provides a value for N (Eg. 5) and country (Eg. Myanmar) to requests Top N(5) populated cities report in a
+  country.
 
 - The system retrieves data for cities in a country.
 

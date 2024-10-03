@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the countries in a continent organized by population so that I can see the largest population countries each continent.
+As a researcher, I want to view all the countries in a continent organized by population so that I can see the largest
+population countries each continent.
 
 ## Scope
 
@@ -44,7 +45,8 @@ A request for countries' information with continent-specific (Eg.Asia) data is m
 
 ## Extensions
 
-If the provided continent is not in the database: The system returns an error message - "Continent not found. Please check the continent name and try again."
+If the provided continent is not in the database: The system returns an error message - "Continent not found. Please
+check the continent name and try again."
 
 ## Sub-Variations
 

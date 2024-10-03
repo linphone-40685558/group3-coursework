@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a user, I want to view all the capital cities in a specific continent organized by largest to smallest population so that I can analyze capital cities data in that continent.
+As a user, I want to view all the capital cities in a specific continent organized by largest to smallest population so
+that I can analyze capital cities data in that continent.
 
 ## Scope
 

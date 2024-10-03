@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the capital cities around the world organized by largest population to smallest so that I can analyze all the capital cities data around the world.
+As a researcher, I want to view all the capital cities around the world organized by largest population to smallest so
+that I can analyze all the capital cities data around the world.
 
 ## Scope
 

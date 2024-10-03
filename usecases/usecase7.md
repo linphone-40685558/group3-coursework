@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all cities in the world organized by largest population to smallest so that I can see largest populated cities across the world.
+As a researcher, I want to view all cities in the world organized by largest population to smallest so that I can see
+largest populated cities across the world.
 
 ## Scope
 
