@@ -63,6 +63,8 @@ public class App {
     /**
      * Main class to call connect function, discount function
      * and reports producing
+     *
+     * @param args
      */
     public static void main(String[] args) {
         // Create a new App instance
@@ -97,6 +99,11 @@ public class App {
 
     /**
      * Generates the country report
+     *
+     * @param countryReport
+     * @param continent
+     * @param region
+     * @param number
      */
     private static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
         // Call each function and display results
@@ -110,6 +117,12 @@ public class App {
 
     /**
      * Generates the city report
+     *
+     * @param cityReport
+     * @param continent
+     * @param region
+     * @param countryCode
+     * @param district
      */
     private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
         // Call each function and display results

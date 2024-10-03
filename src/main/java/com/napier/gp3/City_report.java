@@ -14,10 +14,12 @@ public class City_report {
 
     /**
      * Constructor to initialize CityDAO with a connection
+     *
+     * @param con
      */
     public City_report(Connection con) {
         this.cityDAO = new CityDAO(con);
-        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
+        this.numberFormat = NumberFormat.getInstance(Locale.US); // (comma separated)
     }
 
     /**
@@ -29,7 +31,7 @@ public class City_report {
     }
 
     /**
-     * 7. Get all cities by population
+     * 7) Get all cities by population
      */
     public void printAllCitiesByPopulation() {
         System.out.println("**********************************************");
@@ -45,7 +47,9 @@ public class City_report {
     }
 
     /**
-     * 8. Get cities by continent
+     * 8) Get cities by continent
+     *
+     * @param continent
      */
     public void printCitiesByContinent(String continent) {
         System.out.println("**********************************************");
@@ -61,7 +65,9 @@ public class City_report {
     }
 
     /**
-     * 9. Get cities by region
+     * 9) Get cities by region
+     *
+     * @param region
      */
     public void printCitiesByRegion(String region) {
         System.out.println("**********************************************");
@@ -77,7 +83,9 @@ public class City_report {
     }
 
     /**
-     * 10. Get cities by country
+     * 10) Get cities by country
+     *
+     * @param countryCode
      */
     public void printCitiesByCountry(String countryCode) {
         System.out.println("**********************************************");
@@ -93,7 +101,9 @@ public class City_report {
     }
 
     /**
-     * 11. Get cities by district
+     * 11) Get cities by district
+     *
+     * @param district
      */
     public void printCitiesByDistrict(String district) {
         System.out.println("**********************************************");

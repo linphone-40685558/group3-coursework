@@ -15,6 +15,14 @@ public class Country {
 
     /**
      * Constructs a Country object with the specified attributes.
+     *
+     * @param code
+     * @param name
+     * @param continent
+     * @param region
+     * @param population
+     * @param capital
+     * @param capitalName
      */
     public Country(String code, String name, String continent, String region, long population, int capital, String capitalName) {
         this.code = code;
@@ -22,12 +30,12 @@ public class Country {
         this.continent = continent;
         this.region = region;
         this.population = population;
-        this.capital = capital;       // Capital ID from Country Table
-        this.capitalName = capitalName; // Capital name from City Table
+        this.capital = capital;
+        this.capitalName = capitalName;
     }
 
     /**
-     * Getter and Setter code of Country table
+     * Getter and Setter code of Country
      */
     public String getCode() {
         return code;

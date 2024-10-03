@@ -14,6 +14,8 @@ public class Country_report {
 
     /**
      * Constructor to initialize CountryDAO with a connection
+     *
+     * @param con
      */
     public Country_report(Connection con) {
         this.countryDAO = new CountryDAO(con);
@@ -29,7 +31,7 @@ public class Country_report {
     }
 
     /**
-     * 1. Get all countries by population
+     * 1) Get all countries by population
      */
     public void printAllCountriesByPopulation() {
         System.out.println("**********************************************");
@@ -40,13 +42,15 @@ public class Country_report {
         for (Country country : allCountries) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
     }
 
     /**
-     * 2. Get countries by continent
+     * 2) Get countries by continent
+     *
+     * @param continent
      */
     public void printAllCountriesByContinent(String continent) {
         System.out.println("\n**********************************************");
@@ -57,13 +61,15 @@ public class Country_report {
         for (Country country : countriesInContinent) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
     }
 
     /**
-     * 3. Get countries by region
+     * 3) Get countries by region
+     *
+     * @param region
      */
     public void printAllCountriesByRegion(String region) {
         System.out.println("\n**********************************************");
@@ -74,13 +80,15 @@ public class Country_report {
         for (Country country : countriesInRegion) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
     }
 
     /**
-     * 4. Get top N populated countries in the world
+     * 4) Get top N populated countries in the world
+     *
+     * @param N
      */
     public void printTopNCountries(int N) {
         System.out.println("\n**********************************************");
@@ -91,13 +99,16 @@ public class Country_report {
         for (Country country : topNCountries) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
     }
 
     /**
-     * 5. Get top N populated countries in a continent
+     * 5) Get top N populated countries in a continent
+     *
+     * @param N
+     * @param continent
      */
     public void printTopNCountriesByContinent(int N, String continent) {
         System.out.println("\n**********************************************");
@@ -108,13 +119,16 @@ public class Country_report {
         for (Country country : topNInContinent) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
     }
 
     /**
-     * 6. Get top N populated countries in a region
+     * 6) Get top N populated countries in a region
+     *
+     * @param N
+     * @param region
      */
     public void printTopNCountriesByRegion(int N, String region) {
         System.out.println("\n**********************************************");
@@ -125,7 +139,7 @@ public class Country_report {
         for (Country country : topNInRegion) {
             System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
                     country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()), // Format population with commas
+                    country.getRegion(), numberFormat.format(country.getPopulation()),
                     country.getCapitalName());
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
