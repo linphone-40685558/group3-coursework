@@ -89,7 +89,6 @@ public class App {
          */
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district);
-        // generateCapitalCityReport(capitalReport, continent, region);
 
 
         // Disconnect from the database
@@ -116,19 +115,6 @@ public class App {
         // Call each function and display results
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
-        // cityReport.printCitiesByRegion(region);
-        // cityReport.printCitiesByCountry(countryCode);
-        // cityReport.printCitiesByDistrict(district);
-    }
-
-    /**
-     * Generates the capital city report
-     */
-    private static void generateCapitalCityReport(Capital_report capitalReport, String continent, String region) {
-        // Call each function and display results
-        capitalReport.printCapitalsByPopulation();
-        capitalReport.printCapitalsByContinent(continent);
-        capitalReport.printCapitalsByRegion(region);
     }
 
 }
