@@ -5,18 +5,24 @@ package com.napier.gp3;
  * countryCode,district, population
  */
 public class City {
-    private int id;
-    private String name;
-    private String country;
-    private String countryCode;
-    private String district;
-    private int population;
+    private int id;               // Unique identifier for the city
+    private String name;          // Name of the city
+    private String country;       // Name of the country the city is located in
+    private String countryCode;   // ISO code of the country
+    private String district;      // Name of the district the city is in
+    private int population;       // Population of the city
 
 
     /**
      * Constructs a City object with the specified attributes.
+     *
+     * @param id          Unique identifier for the city
+     * @param name        Name of the city
+     * @param country     Name of the country the city is located in
+     * @param countryCode ISO code of the country
+     * @param district    Name of the district the city is in
+     * @param population  Population of the city
      */
-
     public City(int id, String name, String country, String countryCode, String district, int population) {
         this.id = id;
         this.name = name;
@@ -29,8 +35,6 @@ public class City {
     /**
      * Getter and Setter code of City table
      */
-    // Getters and Setters
-
     public int getId() {
         return id;
     }

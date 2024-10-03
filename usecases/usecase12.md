@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce top N populated cities data around the world so that I can analyze the top N populated cities around the world.
+As a researcher, I want to produce top N populated cities data around the world so that I can analyze the top N
+populated cities around the world.
 
 ## Scope
 
@@ -52,4 +53,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 11-Oct-2024

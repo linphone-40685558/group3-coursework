@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all countries in a specific region organized by population so that I can see largest population countries by the region.
+As a researcher, I want to view all countries in a specific region organized by population so that I can see largest
+population countries by the region.
 
 ## Scope
 
@@ -14,11 +15,12 @@ Primary task.
 
 ## Preconditions
 
-The system contains population data for all countries within the regions.
+- The system contains data for all countries within the specified regions.
+- The user provides a valid region name (e.g., Southeast Asia, Western Europe).
 
 ## Success End Condition
 
-A report listing countries by population in the selected region is generated.
+A report listing countries' information organized by population in the selected region is generated.
 
 ## Failed End Condition
 
@@ -30,13 +32,13 @@ Researcher
 
 ## Trigger
 
-A request for region-specific (Eg.Southeast Asia) population data is made.
+A request for country report with region-specific information (Eg.Southeast Asia) is made.
 
 ## Main Success Scenario
 
-- User selects a region and requests a population report.
+- User selects a region and requests a country report.
 
-- The system retrieves population data for countries within the region.
+- The system retrieves countries' data within the region.
 
 - The system sorts countries by population in descending order.
 
@@ -44,12 +46,13 @@ A request for region-specific (Eg.Southeast Asia) population data is made.
 
 ## Extensions
 
-If the provided region is not in the database, the system returns all available countries.
+If the provided region is not in the database: The system returns an error message "Region not found. Please check the
+region name and try again."
 
 ## Sub-Variations
 
-None.
+None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024

@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce top N populated cities data in a specific district so that I can analyze the top N populated cities in that district.
+As a researcher, I want to produce top N populated cities data in a specific district so that I can analyze the top N
+populated cities in that district.
 
 ## Scope
 
@@ -34,7 +35,8 @@ A request for a top N (Eg. Top 5) populated cities in a district (Mandalay) repo
 
 ## Main Success Scenario
 
-- User provides a value for N (Eg. 5) and district (Eg. Myanmar) to requests Top N(5) populated cities report in a district.
+- User provides a value for N (Eg. 5) and district (Eg. Myanmar) to requests Top N(5) populated cities report in a
+  district.
 
 - The system retrieves data for cities in a district.
 
@@ -52,4 +54,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 11-Oct-2024
