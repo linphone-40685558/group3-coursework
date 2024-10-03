@@ -52,4 +52,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024
