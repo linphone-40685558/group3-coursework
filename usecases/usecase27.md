@@ -27,7 +27,7 @@ A request for the population of the continent is made.
 ### Main Success Scenario
 1. User requests a report for the population of a continent.
 2. The system retrieves population data for the continent.
-3. The system calculates the total population by summing the populations of all countries and cities that are involved in the continent.
+3. The system calculates the total population by summing the populations of all countries that are involved in the continent.
 4. The report is generated and made available for analysis.
 
 ### Extensions
