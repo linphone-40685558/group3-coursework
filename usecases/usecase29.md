@@ -4,7 +4,7 @@
 As a researcher, I want to view the population of a country so that I can analyze population distribution of that country
 
 ### Scope
-Region
+Country
 
 ### Level
 Primary task
