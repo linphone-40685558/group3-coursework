@@ -31,7 +31,7 @@ Researcher
 
 ## Trigger
 
-A request for a cities' information in the world data is made.
+A request for a cities' information in the world organized by population report is made.
 
 ## Main Success Scenario
 
@@ -41,11 +41,11 @@ A request for a cities' information in the world data is made.
 
 - The system sorts cities by population in descending order.
 
-- A report is generated and made available for analysis.
+- A  cities report is generated and made available for analysis.
 
 ## Extensions
 
-All the available cities in the world will be printed outed.
+If there is no data exists for some cities: The system wil generate a report, but missing cities will be flagged as "data unavailable"
 
 ## Sub-Variations
 

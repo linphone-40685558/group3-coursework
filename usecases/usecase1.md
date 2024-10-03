@@ -32,7 +32,7 @@ Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for countries information organized by global population report is made.
 
 ## Main Success Scenario
 
