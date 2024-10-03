@@ -16,7 +16,7 @@ Primary task
 ## Preconditions
 
 - The system contains population data for all capital cities in the continent.
-- The user has to provide a valid continent name(Eg. Asia).
+- The user has to provide a valid continent name (Eg. Asia).
 
 ## Success End Condition
 

@@ -2,7 +2,7 @@
 
 ## Goal in Context
 
-As a researcher, I want to view top N populated capital cities data in a specific region so that I can analyze the top N (5)
+As a researcher, I want to view top N (5) populated capital cities data in a specific region so that I can analyze the top N (5)
 populated capital cities in that region
 
 ## Scope
