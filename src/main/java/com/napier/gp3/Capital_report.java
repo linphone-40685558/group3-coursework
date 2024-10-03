@@ -1,13 +1,17 @@
 package com.napier.gp3;
 
 import java.sql.Connection;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class Capital_report {
     private CapitalDAO capitalDAO;
+    private final NumberFormat numberFormat;
 
     public Capital_report(Connection connection) {
         this.capitalDAO = new CapitalDAO(connection);
+        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
     }
 
     private void printReportHeader() {
@@ -24,7 +28,7 @@ public class Capital_report {
         List<City> allCapitalCities = capitalDAO.getAllCapitalCitiesByPopulation();
         for (City city : allCapitalCities) {
             System.out.printf("%-40s %-40s %-30s%n",
-                    city.getName(), city.getCountry(), city.getPopulation());
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -37,7 +41,7 @@ public class Capital_report {
         List<City> capitalCitiesInContinent = capitalDAO.getCapitalCitiesByContinent(continent);
         for (City city : capitalCitiesInContinent) {
             System.out.printf("%-40s %-40s %-30s%n",
-                    city.getName(), city.getCountry(), city.getPopulation());
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -50,7 +54,7 @@ public class Capital_report {
         List<City> capitalCitiesInRegion = capitalDAO.getCapitalCitiesByRegion(region);
         for (City city : capitalCitiesInRegion) {
             System.out.printf("%-40s %-40s %-30s%n",
-                    city.getName(), city.getCountry(), city.getPopulation());
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 }

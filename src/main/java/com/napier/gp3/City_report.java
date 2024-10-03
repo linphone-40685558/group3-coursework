@@ -1,19 +1,23 @@
 package com.napier.gp3;
 
 import java.sql.Connection;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The City_report class provides printing methods to generate city reports.
  */
 public class City_report {
     private CityDAO cityDAO;
+    private final NumberFormat numberFormat;
 
     /**
      * Constructor to initialize CityDAO with a connection
      */
     public City_report(Connection con) {
         this.cityDAO = new CityDAO(con);
+        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
     }
 
     /**
@@ -36,7 +40,7 @@ public class City_report {
         for (City city : allCities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -52,7 +56,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -68,7 +72,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -84,7 +88,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
@@ -100,7 +104,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
