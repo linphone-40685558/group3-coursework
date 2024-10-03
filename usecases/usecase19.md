@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a user, I want to view all capital cities in a specific region organized by largest to smallest population so that I can analyze capital cities data in that region.
+As a user, I want to view all capital cities in a specific region organized by largest to smallest population so that I
+can analyze capital cities data in that region.
 
 ## Scope
 

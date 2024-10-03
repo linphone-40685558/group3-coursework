@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the cities in a specific country (Eg. Myanmar) organized by largest population to smallest so that I can analyze cities data in that country.
+As a researcher, I want to view all the cities in a specific country (Eg. Myanmar) organized by largest population to
+smallest so that I can analyze cities data in that country.
 
 ## Scope
 

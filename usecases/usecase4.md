@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view Top N (Eg. 5) countries in a specific region organized by population so that I can see largest population countries by the region.
+As a researcher, I want to view Top N (Eg. 5) countries in a specific region organized by population so that I can see
+largest population countries by the region.
 
 ## Scope
 
@@ -45,7 +46,8 @@ A request for a top N (Eg. Top 5) populated countries report is made.
 
 ## Extensions
 
-If N exceeds the total number of countries, the system returns a report containing all available countries with a message indicating that fewer countries exist than requested.
+If N exceeds the total number of countries, the system returns a report containing all available countries with a
+message indicating that fewer countries exist than requested.
 
 ## Sub-Variations
 

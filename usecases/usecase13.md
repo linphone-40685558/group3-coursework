@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce top N populated cities data in a specific continent so that I can analyze the top N populated cities in that continent.
+As a researcher, I want to produce top N populated cities data in a specific continent so that I can analyze the top N
+populated cities in that continent.
 
 ## Scope
 
@@ -34,7 +35,8 @@ A request for a top N (Eg. Top 5) populated cities in a continent (Asia) report 
 
 ## Main Success Scenario
 
-- User provides a value for N (Eg. 5) and continent (Eg. Asia) to requests Top N(5) populated cities report in a continent.
+- User provides a value for N (Eg. 5) and continent (Eg. Asia) to requests Top N(5) populated cities report in a
+  continent.
 
 - The system retrieves data for cities in a continent.
 

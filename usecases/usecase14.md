@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to produce top N populated cities data in a specific region so that I can analyze the top N populated cities in that region.
+As a researcher, I want to produce top N populated cities data in a specific region so that I can analyze the top N
+populated cities in that region.
 
 ## Scope
 
@@ -34,7 +35,8 @@ A request for a top N (Eg. Top 5) populated cities in a region (Southeast Asia) 
 
 ## Main Success Scenario
 
-- User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests Top N(5) populated cities report in a region.
+- User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests Top N(5) populated cities report in a
+  region.
 
 - The system retrieves data for cities in a region.
 

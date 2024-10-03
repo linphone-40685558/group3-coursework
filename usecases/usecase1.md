@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the countries' information in the world organized by population so that I can see largest population
+As a researcher, I want to view all the countries' information in the world organized by population so that I can see
+largest population
 countries in the world.
 
 ## Scope
@@ -45,7 +46,8 @@ A request for a global population report is made.
 
 ## Extensions
 
-If no data exists for some countries: The system will generate a report, but missing countries will be flagged as "data unavailable."
+If no data exists for some countries: The system will generate a report, but missing countries will be flagged as "data
+unavailable."
 
 ## Sub-Variations
 

@@ -1,8 +1,11 @@
 # USE CASE 9: Produce a Report on All Cities in the Region (Eg. Southeast Asia) by Largest Population to Smallest
+
 All the cities in a region organised by largest population to smallest.
+
 ## Goal in Context
 
-As a researcher, I want to view all cities in a specific region (Eg. Southeast Asia) organized by largest population to smallest so that I can analyze cities data in that region.
+As a researcher, I want to view all cities in a specific region (Eg. Southeast Asia) organized by largest population to
+smallest so that I can analyze cities data in that region.
 
 ## Scope
 
