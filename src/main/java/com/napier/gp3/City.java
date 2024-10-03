@@ -16,12 +16,12 @@ public class City {
     /**
      * Constructs a City object with the specified attributes.
      *
-     * @param id          Unique identifier for the city
-     * @param name        Name of the city
-     * @param country     Name of the country the city is located in
-     * @param countryCode ISO code of the country
-     * @param district    Name of the district the city is in
-     * @param population  Population of the city
+     * @param id
+     * @param name
+     * @param country
+     * @param countryCode
+     * @param district
+     * @param population
      */
     public City(int id, String name, String country, String countryCode, String district, int population) {
         this.id = id;
