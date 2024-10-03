@@ -1,4 +1,4 @@
-## USE CASE 26: Produce a Report on the Total Population of a Region
+## USE CASE 28: Produce a Report on the Total Population of a Region
 
 ### Goal in Context
 As a researcher, I want to view the population of a region so that I can analyze population distribution in that region.

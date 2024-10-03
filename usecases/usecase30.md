@@ -1,19 +1,19 @@
-## USE CASE 26: Produce a Report on the Total Population of a City
+## USE CASE 30: Produce a Report on the Total Population of a District
 
 ### Goal in Context
-As a researcher, I want to view the population of a city so that I can analyze population distribution of that city
+As a researcher, I want to view the population of a district so that I can analyze the population distribution of that district.
 
 ### Scope
-City
+District
 
 ### Level
 Primary task
 
 ### Preconditions
-- The system contains population data for one city.
+- The system contains population data for one district.
 
 ### Success End Condition
-A report is generated showing the population of the city.
+A report is generated showing the population of the district.
 
 ### Failed End Condition
 No report is produced
@@ -25,9 +25,9 @@ Researcher
 A request for the population of the city is made.
 
 ### Main Success Scenario
-1. User requests a report for the population of a city.
-2. The system retrieves population data for the city.
-3. The system calculates the total population of the city.
+1. User requests a report for the population of a district.
+2. The system retrieves population data for the district.
+3. The system calculates the total population of the district.
 4. The report is generated and made available for analysis.
 
 ### Extensions

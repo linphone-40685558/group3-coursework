@@ -1,4 +1,4 @@
-## USE CASE 26: Produce a Report on the Total Population of a Country
+## USE CASE 29: Produce a Report on the Total Population of a Country
 
 ### Goal in Context
 As a researcher, I want to view the population of a country so that I can analyze population distribution of that country

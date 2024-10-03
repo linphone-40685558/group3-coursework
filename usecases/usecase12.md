@@ -1,4 +1,4 @@
-# USE CASE 6: Produce a Report on the Top N (Eg. 5) Populated Cities around the world
+# USE CASE 12: Produce a Report on the Top N (Eg. 5) Populated Cities around the world
 
 ## Goal in Context
 

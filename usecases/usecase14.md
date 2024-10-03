@@ -1,4 +1,4 @@
-# USE CASE 6: Produce a Report on the Top N (Eg. 5) Populated cities in a Region (Eg. Southeast Asia)
+# USE CASE 14: Produce a Report on the Top N (Eg. 5) Populated cities in a Region (Eg. Southeast Asia)
 
 ## Goal in Context
 

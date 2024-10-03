@@ -1,4 +1,4 @@
-# USE CASE 6: Produce a Report on the Top N (Eg. 5) Populated cities in a country (Eg. Myanmar)
+# USE CASE 15: Produce a Report on the Top N (Eg. 5) Populated cities in a country (Eg. Myanmar)
 
 ## Goal in Context
 
