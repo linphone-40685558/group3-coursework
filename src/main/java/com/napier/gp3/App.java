@@ -76,6 +76,7 @@ public class App {
         Country_report countryReport = new Country_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
 
+        // Parameter values for easy changes
         String continent = "Asia";
         String region = "Southeast Asia";
         String countryCode = "MMR";
