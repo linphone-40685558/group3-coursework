@@ -18,7 +18,7 @@ Primary task.
 ## Preconditions
 
 - The system contains data for all cities in the region.
-- The user has to provide a valid country name (Eg. Southeast Asia).
+- The user has to provide a valid region name (Eg. Southeast Asia).
 
 ## Success End Condition
 
