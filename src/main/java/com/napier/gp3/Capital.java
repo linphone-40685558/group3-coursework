@@ -24,8 +24,6 @@ public class Capital {
         this.population = population;
     }
 
-
-
     /**
      * Getter and Setter code of City table
      */
