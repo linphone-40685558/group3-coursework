@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view Top N (Eg. 5) countries in a specific region organized by population so that I can see largest population countries by the region.
+As a researcher, I want to view Top N (Eg. 5) countries in a specific region organized by population so that I can see
+largest population countries by the region.
 
 ## Scope
 
@@ -14,7 +15,8 @@ Primary task
 
 ## Preconditions
 
-The system contains countries' data in the world.
+- The system contains countries' data in the world.
+- The user provides a valid value for N (e.g., 5).
 
 ## Success End Condition
 
@@ -44,7 +46,8 @@ A request for a top N (Eg. Top 5) populated countries report is made.
 
 ## Extensions
 
-If N exceeds the number of countries in the continent, the system returns an error.
+If N exceeds the total number of countries, the system returns a report containing all available countries with a
+message indicating that fewer countries exist than requested.
 
 ## Sub-Variations
 
@@ -52,4 +55,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024

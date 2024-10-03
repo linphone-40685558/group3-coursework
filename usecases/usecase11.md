@@ -1,12 +1,13 @@
-# USE CASE 11: Produce a Report on All Cities in the District (Eg. England) by Largest Population to Smallest
+# USE CASE 11: Produce a Report on All Cities in the District (Eg. Mandalay) by Largest Population to Smallest
 
 ## Goal in Context
 
-As a researcher, I want to view all the cities in a specific district (Eg. England) organized by largest population to smallest so that I can analyze all cities in that district.
+As a researcher, I want to view all the cities in a specific district (Eg. Mandalay) organized by largest population to
+smallest so that I can analyze all cities in that district.
 
 ## Scope
 
-District (Eg. England)
+District (Eg. Mandalay)
 
 ## Level
 
@@ -14,11 +15,12 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all cities in the district (Eg. England).
+- The system contains data for all cities in the district.
+- The user provided a valid district name (Eg. Mandalay).
 
 ## Success End Condition
 
-A report listing all cities in the district (Eg. England) from largest to smallest population is generated.
+A report listing cities' information organized by population in the selected district (Eg. Mandalay) is generated.
 
 ## Failed End Condition
 
@@ -30,21 +32,21 @@ Researcher
 
 ## Trigger
 
-A request for a district population report is made.
+A request for cities report with district-specific information (Eg. Mandalay) is made.
 
 ## Main Success Scenario
 
-- Researcher requests a report on the population of cities in the district (Eg. England).
+- User provides a district (Eg. Mandalay) and requests a cities information report organized by population.
 
 - The system retrieves population data for all cities.
 
 - The system sorts cities by population in descending order.
 
-- A report is generated and made available for analysis.
+- The report is generated for the selected district.
 
 ## Extensions
 
-If the provided district is not in the database, the system will print an error.
+If the provided district is not in the database, the system will print an error message "District is not found. Please check the district name and try again.".
 
 ## Sub-Variations
 
@@ -52,4 +54,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 11-Oct-2024

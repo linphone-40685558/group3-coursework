@@ -2,11 +2,12 @@
 
 ## Goal in Context
 
-As a user, I want to view all capital cities in a specific region organized by largest to smallest population so that I can analyze capital cities data in that region.
+As a researcher, I want to view all capital cities in a specific region organized by largest to smallest population so that I
+can analyze capital cities data in that region.
 
 ## Scope
 
-Region
+Region (Eg. Southeast Asia)
 
 ## Level
 
@@ -14,11 +15,12 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all capital cities in the region.
+- The system contains data for all capital cities in the region.
+- The user has to provide a valid region name (Eg. Southeast Asia).
 
 ## Success End Condition
 
-A report listing all capital cities from largest to smallest population is generated.
+A report listing capital cities' information organized by population in the selected region is generated.
 
 ## Failed End Condition
 
@@ -26,25 +28,25 @@ No report is produced
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for capital cities' information with region-specific (Eg.Southeast Asia) data is made.
 
 ## Main Success Scenario
 
-Administrator requests a report on the population of capital cities in the world.
+- User provides a region (Eg. Southeast Asia) and requests a capital cities information report organized by population.
 
-The system retrieves population data for all countries.
+- The system retrieves population data for all capital cities.
 
-The system sorts countries by population in descending order.
+- The system sorts capital cities by population in descending order.
 
-A report is generated and made available for analysis.
+- A capital city report is generated and made available for analysis.
 
 ## Extensions
 
-If no population data exists for one or more countries, the system marks them as "-"
+If the provided region is not in the database, the system will print an error message - "Region not found. Please check the region name and try again."
 
 ## Sub-Variations
 
@@ -52,4 +54,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 18-Oct-2024

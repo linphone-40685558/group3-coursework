@@ -1,8 +1,8 @@
-# USE CASE 20: Produce a Report on the Top 5 (Eg. ) Populated Capital cities in a world
+# USE CASE 20: Produce a Report on the Top N (Eg. 5) Populated Capital Cities in a world
 
 ## Goal in Context
 
-As a user, I want to view top N populated capital cities globally so that I can analyze populations of capital cities.
+As a researcher, I want to view top N (Eg. 5) populated capital cities globally so that I can analyze populations of capital cities.
 
 ## Scope
 
@@ -14,11 +14,12 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all capital cities in the world.
+- The system contains capital cities' data in the world.
+- The user provides a valid value for N (e.g., 5).
 
 ## Success End Condition
 
-A report listing the top N (Eg. Top 5) populated capital cities in the world (Eg. Southeast Asia) is generated.
+A capital cities report listing the top N (Eg. Top 5) populated capital cities in the world is generated.
 
 ## Failed End Condition
 
@@ -26,7 +27,7 @@ No report is produced.
 
 ## Primary Actor
 
-User
+Researcher
 
 ## Trigger
 
@@ -34,17 +35,17 @@ A request for a top N (Eg. Top 5) populated capital cities in a world report is 
 
 ## Main Success Scenario
 
-User provides a value for N (Eg. 5) and region (Eg. Southeast Asia) to requests a population report in a region.
+- User provides a value for Top N (Eg. 5) and requests a capital city report organized by population.
 
-The system retrieves population data for countries in a region.
+- The system retrieves capital cities' data for Top N (5) populated capital cities.
 
-The system sorts countries by population in descending order and limit the number of rows depending on the N (5 was provided).
+- The system sorts capital cities by population in descending order.
 
-The system displays the top N (5) populated countries in a region in a report.
+- The system displays the top N (5) populated capital cities in a report.
 
 ## Extensions
 
-Some exceptions
+If N exceeds the total number of capital cities in a world, the system returns a report containing all available capital cities in the world with a message indicating that fewer capital cities exist than requested.
 
 ## Sub-Variations
 
@@ -52,4 +53,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 18-Oct-2024

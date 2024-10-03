@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the countries' information in the world organized by population so that I can see largest population
+As a researcher, I want to view all the countries' information in the world organized by population so that I can see
+largest population
 countries in the world.
 
 ## Scope
@@ -31,7 +32,7 @@ Researcher
 
 ## Trigger
 
-A request for a global population report is made.
+A request for countries information organized by global population report is made.
 
 ## Main Success Scenario
 
@@ -45,7 +46,8 @@ A request for a global population report is made.
 
 ## Extensions
 
-All the available countries in the database will be printed out.
+If no data exists for some countries: The system will generate a report, but missing countries will be flagged as "data
+unavailable."
 
 ## Sub-Variations
 
@@ -53,4 +55,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 4-Oct-2024

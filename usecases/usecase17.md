@@ -2,7 +2,8 @@
 
 ## Goal in Context
 
-As a researcher, I want to view all the capital cities around the world organized by largest population to smallest so that I can analyze all the capital cities data around the world.
+As a researcher, I want to view all the capital cities around the world organized by largest population to smallest so
+that I can analyze all the capital cities data around the world.
 
 ## Scope
 
@@ -14,11 +15,11 @@ Primary task
 
 ## Preconditions
 
-The system contains population data for all capital cities in the world.
+- The system contains data for all capital cities in the world.
 
 ## Success End Condition
 
-A report listing all capital cities from largest to smallest population is generated.
+A report listing all capital cities in the world from largest to smallest population is generated.
 
 ## Failed End Condition
 
@@ -30,21 +31,21 @@ Researcher
 
 ## Trigger
 
-A request for a global population for capitals report is made.
+A request for a capital cities' information in the world organized by population report is made.
 
 ## Main Success Scenario
 
-- User requests a report on the population of capital cities in the world.
+- User requests a report on the capital cities' information ordered by population in the world.
 
-- The system retrieves population data for all countries.
+- The system retrieves population data for all capital cities.
 
-- The system sorts countries by population in descending order.
+- The system sorts capital cities by population in descending order.
 
-- A report is generated and made available for analysis.
+- A capital cities report is generated and made available for analysis.
 
 ## Extensions
 
-If no population data exists for one or more countries, the system will print only the available ones.
+If there is no data exists for some capital cities: The system wil generate a report, but missing  capital cities will be flagged as "data unavailable"
 
 ## Sub-Variations
 
@@ -52,4 +53,4 @@ None
 
 ## Schedule
 
-Due Date: Release 1.0
+Due Date: 18-Oct-2024
