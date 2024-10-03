@@ -15,7 +15,7 @@ Primary task
 
 ## Preconditions
 
-The system contains data for all cities in the world.
+- The system contains data for all cities in the world.
 
 ## Success End Condition
 

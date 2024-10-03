@@ -15,7 +15,8 @@ Primary task
 
 ## Preconditions
 
-The system contains data for all cities in the country (Eg. Myanmar).
+- The system contains data for all cities in the provided country.
+- The user provides a valid country name (Eg. Myanmar).
 
 ## Success End Condition
 
@@ -45,7 +46,7 @@ A request for cities report with country-specific information (Eg. Myanmar) is m
 
 ## Extensions
 
-If the provided country is not in the database, the system will print an error.
+If the provided country is not in the database, the system will print an error message "Country not found. Please check the country name and try again."
 
 ## Sub-Variations
 

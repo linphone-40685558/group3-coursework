@@ -45,7 +45,7 @@ A request for a countries' information with continent-specific (Eg. Asia) data i
 
 ## Extensions
 
-If the provided continent is not in the database, the system will print an error.
+If the provided continent is not in the database, the system will print an error message "Continent not found. Please check the continent name and try again."
 
 ## Sub-Variations
 
