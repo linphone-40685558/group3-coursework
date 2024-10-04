@@ -106,7 +106,7 @@ public class App {
      * @param number
      */
     private static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
-        // Call each function and display results
+        // Call each function and display results (1 - 6)
         countryReport.printAllCountriesByPopulation();
         countryReport.printAllCountriesByContinent(continent);
         countryReport.printAllCountriesByRegion(region);
@@ -125,9 +125,12 @@ public class App {
      * @param district
      */
     private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
-        // Call each function and display results
+        // Call each function and display results (7 - 11)
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
+        cityReport.printCitiesByRegion(region);
+        cityReport.printCitiesByCountry(countryCode);
+        cityReport.printCitiesByDistrict(district);
     }
 
 }
