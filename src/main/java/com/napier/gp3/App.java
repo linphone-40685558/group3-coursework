@@ -128,7 +128,7 @@ public class App {
      * @param district
      */
     private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district, int number) {
-        // Call each function and display results (7 - 11)
+        // Call each function and display results (7 - 16)
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
         cityReport.printCitiesByRegion(region);

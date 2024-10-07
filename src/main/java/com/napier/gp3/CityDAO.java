@@ -370,6 +370,7 @@ public class CityDAO {
         }catch (SQLException e) {
             System.out.println("Failed to get top N populated cities in a district: " + e.getMessage());
         }
+
         return cities;
     }
 }

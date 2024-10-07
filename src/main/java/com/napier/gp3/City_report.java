@@ -132,7 +132,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
         }
     }
 
@@ -152,7 +152,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
         }
     }
 
@@ -171,7 +171,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
         }
     }
 
@@ -191,7 +191,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
         }
     }
 
@@ -211,7 +211,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
         }
     }
 
