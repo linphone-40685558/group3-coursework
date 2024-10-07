@@ -13,7 +13,7 @@ public class App {
     /**
      * Make a connection to the database
      */
-    public Connection con = null;
+    private Connection con = null;
 
     /**
      * Connect function to make a connection
@@ -89,8 +89,8 @@ public class App {
         /**
          * Generate reports with parameters
          */
-        conn.generateCountryReport(countryReport, continent, region, number);
-        conn.generateCityReport(cityReport, continent, region, countryCode, district);
+        generateCountryReport(countryReport, continent, region, number);
+        generateCityReport(cityReport, continent, region, countryCode, district);
 
 
         // Disconnect from the database
@@ -105,7 +105,7 @@ public class App {
      * @param region
      * @param number
      */
-    public static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
+    private static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
         // Call each function and display results (1 - 6)
         countryReport.printAllCountriesByPopulation();
         countryReport.printAllCountriesByContinent(continent);
@@ -124,7 +124,7 @@ public class App {
      * @param countryCode
      * @param district
      */
-    public static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
+    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
         // Call each function and display results (7 - 11)
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
