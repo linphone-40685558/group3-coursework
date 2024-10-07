@@ -1,43 +1,47 @@
 package com.napier.gp3;
 
 import org.junit.jupiter.api.*;
+import org.mockito.*;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class CountryReportTest {
+    @Mock
     private Connection connection;
+
+    @Mock
+    private PreparedStatement preparedStatement;
+
+    @Mock
+    private ResultSet resultSet;
+
     private Country_report countryReport;
 
     @BeforeEach
-    public void setUp() {
-        try {
-            // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+    public void setUp() throws SQLException {
+        // Initialize the mocks
+        MockitoAnnotations.openMocks(this);
 
-            // Connect to the database (updated connection string)
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false",
-                    "root",
-                    "group3"
-            );
+        // Set up the mock behavior for connection and statements
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
 
-            // Initialize the DAO with the connected database
-            countryReport = new Country_report(connection);
-
-        } catch (ClassNotFoundException e) {
-            fail("SQL Driver Loading Failed: " + e.getMessage());
-        } catch (SQLException e) {
-            fail("Database connection failed: " + e.getMessage());
-        }
+        // Initialize Country_report with the mocked connection
+        countryReport = new Country_report(connection);
     }
 
     @Test
     public void testPrintAllCountriesByPopulation() {
-        // Ensure no exceptions are thrown during the execution of the report
+        // Mock the behavior for fetching results
+        // You can customize this mock based on how your print method interacts with the database.
+        // For example, you might want to return a specific ResultSet with expected data.
+
         assertDoesNotThrow(() -> countryReport.printAllCountriesByPopulation(),
                 "printAllCountriesByPopulation should run without throwing exceptions");
     }
@@ -57,7 +61,6 @@ public class CountryReportTest {
         assertDoesNotThrow(() -> countryReport.printAllCountriesByRegion(region),
                 "printAllCountriesByRegion should run without throwing exceptions");
     }
-
 
     @Test
     public void testPrintTopNCountries() {
@@ -87,16 +90,9 @@ public class CountryReportTest {
                 "printTopNCountriesByRegion should run without throwing exceptions");
     }
 
-
     @AfterEach
     public void tearDown() {
-        if (connection != null) {
-            try {
-                // Safely close the connection after each test
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Error closing connection: " + e.getMessage());
-            }
-        }
+        // Clear mocks after each test
+        Mockito.framework().clearInlineMocks();
     }
 }

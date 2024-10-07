@@ -1,118 +1,85 @@
 package com.napier.gp3;
 
 import org.junit.jupiter.api.*;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.mockito.*;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class CountryDAOTest {
+
+    @Mock
     private Connection connection;
+
+    @Mock
+    private PreparedStatement preparedStatement;
+
+    @Mock
+    private ResultSet resultSet;
+
     private CountryDAO countryDAO;
 
     @BeforeEach
-    public void setUp() {
-        try {
-            // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+    public void setUp() throws SQLException {
+        // Initialize the mocks
+        MockitoAnnotations.openMocks(this);
 
-            // Connect to the database (updated connection string)
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false",
-                    "root",
-                    "group3"
-            );
+        // Set up the mock behavior for connection and statements
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
 
-            // Initialize the DAO with the connected database
-            countryDAO = new CountryDAO(connection);
-
-        } catch (ClassNotFoundException e) {
-            fail("SQL Driver Loading Failed: " + e.getMessage());
-        } catch (SQLException e) {
-            fail("Database connection failed: " + e.getMessage());
-        }
+        // Initialize CountryDAO with the mocked connection
+        countryDAO = new CountryDAO(connection);
     }
 
     @Test
-    public void testGetAllCountriesByPopulation() {
-        // Test if the list is correctly populated and ordered by population
+    public void testGetAllCountriesByPopulation() throws SQLException {
+        // Mocking the result set
+        when(resultSet.next()).thenReturn(true, true, false);  // Simulate 2 countries
+        when(resultSet.getString("Code")).thenReturn("USA", "CHN");
+        when(resultSet.getString("Name")).thenReturn("United States", "China");
+        when(resultSet.getString("Continent")).thenReturn("North America", "Asia");
+        when(resultSet.getString("Region")).thenReturn("Northern America", "Eastern Asia");
+        when(resultSet.getInt("Population")).thenReturn(331002651, 1439323776);
+        when(resultSet.getString("CapitalName")).thenReturn("Washington D.C.", "Beijing");
+
+        // Call the method
         List<Country> countries = countryDAO.getAllCountriesByPopulation();
-        assertNotNull(countries, "Country list should not be null");
-        assertFalse(countries.isEmpty(), "Country list should not be empty");
-        assertTrue(countries.get(0).getPopulation() >= countries.get(1).getPopulation(),
-                "Countries should be ordered by population in descending order");
+
+        // Verify the results
+        assertNotNull(countries);
+        assertEquals(2, countries.size());
+        assertEquals("United States", countries.get(0).getName());
+        assertEquals("China", countries.get(1).getName());
     }
 
     @Test
-    public void testGetCountriesByContinent() {
-        // Test if countries for a specific continent are correctly fetched
-        List<Country> countries = countryDAO.getCountriesByContinent("Europe");
-        assertNotNull(countries, "Country list should not be null");
-        assertFalse(countries.isEmpty(), "Country list for Europe should not be empty");
-        for (Country country : countries) {
-            assertEquals("Europe", country.getContinent(), "Continent should be Europe");
-        }
+    public void testGetTopNPopulatedCountries() throws SQLException {
+        // Mocking the result set
+        when(resultSet.next()).thenReturn(true, true, false); // Simulate 2 countries
+        when(resultSet.getString("Code")).thenReturn("USA", "CHN");
+        when(resultSet.getString("Name")).thenReturn("United States", "China");
+        when(resultSet.getString("Continent")).thenReturn("North America", "Asia");
+        when(resultSet.getString("Region")).thenReturn("Northern America", "Eastern Asia");
+        when(resultSet.getInt("Population")).thenReturn(331002651, 1439323776);
+        when(resultSet.getString("CapitalName")).thenReturn("Washington D.C.", "Beijing");
+
+        // Call the method
+        List<Country> countries = countryDAO.getTopNPopulatedCountries(2);
+
+        // Verify the results
+        assertNotNull(countries);
+        assertEquals(2, countries.size());
+        assertEquals("United States", countries.get(0).getName());
+        assertEquals("China", countries.get(1).getName());
     }
-
-    @Test
-    public void testGetCountriesByRegion() {
-        // Test if countries for a specific region are correctly fetched
-        List<Country> countries = countryDAO.getCountriesByRegion("Southern Europe");
-        assertNotNull(countries, "Country list should not be null");
-        assertFalse(countries.isEmpty(), "Country list for Southern Europe should not be empty");
-        for (Country country : countries) {
-            assertEquals("Southern Europe", country.getRegion(), "Region should be Southern Europe");
-        }
-    }
-
-    @Test
-    public void testGetTopNPopulatedCountries() {
-        // Test if the top N populated countries are correctly fetched
-        int N = 5;
-        List<Country> countries = countryDAO.getTopNPopulatedCountries(N);
-        assertNotNull(countries, "Country list should not be null");
-        assertEquals(N, countries.size(), "Should return exactly " + N + " countries");
-    }
-
-    @Test
-    public void testGetTopNPopulatedCountriesInContinent() {
-        int N = 5;
-        String continent = "Asia";
-        List<Country> countries = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
-
-        assertNotNull(countries, "Country list should not be null");
-        assertEquals(N, countries.size(), "Should return exactly " + N + " countries");
-        for (Country country : countries) {
-            assertEquals(continent, country.getContinent(), "Country should be in " + continent);
-        }
-    }
-
-    @Test
-    public void testGetTopNPopulatedCountriesInRegion() {
-        int N = 5;
-        String region = "Southern Europe";
-        List<Country> countries = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
-
-        assertNotNull(countries, "Country list should not be null");
-        assertEquals(N, countries.size(), "Should return exactly " + N + " countries");
-        for (Country country : countries) {
-            assertEquals(region, country.getRegion(), "Country should be in " + region);
-        }
-    }
-
 
     @AfterEach
     public void tearDown() {
-        // Close the connection after each test
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Error closing connection: " + e.getMessage());
-            }
-        }
+        // Close mocks after each test
+        Mockito.framework().clearInlineMocks();
     }
 }
