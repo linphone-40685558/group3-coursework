@@ -1,34 +1,127 @@
 package com.napier.gp3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
-public class CountryReportTest {
+class CountryReportTest {
+
+    private Country_report countryReport;
+    private CountryDAO mockCountryDAO;
+    private Connection mockConnection;
+
+    @BeforeEach
+    void setUp() {
+        // Mocking the Connection and CountryDAO
+        mockConnection = mock(Connection.class);
+        mockCountryDAO = mock(CountryDAO.class);
+
+        // Initializing Country_report with the mocked DAO
+        countryReport = new Country_report(mockConnection);
+        countryReport.countryDAO = mockCountryDAO; // Inject the mock DAO into Country_report
+    }
 
     @Test
-    public void testPrintAllCountriesByPopulation() {
-        // Mocking the DAO
-        CountryDAO mockCountryDAO = Mockito.mock(CountryDAO.class);
+    void testPrintAllCountriesByPopulation() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountries.add(new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000, 1891, "Beijing"));
 
-        // Mock data for countries
-        List<Country> mockCountries = List.of(
-                new Country("USA", "United States", "North America", "Northern America", 331002651L, 1, "Washington D.C.")
-        );
-        Mockito.when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountries);
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountries);
 
-        // Create an instance of Country_report with a mock DAO
-        Country_report report = new Country_report(null);  // Connection is not needed for this test
-        report.countryDAO = mockCountryDAO;  // Injecting mock DAO
-
-        // Test print method
-        report.printAllCountriesByPopulation();
+        // Call the method
+        countryReport.printAllCountriesByPopulation();
 
         // Verify that the DAO method was called
         verify(mockCountryDAO).getAllCountriesByPopulation();
     }
-}
 
+    @Test
+    void testPrintAllCountriesByContinent() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getCountriesByContinent("North America")).thenReturn(mockCountries);
+
+        // Call the method
+        countryReport.printAllCountriesByContinent("North America");
+
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getCountriesByContinent("North America");
+    }
+
+    @Test
+    void testPrintAllCountriesByRegion() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getCountriesByRegion("Northern America")).thenReturn(mockCountries);
+
+        // Call the method
+        countryReport.printAllCountriesByRegion("Northern America");
+
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getCountriesByRegion("Northern America");
+    }
+
+    @Test
+    void testPrintTopNCountries() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000, 1891, "Beijing"));
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getTopNPopulatedCountries(2)).thenReturn(mockCountries);
+
+        // Call the method
+        countryReport.printTopNCountries(2);
+
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getTopNPopulatedCountries(2);
+    }
+
+    @Test
+    void testPrintTopNCountriesByContinent() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 1)).thenReturn(mockCountries);
+
+        // Call the method
+        countryReport.printTopNCountriesByContinent(1, "North America");
+
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getTopNPopulatedCountriesInContinent("North America", 1);
+    }
+
+    @Test
+    void testPrintTopNCountriesByRegion() {
+        // Prepare mock data
+        List<Country> mockCountries = new ArrayList<>();
+        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+
+        // Define behavior for the mock DAO
+        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Northern America", 1)).thenReturn(mockCountries);
+
+        // Call the method
+        countryReport.printTopNCountriesByRegion(1, "Northern America");
+
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getTopNPopulatedCountriesInRegion("Northern America", 1);
+    }
+}
