@@ -1,0 +1,36 @@
+@startuml
+title World Report System by Population Use Cases
+
+actor "User/Researcher" as User
+
+rectangle "World Report System by Population" {
+
+  (View number and percentage of world population speaking Chinese/English/Hindi/Spanish/Arabic)
+
+  (View population of the world/continent/region/country/district/city)
+
+  (View population breakdown by urban vs Rural)
+
+  (Generate report of top N populated capital cities by all countries/continent/region)
+  (Generate report of capital cities by all countries/continent/region ordered by population)
+
+  (Generate report of top N populated cities by all cities/continent/region/country/district)
+  (Generate report of cities by all cities/continent/region/country/district ordered by population)
+
+  (Generate report of top N populated countries by all countries/continent/region)
+  (Generate report of countries by all countries/continent/region ordered by population)
+
+}
+
+left to right direction
+User --> (View number and percentage of world population speaking Chinese/English/Hindi/Spanish/Arabic)
+User --> (View population of the world/continent/region/country/district/city)
+User --> (View population breakdown by urban vs Rural)
+User --> (Generate report of top N populated capital cities by all countries/continent/region)
+User --> (Generate report of capital cities by all countries/continent/region ordered by population)
+User --> (Generate report of top N populated cities by all cities/continent/region/country/district)
+User --> (Generate report of cities by all cities/continent/region/country/district ordered by population)
+User --> (Generate report of top N populated countries by all countries/continent/region)
+User --> (Generate report of countries by all countries/continent/region ordered by population)
+
+@enduml

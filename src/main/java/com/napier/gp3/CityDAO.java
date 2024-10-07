@@ -17,22 +17,33 @@ import java.util.List;
 public class CityDAO {
     private Connection con;
 
+    /**
+     * City Data Access Object Constructor
+     *
+     * @param connection
+     */
     public CityDAO(Connection connection) {
         this.con = connection;
     }
 
-    // 7 Method to get all cities in the world organized by largest population
+    /**
+     * 7) Method to get all cities in the world organized by largest population
+     *
+     * @return
+     */
     public List<City> getAllCitiesByPopulation() {
         List<City> cities = new ArrayList<>();
         try {
             // Query to select all cities and order them by population in descending order
-            String strSelect ="SELECT city.*, country.Name AS CountryName FROM city JOIN country ON city.CountryCode = country.Code ORDER BY city.Population DESC";
-            PreparedStatement pstmt = con.prepareStatement(strSelect); // Preparing the SQL query
-            ResultSet rset = pstmt.executeQuery(); // Executing the query and getting the result set
+            String strSelect = "SELECT city.*, country.Name AS CountryName" +
+                    " FROM city" +
+                    " JOIN country" +
+                    " ON city.CountryCode = country.Code" +
+                    " ORDER BY city.Population DESC";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
 
-            // Iterating through the result set
             while (rset.next()) {
-                // Creating a new City object and adding it to the list
                 cities.add(new City(
                         rset.getInt("ID"),
                         rset.getString("Name"),
@@ -43,12 +54,17 @@ public class CityDAO {
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("Failed to get cities: " + e.getMessage()); // Handling SQL exceptions
+            System.out.println("Failed to get cities: " + e.getMessage());
         }
-        return cities; // Returning the list of cities
+        return cities;
     }
 
-    // 8 Method to get all cities in a continent organized by largest population
+    /**
+     * 8) Method to get all cities in a continent organized by largest population
+     *
+     * @param continent
+     * @return
+     */
     public List<City> getCitiesByContinent(String continent) {
         List<City> cities = new ArrayList<>();
         try {
@@ -75,7 +91,12 @@ public class CityDAO {
         return cities;
     }
 
-    // 9 Method to get all cities in a region organized by largest population
+    /**
+     * 9) Method to get all cities in a region organized by largest population
+     *
+     * @param region
+     * @return
+     */
     public List<City> getCitiesByRegion(String region) {
         List<City> cities = new ArrayList<>();
         try {
@@ -102,7 +123,12 @@ public class CityDAO {
         return cities;
     }
 
-    // 10 Method to get all cities in a country organized by largest population
+    /**
+     * 10) Method to get all cities in a country organized by largest population
+     *
+     * @param countryCode
+     * @return
+     */
     public List<City> getCitiesByCountry(String countryCode) {
         List<City> cities = new ArrayList<>();
         try {
@@ -130,7 +156,12 @@ public class CityDAO {
         return cities;
     }
 
-    // 11 Method to get all cities in a district organized by largest population
+    /**
+     * 11) Method to get all cities in a district organized by largest population
+     *
+     * @param district
+     * @return
+     */
     public List<City> getCitiesByDistrict(String district) {
         List<City> cities = new ArrayList<>();
         try {

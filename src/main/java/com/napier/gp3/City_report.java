@@ -1,26 +1,38 @@
 package com.napier.gp3;
 
 import java.sql.Connection;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The City_report class provides printing methods to generate city reports.
  */
 public class City_report {
     private CityDAO cityDAO;
+    private final NumberFormat numberFormat;
 
-    // Constructor to initialize CityDAO with a connection
+    /**
+     * Constructor to initialize CityDAO with a connection
+     *
+     * @param con
+     */
     public City_report(Connection con) {
         this.cityDAO = new CityDAO(con);
+        this.numberFormat = NumberFormat.getInstance(Locale.US); // (comma separated)
     }
 
-    // Utility method to print a header for the city report
+    /**
+     * Utility method to print a header for the city report
+     */
     private void printReportHeader() {
         System.out.printf("%-40s %-40s %-30s %-30s%n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
     }
 
-    // 7. Get all cities by population
+    /**
+     * 7) Get all cities by population
+     */
     public void printAllCitiesByPopulation() {
         System.out.println("**********************************************");
         System.out.println("** 7) ALL CITIES BY POPULATION **");
@@ -30,11 +42,15 @@ public class City_report {
         for (City city : allCities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
-    // 8. Get cities by continent
+    /**
+     * 8) Get cities by continent
+     *
+     * @param continent
+     */
     public void printCitiesByContinent(String continent) {
         System.out.println("**********************************************");
         System.out.println("** 8) CITIES IN " + continent.toUpperCase() + " BY POPULATION **");
@@ -44,11 +60,15 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
-    // 9. Get cities by region
+    /**
+     * 9) Get cities by region
+     *
+     * @param region
+     */
     public void printCitiesByRegion(String region) {
         System.out.println("**********************************************");
         System.out.println("** 9) CITIES IN " + region.toUpperCase() + " BY POPULATION **");
@@ -58,11 +78,15 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
-    // 10. Get cities by country
+    /**
+     * 10) Get cities by country
+     *
+     * @param countryCode
+     */
     public void printCitiesByCountry(String countryCode) {
         System.out.println("**********************************************");
         System.out.println("** 10) CITIES IN COUNTRY CODE '" + countryCode.toUpperCase() + "' BY POPULATION **");
@@ -72,11 +96,15 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 
-    // 11. Get cities by district
+    /**
+     * 11) Get cities by district
+     *
+     * @param district
+     */
     public void printCitiesByDistrict(String district) {
         System.out.println("**********************************************");
         System.out.println("** 11) CITIES IN DISTRICT '" + district.toUpperCase() + "' BY POPULATION **");
@@ -86,7 +114,7 @@ public class City_report {
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),
-                    city.getDistrict(), city.getPopulation());
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
 

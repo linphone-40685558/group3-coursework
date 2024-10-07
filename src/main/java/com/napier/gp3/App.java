@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * The App class is to connect the MySQL database server from world.sql
+ * And to produce reports
  * Implement the error handling method
  */
 
@@ -15,7 +16,7 @@ public class App {
     private Connection con = null;
 
     /**
-     * connect function to make a connection
+     * Connect function to make a connection
      */
     public void connect_function() {
         try {
@@ -60,7 +61,10 @@ public class App {
     }
 
     /**
-     * Main class to call connect function and discount function
+     * Main class to call connect function, discount function
+     * and reports producing
+     *
+     * @param args
      */
     public static void main(String[] args) {
         // Create a new App instance
@@ -69,39 +73,64 @@ public class App {
         // Connect to the world.sql database
         conn.connect_function();
 
-        // Create an instance of City_report
+        // Create reports instances
         City_report cityReport = new City_report(conn.con);
-        // Create an instance of Country_report
         Country_report countryReport = new Country_report(conn.con);
-        // Create an instance of Capital_report
         Capital_report capitalReport = new Capital_report(conn.con);
 
-        // Call each function and display results
-        // Country Report
-        countryReport.printAllCountriesByPopulation();
-        countryReport.printAllCountriesByContinent("Asia");
-        countryReport.printAllCountriesByRegion("Southeast Asia");
-        countryReport.printTopNCountries(5);
-        countryReport.printTopNCountriesByContinent(5, "Asia");
-        countryReport.printTopNCountriesByRegion(5, "Southeast Asia");
+        // Parameter values for easy changes
+        String continent = "Asia";
+        String region = "Southeast Asia";
+        String countryCode = "MMR";
+        String country = "Myanmar";
+        String district = "Mandalay";
+        int number = 5;
 
-        // Call each function and display results
-        // City Report
-        cityReport.printAllCitiesByPopulation();
-        cityReport.printCitiesByContinent("Asia");
-        cityReport.printCitiesByRegion("Southern Europe");
-        cityReport.printCitiesByCountry("GBR");
-        cityReport.printCitiesByDistrict("England");
-
-        // Call each function and display results
-        // Capital City Report
-        capitalReport.printCapitalsByPopulation();
-        capitalReport.printCapitalsByContinent("Asia");
-        capitalReport.printCapitalsByRegion("Southeast Asia");
+        /**
+         * Generate reports with parameters
+         */
+        generateCountryReport(countryReport, continent, region, number);
+        generateCityReport(cityReport, continent, region, countryCode, district);
 
 
         // Disconnect from the database
         conn.disconnect_function();
+    }
+
+    /**
+     * Generates the country report
+     *
+     * @param countryReport
+     * @param continent
+     * @param region
+     * @param number
+     */
+    private static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
+        // Call each function and display results (1 - 6)
+        countryReport.printAllCountriesByPopulation();
+        countryReport.printAllCountriesByContinent(continent);
+        countryReport.printAllCountriesByRegion(region);
+        countryReport.printTopNCountries(number);
+        countryReport.printTopNCountriesByContinent(number, continent);
+        countryReport.printTopNCountriesByRegion(number, region);
+    }
+
+    /**
+     * Generates the city report
+     *
+     * @param cityReport
+     * @param continent
+     * @param region
+     * @param countryCode
+     * @param district
+     */
+    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
+        // Call each function and display results (7 - 11)
+        cityReport.printAllCitiesByPopulation();
+        cityReport.printCitiesByContinent(continent);
+        cityReport.printCitiesByRegion(region);
+        cityReport.printCitiesByCountry(countryCode);
+        cityReport.printCitiesByDistrict(district);
     }
 
 }

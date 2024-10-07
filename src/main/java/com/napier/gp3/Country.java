@@ -5,7 +5,7 @@ package com.napier.gp3;
  * region, population, capital ID, and capital name.
  */
 public class Country {
-    private String code;        // Unique code for the country (e.g., "MM" for Myanmar)
+    private String code;        // Unique code for the country (e.g., "MMR" for Myanmar)
     private String name;        // Name of the country (e.g., "Myanmar")
     private String continent;   // Continent the country belongs to (e.g., "Asia")
     private String region;      // Specific region within the continent (e.g., "Southeast Asia")
@@ -15,6 +15,14 @@ public class Country {
 
     /**
      * Constructs a Country object with the specified attributes.
+     *
+     * @param code
+     * @param name
+     * @param continent
+     * @param region
+     * @param population
+     * @param capital
+     * @param capitalName
      */
     public Country(String code, String name, String continent, String region, long population, int capital, String capitalName) {
         this.code = code;
@@ -22,13 +30,13 @@ public class Country {
         this.continent = continent;
         this.region = region;
         this.population = population;
-        this.capital = capital;       // Capital ID from Country Table
-        this.capitalName = capitalName; // Capital name from City Table
+        this.capital = capital;
+        this.capitalName = capitalName;
     }
+
     /**
-     * Getter and Setter code of Country table
+     * Getter and Setter code of Country
      */
-    // Getters and Setters
     public String getCode() {
         return code;
     }
