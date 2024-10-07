@@ -74,8 +74,8 @@ public class App {
         conn.connect_function();
 
         // Create reports instances
-        City_report cityReport = new City_report(conn.con);
         Country_report countryReport = new Country_report(conn.con);
+        City_report cityReport = new City_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
         Language_report languageReport = new Language_report(conn.con);
 
@@ -91,7 +91,7 @@ public class App {
          * Generate reports with parameters
          */
         generateCountryReport(countryReport, continent, region, number);
-        generateCityReport(cityReport, continent, region, countryCode, district);
+        generateCityReport(cityReport, continent, region, countryCode, district,number);
         generateCapitalCityReport(capitalReport, continent, region, number);
         generateLanguageReport(languageReport);
 
@@ -127,13 +127,15 @@ public class App {
      * @param countryCode
      * @param district
      */
-    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
+    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district, int number) {
         // Call each function and display results (7 - 11)
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
         cityReport.printCitiesByRegion(region);
         cityReport.printCitiesByCountry(countryCode);
         cityReport.printCitiesByDistrict(district);
+        cityReport.printTopNPopulatedCitiesInWorld(number);
+        cityReport.printTopNPopulatedCitiesInContinent(continent, number);
     }
 
     /**
