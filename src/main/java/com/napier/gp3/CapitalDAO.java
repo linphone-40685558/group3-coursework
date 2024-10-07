@@ -126,11 +126,10 @@ public class CapitalDAO {
         return cities;
     }
 
-    // 21 Method
+    // 21 Method to get top N populated capital cities in the continent
     public List<City> getTopNPopulatedCapitalCitiesInContinent(String continent, int N) {
         List<City> cities = new ArrayList<>();
         try {
-            // SQL query to get top N populated capital cities in a specific continent
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
                     "WHERE country.Continent = ? " +
@@ -157,11 +156,10 @@ public class CapitalDAO {
     }
 
 
-    // 22 Method
+    // 22 Method to get top N populated capital cities in the region
     public List<City> getTopNPopulatedCapitalCitiesInRegion(String region, int N) {
         List<City> cities = new ArrayList<>();
         try {
-            // SQL query to get top N populated capital cities in a specific region
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
                     "WHERE country.Region = ? " +
