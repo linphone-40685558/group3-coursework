@@ -15,6 +15,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+      - name: Unit Tests
+        run: mvn -Dtest=com.napier.gp3.CountryDAOTest test
       - name: Build with Maven
         run: mvn package
       - name: Log in to Docker Hub
