@@ -164,7 +164,7 @@ public class City_report {
      */
     public void printTopNPopulatedCitiesInRegion(String region, int N) {
         System.out.println("**********************************************");
-        System.out.println("** 13) TOP "+ N + " POPULATED CITIES IN " + region + " **");
+        System.out.println("** 14) TOP "+ N + " POPULATED CITIES IN " + region + " **");
         System.out.println("**********************************************");
         printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion(region, N);
