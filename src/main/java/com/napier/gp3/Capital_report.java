@@ -57,4 +57,60 @@ public class Capital_report {
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
     }
+
+    /**
+     * 20) Get top N populated capital cities in a world
+     *
+     * @param N
+     */
+    public void printTopNPopulatedCapitalCitiesInWorld(int N) {
+        System.out.println("\n**********************************************");
+        System.out.println("** 20) TOP " + N + " POPULATED CAPITAL CITIES IN THE WORLD **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> topNCapitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(N);
+        for (City city : topNCapitals) {
+            System.out.printf("%-40s %-40s %-30s%n",
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
+        }
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+    }
+
+    /**
+     * 21) Get top N populated capital cities in a region
+     *
+     * @param N
+     * @param continent
+     */
+    public void printTopNPopulatedCapitalCitiesInContinent(int N, String continent) {
+        System.out.println("\n**********************************************");
+        System.out.println("** 21) TOP " + N + " POPULATED CAPITAL CITIES IN " + continent.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> topNCapitalsInContinent = capitalDAO.getTopNPopulatedCapitalCitiesInContinent(continent, N);
+        for (City city : topNCapitalsInContinent) {
+            System.out.printf("%-40s %-40s %-30s%n",
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
+        }
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+    }
+
+    /**
+     * 22) Get top N populated capital cities in a region
+     *
+     * @param N
+     * @param region
+     */
+    public void printTopNPopulatedCapitalCitiesInRegion(int N, String region) {
+        System.out.println("\n**********************************************");
+        System.out.println("** 22) TOP " + N + " POPULATED CAPITAL CITIES IN " + region.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> topNCapitalsInRegion = capitalDAO.getTopNPopulatedCapitalCitiesInRegion(region, N);
+        for (City city : topNCapitalsInRegion) {
+            System.out.printf("%-40s %-40s %-30s%n",
+                    city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
+        }
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+    }
 }
