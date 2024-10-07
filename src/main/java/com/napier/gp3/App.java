@@ -136,6 +136,14 @@ public class App {
         cityReport.printCitiesByDistrict(district);
     }
 
+    /**
+     * Generate the Capital cities report
+     *
+     * @param capitalReport
+     * @param continent
+     * @param region
+     * @param number
+     */
     private static  void generateCapitalCityReport(Capital_report capitalReport, String continent, String region, int number) {
         // Call each function and display results (17 - 22)
         capitalReport.printCapitalsByPopulation();
