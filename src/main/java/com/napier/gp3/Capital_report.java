@@ -9,17 +9,27 @@ public class Capital_report {
     public CapitalDAO capitalDAO;
     private final NumberFormat numberFormat;
 
+    /**
+     * Capital report constructor
+     *
+     * @param connection
+     */
     public Capital_report(Connection connection) {
         this.capitalDAO = new CapitalDAO(connection);
         this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
     }
 
+    /**
+     * Printing headers
+     */
     private void printReportHeader() {
         System.out.printf("%-40s %-40s  %-30s%n", "Name", "Country", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
     }
 
-    // 17 Get all capital cities by population
+    /**
+     * 17) Get all capital cities by population
+     */
     public void printCapitalsByPopulation() {
         System.out.println("**********************************************");
         System.out.println("** 17) ALL CAPITAL CITIES BY POPULATION **");
@@ -32,7 +42,11 @@ public class Capital_report {
         }
     }
 
-    // 18 Get capital cities by continent (example: "Asia")
+    /**
+     * 18) Get capital cities by continent (example: "Asia")
+     *
+     * @param continent
+     */
     public void printCapitalsByContinent(String continent) {
         System.out.println("**********************************************");
         System.out.println("** 18) CAPITAL CITIES IN CONTINENT '" + continent.toUpperCase() + "' BY POPULATION **");
@@ -45,7 +59,11 @@ public class Capital_report {
         }
     }
 
-    // 19 Get capital cities by region (example: "Southeast Asia")
+    /**
+     * 19) Get capital cities by region (example: "Southeast Asia")
+     *
+     * @param region
+     */
     public void printCapitalsByRegion(String region) {
         System.out.println("**********************************************");
         System.out.println("** 19) CAPITAL CITIES IN REGION '" + region.toUpperCase() + "' BY POPULATION **");
