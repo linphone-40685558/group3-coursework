@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class CountryDAOTest {
@@ -18,6 +17,11 @@ class CountryDAOTest {
     private PreparedStatement mockPreparedStatement;
     private ResultSet mockResultSet;
 
+    /**
+     * Set up for testing
+     *
+     * @throws SQLException
+     */
     @BeforeEach
     void setUp() throws SQLException {
         // Mock the Connection, PreparedStatement, and ResultSet
@@ -29,6 +33,11 @@ class CountryDAOTest {
         countryDAO = new CountryDAO(mockConnection);
     }
 
+    /**
+     * Test Getting Countries in the World
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetAllCountriesByPopulation() throws SQLException {
         // Define the SQL query result
@@ -47,6 +56,11 @@ class CountryDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+    /**
+     * Test Getting Countries in a Continent
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetCountriesByContinent() throws SQLException {
         // Define the SQL query result
@@ -65,6 +79,11 @@ class CountryDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+    /**
+     * Test Getting Countries in a Region
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetCountriesByRegion() throws SQLException {
         // Define the SQL query result
@@ -83,6 +102,11 @@ class CountryDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+    /**
+     * Test Getting Top N Populated Countries in the World
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetTopNPopulatedCountries() throws SQLException {
         // Define the SQL query result
@@ -101,6 +125,11 @@ class CountryDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+    /**
+     * Test Getting Top N Populated Countries in Continent
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetTopNPopulatedCountriesInContinent() throws SQLException {
         // Define the SQL query result
@@ -119,6 +148,11 @@ class CountryDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+    /**
+     * Test Getting Top N Populated Countries in Region
+     *
+     * @throws SQLException
+     */
     @Test
     void testGetTopNPopulatedCountriesInRegion() throws SQLException {
         // Define the SQL query result

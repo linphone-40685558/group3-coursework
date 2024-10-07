@@ -2,7 +2,6 @@ package com.napier.gp3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -16,6 +15,9 @@ class CountryReportTest {
     private CountryDAO mockCountryDAO;
     private Connection mockConnection;
 
+    /**
+     * Set up for testing
+     */
     @BeforeEach
     void setUp() {
         // Mocking the Connection and CountryDAO
@@ -27,6 +29,9 @@ class CountryReportTest {
         countryReport.countryDAO = mockCountryDAO; // Inject the mock DAO into Country_report
     }
 
+    /**
+     * Test printing all countries by population
+     */
     @Test
     void testPrintAllCountriesByPopulation() {
         // Prepare mock data
@@ -44,6 +49,9 @@ class CountryReportTest {
         verify(mockCountryDAO).getAllCountriesByPopulation();
     }
 
+    /**
+     * Test printing all countries by continent
+     */
     @Test
     void testPrintAllCountriesByContinent() {
         // Prepare mock data
@@ -60,6 +68,9 @@ class CountryReportTest {
         verify(mockCountryDAO).getCountriesByContinent("North America");
     }
 
+    /**
+     * Test printing all countries by region
+     */
     @Test
     void testPrintAllCountriesByRegion() {
         // Prepare mock data
@@ -76,6 +87,9 @@ class CountryReportTest {
         verify(mockCountryDAO).getCountriesByRegion("Northern America");
     }
 
+    /**
+     * Test printing top n populated countries
+     */
     @Test
     void testPrintTopNCountries() {
         // Prepare mock data
@@ -93,6 +107,9 @@ class CountryReportTest {
         verify(mockCountryDAO).getTopNPopulatedCountries(2);
     }
 
+    /**
+     * Test printing top n populated countries by continent
+     */
     @Test
     void testPrintTopNCountriesByContinent() {
         // Prepare mock data
@@ -109,6 +126,9 @@ class CountryReportTest {
         verify(mockCountryDAO).getTopNPopulatedCountriesInContinent("North America", 1);
     }
 
+    /**
+     * Test printing top n populated countries by region
+     */
     @Test
     void testPrintTopNCountriesByRegion() {
         // Prepare mock data
