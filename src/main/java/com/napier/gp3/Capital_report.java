@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class Capital_report {
-    private CapitalDAO capitalDAO;
+    public CapitalDAO capitalDAO;
     private final NumberFormat numberFormat;
 
     public Capital_report(Connection connection) {
