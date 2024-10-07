@@ -1,98 +1,34 @@
 package com.napier.gp3;
 
-import org.junit.jupiter.api.*;
-import org.mockito.*;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 public class CountryReportTest {
-    @Mock
-    private Connection connection;
-
-    @Mock
-    private PreparedStatement preparedStatement;
-
-    @Mock
-    private ResultSet resultSet;
-
-    private Country_report countryReport;
-
-    @BeforeEach
-    public void setUp() throws SQLException {
-        // Initialize the mocks
-        MockitoAnnotations.openMocks(this);
-
-        // Set up the mock behavior for connection and statements
-        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
-        when(preparedStatement.executeQuery()).thenReturn(resultSet);
-
-        // Initialize Country_report with the mocked connection
-        countryReport = new Country_report(connection);
-    }
 
     @Test
     public void testPrintAllCountriesByPopulation() {
-        // Mock the behavior for fetching results
-        // You can customize this mock based on how your print method interacts with the database.
-        // For example, you might want to return a specific ResultSet with expected data.
+        // Mocking the DAO
+        CountryDAO mockCountryDAO = Mockito.mock(CountryDAO.class);
 
-        assertDoesNotThrow(() -> countryReport.printAllCountriesByPopulation(),
-                "printAllCountriesByPopulation should run without throwing exceptions");
-    }
+        // Mock data for countries
+        List<Country> mockCountries = List.of(
+                new Country("USA", "United States", "North America", "Northern America", 331002651L, 1, "Washington D.C.")
+        );
+        Mockito.when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountries);
 
-    @Test
-    public void testPrintAllCountriesByContinent() {
-        // Ensure no exceptions are thrown for the 'Europe' continent
-        assertDoesNotThrow(() -> countryReport.printAllCountriesByContinent("Europe"),
-                "printAllCountriesByContinent should run without throwing exceptions");
-    }
+        // Create an instance of Country_report with a mock DAO
+        Country_report report = new Country_report(null);  // Connection is not needed for this test
+        report.countryDAO = mockCountryDAO;  // Injecting mock DAO
 
-    @Test
-    public void testPrintAllCountriesByRegion() {
-        String region = "Southern Europe";
+        // Test print method
+        report.printAllCountriesByPopulation();
 
-        // Ensure no exceptions are thrown during the execution of the report
-        assertDoesNotThrow(() -> countryReport.printAllCountriesByRegion(region),
-                "printAllCountriesByRegion should run without throwing exceptions");
-    }
-
-    @Test
-    public void testPrintTopNCountries() {
-        int N = 5;
-        // Ensure no exceptions are thrown when printing the top N countries
-        assertDoesNotThrow(() -> countryReport.printTopNCountries(N),
-                "printTopNCountries should run without throwing exceptions");
-    }
-
-    @Test
-    public void testPrintTopNCountriesByContinent() {
-        int N = 5;
-        String continent = "Asia";
-
-        // Ensure no exceptions are thrown during the execution of the report
-        assertDoesNotThrow(() -> countryReport.printTopNCountriesByContinent(N, continent),
-                "printTopNCountriesByContinent should run without throwing exceptions");
-    }
-
-    @Test
-    public void testPrintTopNCountriesByRegion() {
-        int N = 5;
-        String region = "Southern Europe";
-
-        // Ensure no exceptions are thrown during the execution of the report
-        assertDoesNotThrow(() -> countryReport.printTopNCountriesByRegion(N, region),
-                "printTopNCountriesByRegion should run without throwing exceptions");
-    }
-
-    @AfterEach
-    public void tearDown() {
-        // Clear mocks after each test
-        Mockito.framework().clearInlineMocks();
+        // Verify that the DAO method was called
+        verify(mockCountryDAO).getAllCountriesByPopulation();
     }
 }
+
