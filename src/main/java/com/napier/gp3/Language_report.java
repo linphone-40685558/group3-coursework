@@ -33,7 +33,7 @@ public class Language_report {
      */
     public void printLanguagesByNumberOfPeople() {
         System.out.println("**********************************************");
-        System.out.println("** LANGUAGES BY NUMBER OF PEOPLE WHO SPEAK IN SELECTED LANGUAGES **");
+        System.out.println("** 32) LANGUAGES BY NUMBER OF PEOPLE WHO SPEAK IN SELECTED LANGUAGES **");
         System.out.println("**********************************************");
         printReportHeader();
         List<Language> languages = languageDAO.getLanguagesByNumberOfPeople();
