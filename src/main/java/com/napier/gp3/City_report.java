@@ -9,7 +9,7 @@ import java.util.Locale;
  * The City_report class provides printing methods to generate city reports.
  */
 public class City_report {
-    private CityDAO cityDAO;
+    public CityDAO cityDAO;
     private final NumberFormat numberFormat;
 
     /**
