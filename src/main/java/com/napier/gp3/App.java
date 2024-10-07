@@ -77,6 +77,7 @@ public class App {
         City_report cityReport = new City_report(conn.con);
         Country_report countryReport = new Country_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
+        Language_report languageReport = new Language_report(conn.con);
 
         // Parameter values for easy changes
         String continent = "Asia";
@@ -91,6 +92,7 @@ public class App {
          */
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district);
+        generateLanguageReport(languageReport);
 
 
         // Disconnect from the database
@@ -133,4 +135,12 @@ public class App {
         cityReport.printCitiesByDistrict(district);
     }
 
+    /**
+     * Generates the language report.
+     *
+     * @param languageReport
+     */
+    private static void generateLanguageReport(Language_report languageReport) {
+        languageReport.printLanguagesByNumberOfPeople();
+    }
 }
