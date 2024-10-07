@@ -136,6 +136,7 @@ public class App {
         cityReport.printCitiesByDistrict(district);
         cityReport.printTopNPopulatedCitiesInWorld(number);
         cityReport.printTopNPopulatedCitiesInContinent(continent, number);
+        cityReport.printTopNPopulatedCitiesInRegion(region, number);
     }
 
     /**

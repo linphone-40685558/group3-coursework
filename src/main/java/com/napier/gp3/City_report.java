@@ -119,7 +119,7 @@ public class City_report {
     }
 
     /**
-     * 12) Get Top N cities around the world
+     * 12) Get Top N populated cities around the world
      *
      * @param N
      */
@@ -138,7 +138,8 @@ public class City_report {
 
 
     /**
-     * 13) Get Top N cities in a Continent
+     * 13) Get Top N populated cities in a Continent
+     *
      * @param continent
      * @param N
      */
@@ -148,6 +149,25 @@ public class City_report {
         System.out.println("**********************************************");
         printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent(continent, N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
+        }
+    }
+
+    /**
+     * 14) Get Top N populated cities in a region
+     *
+     * @param region
+     * @param N
+     */
+    public void printTopNPopulatedCitiesInRegion(String region, int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 13) TOP "+ N + " POPULATED CITIES IN " + region + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion(region, N);
         for (City city : cities) {
             System.out.printf("%-40s %-40s %-30s %-30s%n",
                     city.getName(), city.getCountry(),

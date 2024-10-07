@@ -222,7 +222,13 @@ public class CityDAO {
         return cities;
     }
 
-
+    /**
+     * 13) Method to get Top N populated cities in a continent
+     *
+     * @param continent
+     * @param N
+     * @return
+     */
     public List<City> getTopNPopulatedCitiesInContinent(String continent, int N) {
         List <City> cities = new ArrayList<>();
         try {
@@ -234,6 +240,44 @@ public class CityDAO {
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             pstmt.setString(1, continent);
+            pstmt.setInt(2, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryName"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        }catch (SQLException e) {
+            System.out.println("Failed to get top N populated cities in continent: " + e.getMessage());
+        }
+        return cities;
+    }
+
+
+    /**
+     * 14) Method to get Top N populated cities in a region
+     *
+     * @param region
+     * @param N
+     * @return
+     */
+    public List<City> getTopNPopulatedCitiesInRegion(String region, int N) {
+        List <City> cities = new ArrayList<>();
+        try {
+            // SQL query to get top N populated cities in the world
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city JOIN country ON city.CountryCode = country.Code " +
+                    "WHERE country.Region = ?" +
+                    "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, region);
             pstmt.setInt(2, N);
             ResultSet rset = pstmt.executeQuery();
 
