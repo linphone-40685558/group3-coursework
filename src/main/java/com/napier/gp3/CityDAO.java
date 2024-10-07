@@ -232,7 +232,7 @@ public class CityDAO {
     public List<City> getTopNPopulatedCitiesInContinent(String continent, int N) {
         List <City> cities = new ArrayList<>();
         try {
-            // SQL query to get top N populated cities in the world
+            // SQL query to get top N populated cities in a continent
             String strSelect = "SELECT city.*, country.Name AS CountryName " +
                     "FROM city JOIN country ON city.CountryCode = country.Code " +
                     "WHERE country.Continent = ?" +
@@ -254,7 +254,7 @@ public class CityDAO {
                 ));
             }
         }catch (SQLException e) {
-            System.out.println("Failed to get top N populated cities in continent: " + e.getMessage());
+            System.out.println("Failed to get top N populated cities in a continent: " + e.getMessage());
         }
         return cities;
     }
@@ -270,7 +270,7 @@ public class CityDAO {
     public List<City> getTopNPopulatedCitiesInRegion(String region, int N) {
         List <City> cities = new ArrayList<>();
         try {
-            // SQL query to get top N populated cities in the world
+            // SQL query to get top N populated cities in a region
             String strSelect = "SELECT city.*, country.Name AS CountryName " +
                     "FROM city JOIN country ON city.CountryCode = country.Code " +
                     "WHERE country.Region = ?" +
@@ -292,7 +292,83 @@ public class CityDAO {
                 ));
             }
         }catch (SQLException e) {
-            System.out.println("Failed to get top N populated cities in continent: " + e.getMessage());
+            System.out.println("Failed to get top N populated cities in a continent: " + e.getMessage());
+        }
+        return cities;
+    }
+
+
+    /**
+     * 15) Method to get Top N populated cities in a country
+     *
+     * @param country
+     * @param N
+     * @return
+     */
+    public List<City> getTopNPopulatedCitiesInCountry(String country, int N) {
+        List <City> cities = new ArrayList<>();
+        try {
+            // SQL query to get top N populated cities in a country
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city JOIN country ON city.CountryCode = country.Code " +
+                    "WHERE city.CountryCode = ? " +
+                    "ORDER BY city.Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, country);
+            pstmt.setInt(2, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryName"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        }catch (SQLException e) {
+            System.out.println("Failed to get top N populated cities in a country: " + e.getMessage());
+        }
+        return cities;
+    }
+
+
+    /**
+     * 16) Method to get Top N populated cities in a district
+     *
+     * @param district
+     * @param N
+     * @return
+     */
+    public List<City> getTopNPopulatedCitiesInDistrict(String district, int N) {
+        List <City> cities = new ArrayList<>();
+        try {
+            // SQL query to get top N populated cities in a district
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city JOIN country ON city.CountryCode = country.Code " +
+                    "WHERE District = ? " +
+                    "ORDER BY city.Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, district);
+            pstmt.setInt(2, N);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryName"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        }catch (SQLException e) {
+            System.out.println("Failed to get top N populated cities in a district: " + e.getMessage());
         }
         return cities;
     }
