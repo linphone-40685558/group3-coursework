@@ -102,6 +102,77 @@ public class CapitalDAOTest {
         verify(mockPreparedStatement).executeQuery();
     }
 
+
+    /**
+     * Test Getting Top N Populated Capital Cities in the World
+     *
+     * @throws SQLException
+     */
+    @Test
+    void testGetTopNPopulatedCapitalCitiesInWorld() throws SQLException {
+        // Define the SQL query result
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Mock ResultSet behavior for multiple rows
+        when(mockResultSet.next()).thenReturn(true, true, false); // Two rows, then stop
+        mockCapitalResultSet();
+
+        // Call the method
+        List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(2);
+
+        // Assertions
+        assertEquals(2, capitals.size());
+        verify(mockPreparedStatement).executeQuery();
+    }
+
+    /**
+     * Test Getting Top N Populated Capital Cities in a Continent
+     *
+     * @throws SQLException
+     */
+    @Test
+    void testGetTopNPopulatedCapitalCitiesInContinent() throws SQLException {
+        // Define the SQL query result
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Mock ResultSet behavior for multiple rows
+        when(mockResultSet.next()).thenReturn(true, true, false); // Two rows, then stop
+        mockCapitalResultSet();
+
+        // Call the method
+        List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInContinent("Asia", 2);
+
+        // Assertions
+        assertEquals(2, capitals.size());
+        verify(mockPreparedStatement).executeQuery();
+    }
+
+    /**
+     * Test Getting Top N Populated Capital Cities in a Region
+     *
+     * @throws SQLException
+     */
+    @Test
+    void testGetTopNPopulatedCapitalCitiesInRegion() throws SQLException {
+        // Define the SQL query result
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Mock ResultSet behavior for multiple rows
+        when(mockResultSet.next()).thenReturn(true, true, false); // Two rows, then stop
+        mockCapitalResultSet();
+
+        // Call the method
+        List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInRegion("Southern Asia", 2);
+
+        // Assertions
+        assertEquals(2, capitals.size());
+        verify(mockPreparedStatement).executeQuery();
+    }
+
+
     /**
      * Mocks the ResultSet values for capitals
      */
