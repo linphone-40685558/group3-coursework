@@ -7,7 +7,7 @@ import java.util.Locale;
 
 
 public class Language_report {
-    private final LanguageDAO languageDAO;
+    public LanguageDAO languageDAO;
     private final NumberFormat numberFormat;
 
     /**
