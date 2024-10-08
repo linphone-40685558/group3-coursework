@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn test
+        run: mvn -Dtest=com.napier.gp3.*UnitTest test
 
   IntegrationTests:
     name: Integration Tests
@@ -38,7 +38,7 @@ jobs:
         run: |
           docker build -t database ./db
           docker run --name world-db -dp 33060:3306 database
-          mvn -Dtest=com.napier.gp3.CountryDAOIntegrationTest test
+          mvn -Dtest=com.napier.gp3.*IntegrationTest test
           docker stop world-db
           docker rm world-db
           docker image rm database

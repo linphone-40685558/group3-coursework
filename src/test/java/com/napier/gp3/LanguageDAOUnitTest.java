@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-class LanguageDAOTest {
+class LanguageDAOUnitTest {
     private LanguageDAO languageDAO;
     private Connection mockConnection;
     private PreparedStatement mockPreparedStatement;

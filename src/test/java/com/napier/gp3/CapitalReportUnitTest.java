@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class CapitalReportTest {
+class CapitalReportUnitTest {
 
     private Capital_report capitalReport;
     private CapitalDAO mockCapitalDAO;
