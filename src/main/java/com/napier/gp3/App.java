@@ -108,6 +108,7 @@ public class App {
         // Generate Reports
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
+        generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
 
 
