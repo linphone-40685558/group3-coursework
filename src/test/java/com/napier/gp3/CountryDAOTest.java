@@ -95,7 +95,7 @@ class CountryDAOTest {
         mockCountryResultSet();
 
         // Call the method
-        List<Country> countries = countryDAO.getCountriesByRegion("Southern Asia");
+        List<Country> countries = countryDAO.getCountriesByRegion("Southeast Asia");
 
         // Assertions
         assertEquals(2, countries.size());
@@ -164,7 +164,7 @@ class CountryDAOTest {
         mockCountryResultSet();
 
         // Call the method
-        List<Country> countries = countryDAO.getTopNPopulatedCountriesInRegion("Southern Asia", 2);
+        List<Country> countries = countryDAO.getTopNPopulatedCountriesInRegion("Southeast Asia", 2);
 
         // Assertions
         assertEquals(2, countries.size());
@@ -192,5 +192,14 @@ class CountryDAOTest {
         when(mockResultSet.getLong("Population")).thenReturn(1400000000L);
         when(mockResultSet.getInt("Capital")).thenReturn(2);
         when(mockResultSet.getString("CapitalName")).thenReturn("Beijing");
+
+        // Row 3
+        when(mockResultSet.getString("Code")).thenReturn("MM");
+        when(mockResultSet.getString("Name")).thenReturn("Myanmar");
+        when(mockResultSet.getString("Continent")).thenReturn("Asia");
+        when(mockResultSet.getString("Region")).thenReturn("Southeast Asia");
+        when(mockResultSet.getLong("Population")).thenReturn(40000000L);
+        when(mockResultSet.getInt("Capital")).thenReturn(3);
+        when(mockResultSet.getString("CapitalName")).thenReturn("Yangon");
     }
 }

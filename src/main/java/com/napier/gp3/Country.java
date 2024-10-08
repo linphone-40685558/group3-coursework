@@ -16,13 +16,13 @@ public class Country {
     /**
      * Constructs a Country object with the specified attributes.
      *
-     * @param code
-     * @param name
-     * @param continent
-     * @param region
-     * @param population
-     * @param capital
-     * @param capitalName
+     * @param code Country Code
+     * @param name Country Name
+     * @param continent Continent
+     * @param region Region
+     * @param population Population
+     * @param capital Capital
+     * @param capitalName Capital Name
      */
     public Country(String code, String name, String continent, String region, long population, int capital, String capitalName) {
         this.code = code;
