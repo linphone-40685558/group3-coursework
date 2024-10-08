@@ -35,8 +35,8 @@ public class Capital_report {
         System.out.println("** 17) ALL CAPITAL CITIES BY POPULATION **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> allCapitalCities = capitalDAO.getAllCapitalCitiesByPopulation();
-        for (City city : allCapitalCities) {
+        List<Capital> allCapitalCities = capitalDAO.getAllCapitalCitiesByPopulation();
+        for (Capital city : allCapitalCities) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
@@ -52,8 +52,8 @@ public class Capital_report {
         System.out.println("** 18) CAPITAL CITIES IN CONTINENT '" + continent.toUpperCase() + "' BY POPULATION **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> capitalCitiesInContinent = capitalDAO.getCapitalCitiesByContinent(continent);
-        for (City city : capitalCitiesInContinent) {
+        List<Capital> capitalCitiesInContinent = capitalDAO.getCapitalCitiesByContinent(continent);
+        for (Capital city : capitalCitiesInContinent) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
@@ -69,8 +69,8 @@ public class Capital_report {
         System.out.println("** 19) CAPITAL CITIES IN REGION '" + region.toUpperCase() + "' BY POPULATION **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> capitalCitiesInRegion = capitalDAO.getCapitalCitiesByRegion(region);
-        for (City city : capitalCitiesInRegion) {
+        List<Capital> capitalCitiesInRegion = capitalDAO.getCapitalCitiesByRegion(region);
+        for (Capital city : capitalCitiesInRegion) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
@@ -86,8 +86,8 @@ public class Capital_report {
         System.out.println("** 20) TOP " + N + " POPULATED CAPITAL CITIES IN THE WORLD **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> topNCapitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(N);
-        for (City city : topNCapitals) {
+        List<Capital> topNCapitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(N);
+        for (Capital city : topNCapitals) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
@@ -105,8 +105,8 @@ public class Capital_report {
         System.out.println("** 21) TOP " + N + " POPULATED CAPITAL CITIES IN " + continent.toUpperCase() + " **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> topNCapitalsInContinent = capitalDAO.getTopNPopulatedCapitalCitiesInContinent(continent, N);
-        for (City city : topNCapitalsInContinent) {
+        List<Capital> topNCapitalsInContinent = capitalDAO.getTopNPopulatedCapitalCitiesInContinent(continent, N);
+        for (Capital city : topNCapitalsInContinent) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
@@ -124,8 +124,8 @@ public class Capital_report {
         System.out.println("** 22) TOP " + N + " POPULATED CAPITAL CITIES IN " + region.toUpperCase() + " **");
         System.out.println("**********************************************");
         printReportHeader();
-        List<City> topNCapitalsInRegion = capitalDAO.getTopNPopulatedCapitalCitiesInRegion(region, N);
-        for (City city : topNCapitalsInRegion) {
+        List<Capital> topNCapitalsInRegion = capitalDAO.getTopNPopulatedCapitalCitiesInRegion(region, N);
+        for (Capital city : topNCapitalsInRegion) {
             System.out.printf("%-40s %-40s %-30s%n",
                     city.getName(), city.getCountry(), numberFormat.format(city.getPopulation())); // Format population with commas
         }
