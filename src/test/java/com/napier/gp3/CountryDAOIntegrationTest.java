@@ -23,7 +23,7 @@ public class CountryDAOIntegrationTest {
         try {
             App conn = new App();
             conn.connect_function("localhost:33060", 15000);
-            con = conn.con;
+            con = conn.getCon();
             assertNotNull(con, "Database connection should not be null");
             countryDAO = new CountryDAO(con);
         } catch (Exception e) {

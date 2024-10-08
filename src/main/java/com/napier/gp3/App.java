@@ -13,14 +13,14 @@ public class App {
     /**
      * Make a connection to the database
      */
-    public Connection con = null;
+    private Connection con = null;
 
     /**
-     * Connection Object
+     * Connection object
      *
-     * @return Returns connection object
+     * @return Connection object
      */
-    public Connection getConnection() {
+    public Connection getCon() {
         return con;
     }
 
