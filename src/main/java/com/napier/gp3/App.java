@@ -16,6 +16,15 @@ public class App {
     private Connection con = null;
 
     /**
+     * Connection Object
+     *
+     * @return Returns connection object
+     */
+    public Connection getConnection() {
+        return con;
+    }
+
+    /**
      * Connect function to make a connection
      *
      * @param location Local/Docker

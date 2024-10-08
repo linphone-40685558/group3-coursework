@@ -19,12 +19,15 @@ public class CountryDAOIntegrationTest {
 
     @BeforeAll
     void init() {
+        // Initialize the database connection
         try {
-            // Initialize the database connection
-            con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "group3");
+            App conn = new App();
+            conn.connect_function("localhost:33060", 10000);  // This will call the connection method in App
+            con = conn.getConnection();  // Make sure App has a method to return the connection object
+            assertNotNull(con, "Database connection should not be null");
             countryDAO = new CountryDAO(con);
-        } catch (SQLException e) {
-            fail("Failed to connect to database: " + e.getMessage());
+        } catch (Exception e) {
+            fail("Failed to initialize database connection: " + e.getMessage());
         }
     }
 
