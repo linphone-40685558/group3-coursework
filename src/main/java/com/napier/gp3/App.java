@@ -91,8 +91,7 @@ public class App {
          * Generate reports with parameters
          */
         generateCountryReport(countryReport, continent, region, number);
-        generateCityReport(cityReport, continent, region, countryCode, district,number);
-        generateCapitalCityReport(capitalReport, continent, region, number);
+        generateCityReport(cityReport, continent, region, countryCode, district, number)
         generateLanguageReport(languageReport);
 
 
@@ -142,14 +141,15 @@ public class App {
     }
 
     /**
-     * Generate the Capital cities report
+     * Generates the capital city report
      *
      * @param capitalReport
      * @param continent
      * @param region
-     * @param number
+     * @param countryCode
+     * @param district
      */
-    private static  void generateCapitalCityReport(Capital_report capitalReport, String continent, String region, int number) {
+    private static void generateCapitalCityReport(Capital_report capitalReport, String continent, String region, String countryCode, String district, int number) {
         // Call each function and display results (17 - 22)
         capitalReport.printCapitalsByPopulation();
         capitalReport.printCapitalsByContinent(continent);

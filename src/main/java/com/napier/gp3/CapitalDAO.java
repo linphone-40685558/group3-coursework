@@ -18,8 +18,8 @@ public class CapitalDAO {
      */
 
     // 17 Method to get all capital cities in the world organized by largest population to smallest
-    public List<City> getAllCapitalCitiesByPopulation() {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getAllCapitalCitiesByPopulation() {
+        List<Capital> cities = new ArrayList<>();
         try {
             String strSelect = "SELECT city.*, country.Name AS CountryName " +
                     "FROM city " +
@@ -29,7 +29,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),
@@ -45,8 +45,8 @@ public class CapitalDAO {
     }
 
     // 18 Method to get capital cities in a continent organized by largest population to smallest
-    public List<City> getCapitalCitiesByContinent(String continent) {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getCapitalCitiesByContinent(String continent) {
+        List<Capital> cities = new ArrayList<>();
         try {
             String strSelect = "SELECT city.*, country.Name AS CountryName " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
@@ -56,7 +56,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),
@@ -72,8 +72,8 @@ public class CapitalDAO {
     }
 
     // 19 Method to get capital cities in a region organized by largest population to smallest
-    public List<City> getCapitalCitiesByRegion(String region) {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getCapitalCitiesByRegion(String region) {
+        List<Capital> cities = new ArrayList<>();
         try {
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode  " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
@@ -83,7 +83,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),
@@ -99,8 +99,8 @@ public class CapitalDAO {
     }
 
     // 20 Method to get top N populated capital cities in the world
-    public List<City> getTopNPopulatedCapitalCitiesInWorld(int N) {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getTopNPopulatedCapitalCitiesInWorld(int N) {
+        List<Capital> cities = new ArrayList<>();
         try {
             // SQL query to get top N populated capital cities in the world
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode " +
@@ -111,7 +111,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),  // Country name from the country table
@@ -127,8 +127,8 @@ public class CapitalDAO {
     }
 
     // 21 Method to get top N populated capital cities in the continent
-    public List<City> getTopNPopulatedCapitalCitiesInContinent(String continent, int N) {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getTopNPopulatedCapitalCitiesInContinent(String continent, int N) {
+        List<Capital> cities = new ArrayList<>();
         try {
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
@@ -140,7 +140,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),
@@ -157,8 +157,8 @@ public class CapitalDAO {
 
 
     // 22 Method to get top N populated capital cities in the region
-    public List<City> getTopNPopulatedCapitalCitiesInRegion(String region, int N) {
-        List<City> cities = new ArrayList<>();
+    public List<Capital> getTopNPopulatedCapitalCitiesInRegion(String region, int N) {
+        List<Capital> cities = new ArrayList<>();
         try {
             String strSelect = "SELECT city.*, country.Name AS CountryName, country.Code AS CountryCode " +
                     "FROM city JOIN country ON city.ID = country.Capital " +
@@ -170,7 +170,7 @@ public class CapitalDAO {
             ResultSet rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                cities.add(new City(
+                cities.add(new Capital(
                         rset.getInt("ID"),
                         rset.getString("Name"),
                         rset.getString("CountryName"),
