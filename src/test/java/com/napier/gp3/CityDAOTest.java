@@ -72,7 +72,7 @@ public class CityDAOTest {
         mockCityResultSet();
 
         // Call the method
-        List<City> cities = citiyDAO.getCitiesByContinent("Asia");
+        List<City> cities = cityDAO.getCitiesByContinent("Asia");
 
         // Assertions Equal
         assertEquals(2, cities.size());
@@ -190,7 +190,7 @@ public class CityDAOTest {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent("Asia", 2);
 
         // Assertions Equal
-        assertEquals(2, capitals.size());
+        assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
     }
 
