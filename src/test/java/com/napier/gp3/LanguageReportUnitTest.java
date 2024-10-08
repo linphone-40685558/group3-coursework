@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class LanguageReportTest {
+class LanguageReportUnitTest {
 
     private Language_report languageReport;
     private LanguageDAO mockLanguageDAO;
