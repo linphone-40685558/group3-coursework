@@ -91,7 +91,7 @@ public class App {
          * Generate reports with parameters
          */
         generateCountryReport(countryReport, continent, region, number);
-        generateCityReport(cityReport, continent, region, countryCode, district, number)
+        generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
 
 
