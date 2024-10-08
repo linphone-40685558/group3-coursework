@@ -22,8 +22,8 @@ public class CountryDAOIntegrationTest {
         // Initialize the database connection
         try {
             App conn = new App();
-            conn.connect_function("localhost:33060", 15000);  // This will call the connection method in App
-            con = conn.getConnection();  // Make sure App has a method to return the connection object
+            conn.connect_function("localhost:33060", 15000);
+            con = conn.con;
             assertNotNull(con, "Database connection should not be null");
             countryDAO = new CountryDAO(con);
         } catch (Exception e) {

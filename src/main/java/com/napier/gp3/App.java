@@ -13,7 +13,7 @@ public class App {
     /**
      * Make a connection to the database
      */
-    private Connection con = null;
+    public Connection con = null;
 
     /**
      * Connection Object
