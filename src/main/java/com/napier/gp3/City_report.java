@@ -118,4 +118,101 @@ public class City_report {
         }
     }
 
+    /**
+     * 12) Get Top N populated cities around the world
+     *
+     * @param N
+     */
+    public void printTopNPopulatedCitiesInWorld(int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 12) TOP "+ N + " POPULATED CITIES IN THE WORLD **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInWorld(N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+    }
+
+
+    /**
+     * 13) Get Top N populated cities in a Continent
+     *
+     * @param continent
+     * @param N
+     */
+    public void printTopNPopulatedCitiesInContinent(String continent, int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 13) TOP "+ N + " POPULATED CITIES IN " + continent.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent(continent, N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+    }
+
+    /**
+     * 14) Get Top N populated cities in a region
+     *
+     * @param region
+     * @param N
+     */
+    public void printTopNPopulatedCitiesInRegion(String region, int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 14) TOP "+ N + " POPULATED CITIES IN " + region.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion(region, N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+    }
+
+    /**
+     * 15) Get Top N populated cities in a country
+     *
+     * @param country
+     * @param N
+     */
+
+    public void printTopNPopulatedCitiesInCountry(String countryCode, int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 15) TOP "+ N + " POPULATED CITIES IN " + countryCode.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInCountry(countryCode, N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+    }
+
+
+    /**
+     * 16) Get Top N populated cities in a district
+     *
+     * @param district
+     * @param N
+     */
+    public void printTopNPopulatedCitiesInDistrict(String district, int N) {
+        System.out.println("**********************************************");
+        System.out.println("** 16) TOP "+ N + " POPULATED CITIES IN " + district.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+        List<City> cities = cityDAO.getTopNPopulatedCitiesInDistrict(district, N);
+        for (City city : cities) {
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+    }
+
 }

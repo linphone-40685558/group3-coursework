@@ -74,8 +74,8 @@ public class App {
         conn.connect_function();
 
         // Create reports instances
-        City_report cityReport = new City_report(conn.con);
         Country_report countryReport = new Country_report(conn.con);
+        City_report cityReport = new City_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
         Language_report languageReport = new Language_report(conn.con);
 
@@ -91,8 +91,7 @@ public class App {
          * Generate reports with parameters
          */
         generateCountryReport(countryReport, continent, region, number);
-        generateCityReport(cityReport, continent, region, countryCode, district);
-        generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
+        generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
 
 
@@ -127,13 +126,18 @@ public class App {
      * @param countryCode
      * @param district
      */
-    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district) {
-        // Call each function and display results (7 - 11)
+    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district, int number) {
+        // Call each function and display results (7 - 16)
         cityReport.printAllCitiesByPopulation();
         cityReport.printCitiesByContinent(continent);
         cityReport.printCitiesByRegion(region);
         cityReport.printCitiesByCountry(countryCode);
         cityReport.printCitiesByDistrict(district);
+        cityReport.printTopNPopulatedCitiesInWorld(number);
+        cityReport.printTopNPopulatedCitiesInContinent(continent, number);
+        cityReport.printTopNPopulatedCitiesInRegion(region, number);
+        cityReport.printTopNPopulatedCitiesInCountry(countryCode, number);
+        cityReport.printTopNPopulatedCitiesInDistrict(district, number);
     }
 
     /**
