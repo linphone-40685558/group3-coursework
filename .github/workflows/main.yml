@@ -20,6 +20,12 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.gp3.*UnitTest test
+      - name: Upload JaCoCo Unit Test Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          name: codecov-unittests
 
   IntegrationTests:
     name: Integration Tests
@@ -46,6 +52,8 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: integrationtests
+          name: codecov-integrationtests
 
   build:
     name: Build and Start Using docker compose
