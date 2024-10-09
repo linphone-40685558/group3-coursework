@@ -26,69 +26,91 @@ class CityReportTest {
 
         // Initializing City_report with the mocked DAO
         ciyReport = new City_report(mockConnection);
-        cityReport.cityDAO = mockCityDAO; // Inject the mock DAO into Capital_report
+        cityReport.cityDAO = mockCityDAO; // Inject the mock DAO into City_report
     }
 
     /**
      * Test printing all cities by population
      */
     @Test
-    void testPrintCityByPopulation() {
+    void testPrintCitiesByPopulation() {
         // Prepare mock data
-        List<Capital> mockCapitals = new ArrayList<>();
-        mockCapitals.add(new Capital(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
-        mockCapitals.add(new Capital(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        List<City> mockCities = new ArrayList<>();
+        mockCities.add(new City(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
+        mockCities.add(new City(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        mockCities.add(new City(3, "Seoul", "Korea", "KOR", "Seoul", 51704562));
+        mockCities.add(new City(4, "Rangoo", "Myanmar", "MMR", "Naypyitaw", 54500091))
 
         // Define behavior for the mock DAO
-        when(mockCapitalDAO.getAllCapitalCitiesByPopulation()).thenReturn(mockCapitals);
+        when(mockCitiesDAO.getAllCitiesByPopulation()).thenReturn(mockCities);
 
-        // Call the method
-        capitalReport.printCapitalsByPopulation();
+        // Call print method from city report
+        cityReport.printAllCitiesByPopulation();
 
         // Verify that the DAO method was called
-        verify(mockCapitalDAO).getAllCapitalCitiesByPopulation();
+        verify(mockCityDAO).getAllCitiesByPopulation();
     }
 
     /**
-     * Test printing capital cities by continent
+     * Test printing cities by continent
      */
     @Test
-    void testPrintCapitalsByContinent() {
+    void testPrintCitiesByContinent() {
         // Prepare mock data
-        List<Capital> mockCapitals = new ArrayList<>();
-        mockCapitals.add(new Capital(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
+        List<City> mockCities = new ArrayList<>();
+        mockCities.add(new City(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
 
         // Define behavior for the mock DAO
-        when(mockCapitalDAO.getCapitalCitiesByContinent("North America")).thenReturn(mockCapitals);
+        when(mockCityDAO.getCitiesByContinent("North America")).thenReturn(mockCities);
 
         // Call the method
-        capitalReport.printCapitalsByContinent("North America");
+        cityReport.printCitiesByContinent("North America");
 
         // Verify that the DAO method was called
-        verify(mockCapitalDAO).getCapitalCitiesByContinent("North America");
+        verify(mockCityDAO).getCitiesByContinent("North America");
     }
 
     /**
-     * Test printing capital cities by region
+     * Test printing cities by region
      */
     @Test
-    void testPrintCapitalsByRegion() {
+    void testPrintCitiesByRegion() {
         // Prepare mock data
-        List<Capital> mockCapitals = new ArrayList<>();
-        mockCapitals.add(new Capital(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        List<City> mockCities = new ArrayList<>();
+        mockCities.add(new City(2, "Beijing", "China", "CHN", "Beijing", 21540000));
 
         // Define behavior for the mock DAO
-        when(mockCapitalDAO.getCapitalCitiesByRegion("Eastern Asia")).thenReturn(mockCapitals);
+        when(mockCityDAO.getCitiesByRegion("Eastern Asia")).thenReturn(mockCities);
 
         // Call the method
-        capitalReport.printCapitalsByRegion("Eastern Asia");
+        cityReport.printCitiesByRegion("Eastern Asia");
 
         // Verify that the DAO method was called
-        verify(mockCapitalDAO).getCapitalCitiesByRegion("Eastern Asia");
+        verify(mockCityDAO).getgetCitiesByRegion("Eastern Asia");
     }
 
     /**
-     * Test printing top n populated capital cities in the world
+     * Test printing cities by country
+     */
+    @Test
+    void testPrintCitiesByCountry() {
+        // Prepare mock data
+        List<City> mockCities = new ArrayList<>();
+        mockCities.add(new City(3, "Seoul", "Korea", "KOR", "Seoul", 51704562));
+
+        // Define behavior for the mock DAO
+        when(mockCityDAO.getCitiesByRegion("Eastern Asia")).thenReturn(mockCities);
+
+        // Call the method
+        cityReport.printCitiesByRegion("Eastern Asia");
+
+        // Verify that the DAO method was called
+        verify(mockCityDAO).getgetCitiesByRegion("Eastern Asia");
+    }
+
+
+    /**
+     * Test printing top n populated cities in the world
      */
     @Test
     void testPrintTopNPopulatedCapitalCitiesInWorld() {
