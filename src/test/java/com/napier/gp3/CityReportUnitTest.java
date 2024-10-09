@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class CityReportTest {
+class CityReportUnitTest {
 
     private City_report cityReport;
     private CityDAO mockCityDAO;
@@ -203,6 +203,27 @@ class CityReportTest {
         // Verify that the DAO method was called
         verify(mockCityDAO).getTopNPopulatedCitiesInCountry("Korea", 1);
     }
+
+    /**
+     * Test printing top n populated cities by district
+     */
+    @Test
+    void testPrintTopNPopulatedCitiesInDistrict() {
+        // Prepare mock data
+        List<City> mockCities = new ArrayList<>();
+        mockCities.add(new City(4, "Rangoo", "Myanmar", "MMR", "Rangoo", 54500091));
+
+        // Define behavior for the mock DAO
+        when(mockCityDAO.getTopNPopulatedCitiesInDistrict("Rangoo", 1)).thenReturn(mockCities);
+
+        // Call the method
+        cityReport.printTopNPopulatedCitiesInDistrict("Rangoo", 1);
+
+        // Verify that the DAO method was called
+        verify(mockCityDAO).getTopNPopulatedCitiesInDistrict("Rangoo", 1);
+    }
 }
+
+
 
 
