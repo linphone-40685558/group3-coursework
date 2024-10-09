@@ -42,12 +42,10 @@ jobs:
           docker stop world-db
           docker rm world-db
           docker image rm database
-      - name: CodeCov
-        uses: codecov/codecov-action@v2
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
         with:
-          directory: ./target/site/jacoco
-          flags: Integration Tests
-          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build and Start Using docker compose
