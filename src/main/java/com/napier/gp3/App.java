@@ -16,6 +16,15 @@ public class App {
     private Connection con = null;
 
     /**
+     * Connection object
+     *
+     * @return Connection object
+     */
+    public Connection getCon() {
+        return con;
+    }
+
+    /**
      * Connect function to make a connection
      *
      * @param location Local/Docker
@@ -99,6 +108,7 @@ public class App {
         // Generate Reports
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
+        generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
 
 

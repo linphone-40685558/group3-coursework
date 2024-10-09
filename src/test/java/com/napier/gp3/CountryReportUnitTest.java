@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class CountryReportTest {
+class CountryReportUnitTest {
 
     private Country_report countryReport;
     private CountryDAO mockCountryDAO;
