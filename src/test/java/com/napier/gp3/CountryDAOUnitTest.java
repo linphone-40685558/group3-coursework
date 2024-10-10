@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class CountryDAOUnitTest {
@@ -54,6 +56,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getAllCountriesByPopulation();
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is call
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -77,6 +91,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getCountriesByContinent("Asia");
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -100,6 +126,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getCountriesByRegion("Southeast Asia");
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -123,6 +161,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getCountriesByRegion("Southeast Asia");
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -146,6 +196,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getTopNPopulatedCountriesInContinent("Asia", 2);
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -169,6 +231,18 @@ class CountryDAOUnitTest {
         // Assertions
         assertEquals(2, countries.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Country> countriesWithException = countryDAO.getTopNPopulatedCountriesInRegion("Southeast Asia", 2);
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(countriesWithException);
+        assertTrue(countriesWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
