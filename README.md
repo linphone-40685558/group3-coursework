@@ -1,8 +1,7 @@
 ![workflow](https://github.com/linphone-40685558/group3-coursework/actions/workflows/main.yml/badge.svg)
-
 [![LICENSE](https://img.shields.io/github/license/linphone-40685558/group3-coursework.svg?style=flat-square)](https://github.com/linphone-40685558/group3-coursework/blob/master/LICENSE)
-
 [![Releases](https://img.shields.io/github/release/linphone-40685558/group3-coursework/all.svg?style=flat-square)](https://github.com/linphone-40685558/group3-coursework/releases)
+[![codecov](https://codecov.io/gh/linphone-40685558/group3-coursework/graph/badge.svg?token=93OR750VW8)](https://codecov.io/gh/linphone-40685558/group3-coursework)
 
 # **🚀 Population Information Reporting System**
 
