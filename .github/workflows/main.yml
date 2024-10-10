@@ -24,6 +24,7 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./target/site/jacoco
           flags: unittests
           name: codecov-unittests
 
@@ -52,6 +53,7 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./target/site/jacoco
           flags: integrationtests
           name: codecov-integrationtests
 
