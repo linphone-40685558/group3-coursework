@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class CapitalDAOUnitTest {
@@ -54,6 +56,18 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getAllCapitalCitiesByPopulation();
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -77,6 +91,18 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getCapitalCitiesByContinent("Asia");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -100,6 +126,18 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getCapitalCitiesByRegion("Southern Asia");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
 
@@ -124,6 +162,18 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -147,6 +197,18 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // Reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getTopNPopulatedCapitalCitiesInContinent("Asia", 2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is called twice
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -170,6 +232,20 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+
+        // reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getTopNPopulatedCapitalCitiesInRegion("Southern Asia", 2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(capitalsWithException);
+        assertTrue(capitalsWithException.isEmpty());
+
+        // Verify prepareStatement is work
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
+
     }
 
 

@@ -2,6 +2,7 @@ package com.napier.gp3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class LanguageDAOUnitTest {
@@ -63,12 +65,26 @@ class LanguageDAOUnitTest {
 
         assertNotNull(languages);
         assertEquals(2, languages.size());
+
         assertEquals("Chinese", languages.get(0).getLanguage());
         assertEquals(1400000000L, languages.get(0).getNumberOfPeople());
-        assertEquals(15.38, languages.get(0).getPopulation_percentage(), 0.01); // Expected percentage: (1400000000 / 7800000000) * 100
+        assertEquals(15.38, languages.get(0).getPopulation_percentage(), 0.01);
+
         assertEquals("English", languages.get(1).getLanguage());
         assertEquals(1200000000L, languages.get(1).getNumberOfPeople());
         assertEquals(15.38, languages.get(1).getPopulation_percentage(), 0.01);
+
+        // reset the mock and throw the exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Language> languagesWithException = languageDAO.getLanguagesByNumberOfPeople();
+
+        // Assertions for the exception check notNull and it is an empty list
+        assertNotNull(languagesWithException);
+        assertTrue(languagesWithException.isEmpty());
+
+        // Verify prepareStatement is call
+        //verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 }
 
