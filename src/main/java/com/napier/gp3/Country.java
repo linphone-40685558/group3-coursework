@@ -41,55 +41,34 @@ public class Country {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getContinent() {
         return continent;
     }
 
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
 
     public String getRegion() {
         return region;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
 
     public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(long population) {
-        this.population = population;
-    }
 
     public int getCapital() {
         return capital;
     }
 
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
 
     public String getCapitalName() {
         return capitalName;
     }
 
-    public void setCapitalName(String capitalName) {
-        this.capitalName = capitalName;
-    }
 }
