@@ -119,13 +119,13 @@ class CityReportUnitTest {
         mockCities.add(new City(4, "Rangoo", "Myanmar", "MMR", "Rangoo", 54500091));
 
         // Define behavior for the mock DAO
-        when(mockCityDAO.getCitiesByCountry("Rangoo")).thenReturn(mockCities);
+        when(mockCityDAO.getCitiesByDistrict("Rangoo")).thenReturn(mockCities);
 
         // Call the method
-        cityReport.printCitiesByCountry("Rangoo");
+        cityReport.printCitiesByDistrict("Rangoo");
 
         // Verify that the DAO method was called
-        verify(mockCityDAO).getCitiesByCountry("Rangoo");
+        verify(mockCityDAO).getCitiesByDistrict("Rangoo");
     }
 
     /**
