@@ -3,7 +3,7 @@ package com.napier.gp3;
 /**
  * Represents a language with its attributes such as language, numberOfPeople
  * and popular_percentage
-*/
+ */
 
 public class Language {
     private String language;
@@ -26,25 +26,17 @@ public class Language {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
 
     public long getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    public void setNumberOfPeople(long numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
-    }
 
     public double getPopulation_percentage() {
         return population_percentage;
     }
 
-    public void setPopulation_percentage(double population_percentage) {
-        this.population_percentage = population_percentage;
-    }
+
 }
 
 
