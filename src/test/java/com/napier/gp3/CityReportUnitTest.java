@@ -1,7 +1,6 @@
 package com.napier.gp3;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -9,21 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class CityReportUnitTest {
 
     private City_report cityReport;
     private CityDAO mockCityDAO;
-    static Connection mockConnection;
+    private Connection mockConnection;
 
-    static City_report city_report;
-
-    @BeforeAll
-    static void init() {
-        city_report = new City_report(mockConnection);
-    }
     /**
      * Set up for testing
      */
@@ -37,14 +29,6 @@ class CityReportUnitTest {
         cityReport = new City_report(mockConnection);
         cityReport.cityDAO = mockCityDAO; // Inject the mock DAO into City_report
     }
-
-    /**
-     *  null to cities by population
-     */
-
-    /**
-     *  Test each function with mock
-     */
 
     /**
      * Test printing all cities by population
