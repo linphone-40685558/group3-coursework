@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class CapitalDAOUnitTest {
@@ -170,6 +172,22 @@ public class CapitalDAOUnitTest {
         // Assertions
         assertEquals(2, capitals.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock
+        reset(mockPreparedStatement);
+
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<Capital> capitalsWithException = capitalDAO.getTopNPopulatedCapitalCitiesInRegion("Southern Asia", 2);
+
+        // Assertions for the exception scenario
+        assertNotNull(capitalsWithException, "The result should not be null even in case of an error.");
+        assertTrue(capitalsWithException.isEmpty(), "In case of a SQLException, the method should return an empty list.");
+
+        // Verify that the prepareStatement was called and handled the exception
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
+
+
+
     }
 
 
