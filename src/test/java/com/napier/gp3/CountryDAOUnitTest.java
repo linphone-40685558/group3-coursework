@@ -165,7 +165,7 @@ class CountryDAOUnitTest {
         // Reset the mock and throw the exception to that prepareStatement
         reset(mockPreparedStatement);
         when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
-        List<Country> countriesWithException = countryDAO.getCountriesByRegion("Southeast Asia");
+        List<Country> countriesWithException = countryDAO.getTopNPopulatedCountries(2);
 
         // Assertions for the exception check notNull and it is an empty list
         assertNotNull(countriesWithException);
