@@ -116,16 +116,16 @@ class CityReportUnitTest {
     void testPrintCitiesByDistrict() {
         // Prepare mock data
         List<City> mockCities = new ArrayList<>();
-        mockCities.add(new City(4, "Rangoo", "Myanmar", "MMR", "Rangoo", 54500091));
+        mockCities.add(new City(4, "Rangoon", "Myanmar", "MMR", "Rangoon", 54500091));
 
         // Define behavior for the mock DAO
-        when(mockCityDAO.getCitiesByDistrict("Rangoo")).thenReturn(mockCities);
+        when(mockCityDAO.getCitiesByDistrict("Rangoon")).thenReturn(mockCities);
 
         // Call the method
-        cityReport.printCitiesByDistrict("Rangoo");
+        cityReport.printCitiesByDistrict("Rangoon");
 
         // Verify that the DAO method was called
-        verify(mockCityDAO).getCitiesByDistrict("Rangoo");
+        verify(mockCityDAO).getCitiesByDistrict("Rangoon");
     }
 
     /**
@@ -212,16 +212,16 @@ class CityReportUnitTest {
     void testPrintTopNPopulatedCitiesInDistrict() {
         // Prepare mock data
         List<City> mockCities = new ArrayList<>();
-        mockCities.add(new City(4, "Rangoo", "Myanmar", "MMR", "Rangoo", 54500091));
+        mockCities.add(new City(4, "Rangoon", "Myanmar", "MMR", "Rangoon", 54500091));
 
         // Define behavior for the mock DAO
-        when(mockCityDAO.getTopNPopulatedCitiesInDistrict("Rangoo", 1)).thenReturn(mockCities);
+        when(mockCityDAO.getTopNPopulatedCitiesInDistrict("Rangoon", 1)).thenReturn(mockCities);
 
         // Call the method
-        cityReport.printTopNPopulatedCitiesInDistrict("Rangoo", 1);
+        cityReport.printTopNPopulatedCitiesInDistrict("Rangoon", 1);
 
         // Verify that the DAO method was called
-        verify(mockCityDAO).getTopNPopulatedCitiesInDistrict("Rangoo", 1);
+        verify(mockCityDAO).getTopNPopulatedCitiesInDistrict("Rangoon", 1);
     }
 }
 

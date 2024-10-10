@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import java.sql.*;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class CityDAOUnitTest {
@@ -54,6 +54,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getAllCitiesByPopulation();
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null cities DAO");
+        assertTrue(cities2.isEmpty(), "Is cities array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -77,6 +88,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getCitiesByContinent("Asia");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null cities by continent DAO");
+        assertTrue(cities2.isEmpty(), "Is cities by continent array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -100,6 +122,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getCitiesByRegion("Southern Asia");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null cities by region DAO");
+        assertTrue(cities2.isEmpty(), "Is cities by region array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -118,11 +151,22 @@ public class CityDAOUnitTest {
         mockCityResultSet();
 
         // Call the method
-        List<City> cities = cityDAO.getCitiesByCountry("Myanmar");
+        List<City> cities = cityDAO.getCitiesByCountry("MMR");
 
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getCitiesByCountry("MMR");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null cities by country DAO");
+        assertTrue(cities2.isEmpty(), "Is cities by country array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -146,6 +190,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getCitiesByDistrict("Mandalay");
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null cities by district DAO");
+        assertTrue(cities2.isEmpty(), "Is cities by district array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -169,6 +224,17 @@ public class CityDAOUnitTest {
         // Assertions
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getTopNPopulatedCitiesInWorld(2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null top N populated cities DAO");
+        assertTrue(cities2.isEmpty(), "Is top N populated cities array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -192,6 +258,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getTopNPopulatedCitiesInContinent("Asia",2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null top N populated cities by continent DAO");
+        assertTrue(cities2.isEmpty(), "Is top N populated cities by continent array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -215,6 +292,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getTopNPopulatedCitiesInRegion("Southern Asia",2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null top N populated cities by region DAO");
+        assertTrue(cities2.isEmpty(), "Is top N populated cities by region array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -238,6 +326,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getTopNPopulatedCitiesInCountry("Myanmar",2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null top N populated cities by country DAO");
+        assertTrue(cities2.isEmpty(), "Is top N populated cities by country array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
@@ -261,6 +360,17 @@ public class CityDAOUnitTest {
         // Assertions Equal
         assertEquals(2, cities.size());
         verify(mockPreparedStatement).executeQuery();
+
+        // reset the mock and throw the Exception to that prepareStatement
+        reset(mockPreparedStatement);
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException("Mock SQL Exception"));
+        List<City> cities2 = cityDAO.getTopNPopulatedCitiesInDistrict("Mandalay",2);
+
+        // Assertions for the exception check notNull and it is empty list
+        assertNotNull(cities2, "This is not null top N populated cities by district DAO");
+        assertTrue(cities2.isEmpty(), "Is top N populated cities by district array empty?");
+
+        verify(mockConnection, times(2)).prepareStatement(Mockito.anyString());
     }
 
     /**
