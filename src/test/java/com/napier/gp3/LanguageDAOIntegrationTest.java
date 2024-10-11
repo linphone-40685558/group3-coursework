@@ -44,7 +44,7 @@ public class LanguageDAOIntegrationTest {
 
         // Verify that the languages are sorted by the number of people in descending order
         assertTrue(languages.get(0).getNumberOfPeople() >= languages.get(1).getNumberOfPeople(),
-                "The list of language population should be sorted in descending order");
+                "The list should be sorted in descending order");
 
         // Verify that the population percentage is calculated correctly
         double totalPercentage = languages.stream().mapToDouble(Language::getPopulation_percentage).sum();
