@@ -33,6 +33,9 @@ public class CapitalDAOIntegrationTest {
         capitalDAO = new CapitalDAO(con);
     }
 
+    /**
+     * test all capital cities by population
+     */
     @Test
     public void testGetAllCapitalCitiesByPopulation() {
         List<Capital> capitals = capitalDAO.getAllCapitalCitiesByPopulation();
@@ -42,6 +45,9 @@ public class CapitalDAOIntegrationTest {
                 "The list should be sorted by population in descending order");
     }
 
+    /**
+     * test capital cities by continent
+     */
     @Test
     public void testGetCapitalCitiesByContinent() {
         String continent = "Asia";
@@ -50,6 +56,9 @@ public class CapitalDAOIntegrationTest {
         assertFalse(capitals.isEmpty(), "There should be capital cities in the continent");
     }
 
+    /**
+     * test capital cities by region
+     */
     @Test
     public void testGetCapitalCitiesByRegion() {
         String region = "Eastern Europe";
@@ -58,6 +67,9 @@ public class CapitalDAOIntegrationTest {
         assertFalse(capitals.isEmpty(), "There should be capital cities in the region");
     }
 
+    /**
+     * test top n populated capital cities in world
+     */
     @Test
     public void testGetTopNPopulatedCapitalCitiesInWorld() {
         int N = 5;
@@ -68,6 +80,9 @@ public class CapitalDAOIntegrationTest {
                 "The list should be sorted by population in descending order");
     }
 
+    /**
+     * test top n populated capital cities in continent
+     */
     @Test
     public void testGetTopNPopulatedCapitalCitiesInContinent() {
         String continent = "Europe";
@@ -77,6 +92,9 @@ public class CapitalDAOIntegrationTest {
         assertEquals(N, capitals.size(), "The size of the result should be equal to N");
     }
 
+    /**
+     * test top n populated capital cities in region
+     */
     @Test
     public void testGetTopNPopulatedCapitalCitiesInRegion() {
         String region = "Western Africa";

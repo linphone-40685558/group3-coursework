@@ -26,6 +26,9 @@ public class CityDAOIntegrationTest {
         }
     }
 
+    /**
+     * test all cities by population
+     */
     @Test
     public void testGetAllCitiesByPopulation() {
         List<City> cities = cityDAO.getAllCitiesByPopulation();
@@ -33,6 +36,9 @@ public class CityDAOIntegrationTest {
         assertFalse(cities.isEmpty(), "City list should not be empty");
     }
 
+    /**
+     * test cities by continent
+     */
     @Test
     public void testGetCitiesByContinent() {
         List<City> cities = cityDAO.getCitiesByContinent("Asia");
@@ -40,6 +46,9 @@ public class CityDAOIntegrationTest {
         assertFalse(cities.isEmpty(), "City list for continent 'Asia' should not be empty");
     }
 
+    /**
+     * test cities by region
+     */
     @Test
     public void testGetCitiesByRegion() {
         List<City> cities = cityDAO.getCitiesByRegion("Western Europe");
@@ -47,6 +56,9 @@ public class CityDAOIntegrationTest {
         assertFalse(cities.isEmpty(), "City list for region 'Western Europe' should not be empty");
     }
 
+    /**
+     * test cities by country
+     */
     @Test
     public void testGetCitiesByCountry() {
         List<City> cities = cityDAO.getCitiesByCountry("USA");
@@ -54,6 +66,9 @@ public class CityDAOIntegrationTest {
         assertFalse(cities.isEmpty(), "City list for country 'USA' should not be empty");
     }
 
+    /**
+     * test cities by district
+     */
     @Test
     public void testGetCitiesByDistrict() {
         List<City> cities = cityDAO.getCitiesByDistrict("California");
@@ -61,6 +76,9 @@ public class CityDAOIntegrationTest {
         assertFalse(cities.isEmpty(), "City list for district 'California' should not be empty");
     }
 
+    /**
+     *
+     */
     @Test
     public void testGetTopNPopulatedCitiesInWorld() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInWorld(5);
