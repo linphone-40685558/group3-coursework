@@ -33,11 +33,14 @@ public class LanguageDAOIntegrationTest {
         languageDAO = new LanguageDAO(con);
     }
 
+    /**
+     * test languages by number of people who speak in languages
+     */
     @Test
     public void testGetLanguagesByNumberOfPeople() {
         List<Language> languages = languageDAO.getLanguagesByNumberOfPeople();
-        assertNotNull(languages, "The list of languages should not be null");
-        assertFalse(languages.isEmpty(), "The list of languages should not be empty");
+        assertNotNull(languages, "languages can't be null");
+        assertFalse(languages.isEmpty(), "languages can't be empty");
 
         // Verify that the languages are sorted by the number of people in descending order
         assertTrue(languages.get(0).getNumberOfPeople() >= languages.get(1).getNumberOfPeople(),
