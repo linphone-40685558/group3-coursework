@@ -9,7 +9,7 @@ import java.util.Locale;
  * The Country_report class provides printing methods to generate country reports.
  */
 public class Country_report {
-    private CountryDAO countryDAO;
+    public CountryDAO countryDAO;
     private final NumberFormat numberFormat;
 
     /**

@@ -16,13 +16,13 @@ public class Country {
     /**
      * Constructs a Country object with the specified attributes.
      *
-     * @param code
-     * @param name
-     * @param continent
-     * @param region
-     * @param population
-     * @param capital
-     * @param capitalName
+     * @param code Country Code
+     * @param name Country Name
+     * @param continent Continent
+     * @param region Region
+     * @param population Population
+     * @param capital Capital
+     * @param capitalName Capital Name
      */
     public Country(String code, String name, String continent, String region, long population, int capital, String capitalName) {
         this.code = code;
@@ -41,55 +41,34 @@ public class Country {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getContinent() {
         return continent;
     }
 
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
 
     public String getRegion() {
         return region;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
 
     public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(long population) {
-        this.population = population;
-    }
 
     public int getCapital() {
         return capital;
     }
 
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
 
     public String getCapitalName() {
         return capitalName;
     }
 
-    public void setCapitalName(String capitalName) {
-        this.capitalName = capitalName;
-    }
 }
