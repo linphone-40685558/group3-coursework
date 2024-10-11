@@ -78,7 +78,7 @@ public class Country_report {
         List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
 
         if (countriesInContinent == null) {
-            System.out.println("No data available (null)");
+            System.out.println("No country data by continent available (null)");
             return;
         }
 
