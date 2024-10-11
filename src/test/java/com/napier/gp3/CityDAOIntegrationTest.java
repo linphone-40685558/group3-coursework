@@ -77,7 +77,7 @@ public class CityDAOIntegrationTest {
     }
 
     /**
-     *
+     * test top N populated cities in world
      */
     @Test
     public void testGetTopNPopulatedCitiesInWorld() {
@@ -86,6 +86,9 @@ public class CityDAOIntegrationTest {
         assertEquals(5, cities.size(), "Should return 5 cities");
     }
 
+    /**
+     * test top N populated cities in continent
+     */
     @Test
     public void testGetTopNPopulatedCitiesInContinent() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent("Asia", 5);
@@ -93,6 +96,9 @@ public class CityDAOIntegrationTest {
         assertEquals(5, cities.size(), "Should return 5 cities");
     }
 
+    /**
+     * test top N populated cities in region
+     */
     @Test
     public void testGetTopNPopulatedCitiesInRegion() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion("Western Europe", 5);
@@ -100,6 +106,9 @@ public class CityDAOIntegrationTest {
         assertEquals(5, cities.size(), "Should return 5 cities");
     }
 
+    /**
+     * test top N populated cities in country
+     */
     @Test
     public void testGetTopNPopulatedCitiesInCountry() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInCountry("USA", 5);
@@ -107,6 +116,9 @@ public class CityDAOIntegrationTest {
         assertEquals(5, cities.size(), "Should return 5 cities");
     }
 
+    /**
+     * test top N populated cities in district
+     */
     @Test
     public void testGetTopNPopulatedCitiesInDistrict() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInDistrict("California", 5);
