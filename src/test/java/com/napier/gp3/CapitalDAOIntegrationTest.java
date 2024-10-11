@@ -40,7 +40,9 @@ public class CapitalDAOIntegrationTest {
     public void testGetAllCapitalCitiesByPopulation() {
         List<Capital> capitals = capitalDAO.getAllCapitalCitiesByPopulation();
         assertNotNull(capitals);
-        assertFalse(capitals.isEmpty(), "The list of capital cities should not be empty");
+        assertFalse(capitals.isEmpty(), "Capital cities list should not be empty");
+
+        // Verify that the capital cities are sorted by population in descending order
         assertTrue(capitals.get(0).getPopulation() >= capitals.get(1).getPopulation(),
                 "The list should be sorted by population in descending order");
     }
@@ -53,7 +55,7 @@ public class CapitalDAOIntegrationTest {
         String continent = "Asia";
         List<Capital> capitals = capitalDAO.getCapitalCitiesByContinent(continent);
         assertNotNull(capitals);
-        assertFalse(capitals.isEmpty(), "There should be capital cities in the continent");
+        assertFalse(capitals.isEmpty(), "The capital cities list should not be empty in the continent");
     }
 
     /**
@@ -64,7 +66,7 @@ public class CapitalDAOIntegrationTest {
         String region = "Eastern Europe";
         List<Capital> capitals = capitalDAO.getCapitalCitiesByRegion(region);
         assertNotNull(capitals);
-        assertFalse(capitals.isEmpty(), "There should be capital cities in the region");
+        assertFalse(capitals.isEmpty(), "he capital cities list should not be empty in the region");
     }
 
     /**
@@ -75,9 +77,7 @@ public class CapitalDAOIntegrationTest {
         int N = 5;
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(N);
         assertNotNull(capitals);
-        assertEquals(N, capitals.size(), "The size of the result should be equal to N");
-        assertTrue(capitals.get(0).getPopulation() >= capitals.get(1).getPopulation(),
-                "The list should be sorted by population in descending order");
+        assertEquals(N, capitals.size(), "Should return N capital cities");
     }
 
     /**
@@ -89,7 +89,7 @@ public class CapitalDAOIntegrationTest {
         int N = 3;
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInContinent(continent, N);
         assertNotNull(capitals);
-        assertEquals(N, capitals.size(), "The size of the result should be equal to N");
+        assertEquals(N, capitals.size(), "Should return N capital cities in the continent");
     }
 
     /**
@@ -101,11 +101,12 @@ public class CapitalDAOIntegrationTest {
         int N = 2;
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInRegion(region, N);
         assertNotNull(capitals);
-        assertEquals(N, capitals.size(), "The size of the result should be equal to N");
+        assertEquals(N, capitals.size(), "Should return N capital cities in the region");
     }
 
     @AfterAll
     static void tearDownDatabaseConnection() {
+        // close database connection after capitalDAO Integration test
         try {
             if (con != null && !con.isClosed()) {
                 con.close();

@@ -39,10 +39,11 @@ public class LanguageDAOIntegrationTest {
     @Test
     public void testGetLanguagesByNumberOfPeople() {
         List<Language> languages = languageDAO.getLanguagesByNumberOfPeople();
+
         assertNotNull(languages, "languages can't be null");
         assertFalse(languages.isEmpty(), "languages can't be empty");
 
-        // Verify that the languages are sorted by the number of people in descending order
+        // Verify that the languages are sorted by population in descending order
         assertTrue(languages.get(0).getNumberOfPeople() >= languages.get(1).getNumberOfPeople(),
                 "The list should be sorted in descending order");
 

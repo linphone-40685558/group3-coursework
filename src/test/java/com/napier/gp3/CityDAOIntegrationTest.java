@@ -26,6 +26,12 @@ public class CityDAOIntegrationTest {
         }
     }
 
+    @BeforeEach
+    void setup() {
+        // Initialize CapitalDAO with the connection
+        cityDAO = new CityDAO(con);
+    }
+
     /**
      * test all cities by population
      */
@@ -34,6 +40,10 @@ public class CityDAOIntegrationTest {
         List<City> cities = cityDAO.getAllCitiesByPopulation();
         assertNotNull(cities);
         assertFalse(cities.isEmpty(), "City list should not be empty");
+
+        // Verify that the cities are sorted by population in descending order
+        assertTrue(cities.get(0).getPopulation() >= cities.get(1).getPopulation(),
+                "The list should be sorted by population in descending order");
     }
 
     /**
@@ -93,7 +103,7 @@ public class CityDAOIntegrationTest {
     public void testGetTopNPopulatedCitiesInContinent() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent("Asia", 5);
         assertNotNull(cities);
-        assertEquals(5, cities.size(), "Should return 5 cities");
+        assertEquals(5, cities.size(), "Should return 5 cities in Asia continent");
     }
 
     /**
@@ -103,7 +113,7 @@ public class CityDAOIntegrationTest {
     public void testGetTopNPopulatedCitiesInRegion() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion("Western Europe", 5);
         assertNotNull(cities);
-        assertEquals(5, cities.size(), "Should return 5 cities");
+        assertEquals(5, cities.size(), "Should return 5 cities in Western Europe region");
     }
 
     /**
@@ -113,7 +123,7 @@ public class CityDAOIntegrationTest {
     public void testGetTopNPopulatedCitiesInCountry() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInCountry("USA", 5);
         assertNotNull(cities);
-        assertEquals(5, cities.size(), "Should return 5 cities");
+        assertEquals(5, cities.size(), "Should return 5 cities in USA country");
     }
 
     /**
@@ -123,6 +133,18 @@ public class CityDAOIntegrationTest {
     public void testGetTopNPopulatedCitiesInDistrict() {
         List<City> cities = cityDAO.getTopNPopulatedCitiesInDistrict("California", 5);
         assertNotNull(cities);
-        assertEquals(5, cities.size(), "Should return 5 cities");
+        assertEquals(5, cities.size(), "Should return 5 cities in California district");
+    }
+
+    @AfterAll
+    static void tearDownDatabaseConnection() {
+        // close database connection after cityDAO Integration test
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        } catch (Exception e) {
+            fail("Failed to close database connection: " + e.getMessage());
+        }
     }
 }
