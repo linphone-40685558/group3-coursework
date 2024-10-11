@@ -29,6 +29,9 @@ public class CountryDAOIntegrationTest {
         }
     }
 
+    /**
+     * test all countries by population
+     */
     @Test
     void testGetAllCountriesByPopulation() {
         List<Country> countries = countryDAO.getAllCountriesByPopulation();
@@ -39,7 +42,9 @@ public class CountryDAOIntegrationTest {
         assertEquals("CHN", firstCountry.getCode(), "The first country by population should be China (CHN)");
         assertTrue(firstCountry.getPopulation() > 0, "The population of the first country should be greater than zero");
     }
-
+    /**
+     * test all countries by continent
+     */
     @Test
     void testGetCountriesByContinent() {
         List<Country> countries = countryDAO.getCountriesByContinent("Asia");
@@ -51,6 +56,9 @@ public class CountryDAOIntegrationTest {
         assertEquals("Asia", firstCountry.getContinent(), "The continent of the first country should be Asia");
     }
 
+    /**
+     * test Top N populated Countries
+     */
     @Test
     void testGetTopNPopulatedCountries() {
         List<Country> countries = countryDAO.getTopNPopulatedCountries(5);
@@ -61,6 +69,9 @@ public class CountryDAOIntegrationTest {
         assertEquals("CHN", firstCountry.getCode(), "The first country by population should be China (CHN)");
     }
 
+    /**
+     * test countries by region
+     */
     @Test
     void testGetCountriesByRegion() {
         List<Country> countries = countryDAO.getCountriesByRegion("Eastern Europe");
@@ -71,7 +82,9 @@ public class CountryDAOIntegrationTest {
         assertEquals("RUS", firstCountry.getCode(), "The first country in Eastern Europe should be Russia (RUS)");
         assertEquals("Eastern Europe", firstCountry.getRegion(), "The region of the first country should be Eastern Europe");
     }
-
+    /**
+     * test Top N populated Countries in continent
+     */
     @Test
     void testGetTopNPopulatedCountriesInContinent() {
         List<Country> countries = countryDAO.getTopNPopulatedCountriesInContinent("Asia", 3);
@@ -82,7 +95,9 @@ public class CountryDAOIntegrationTest {
             assertEquals("Asia", country.getContinent(), "All countries should be from the continent Asia");
         }
     }
-
+    /**
+     * test Top N populated Countries in region
+     */
     @Test
     void testGetTopNPopulatedCountriesInRegion() {
         List<Country> countries = countryDAO.getTopNPopulatedCountriesInRegion("Western Europe", 3);
