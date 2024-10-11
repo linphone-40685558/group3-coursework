@@ -8,11 +8,11 @@ collaboration, morality, and transparency to ensure each participant can contrib
 
 | Matric No.      | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
 |-----------------|---------------|---------------|---------------|---------------|-------------------|
-| 40685558 (LPMZ) | 26%           | 29%           |               |               |                   |
-| 40685545 (EEHS) | 26%           | 29%           |               |               |                   |
-| 40685540 (ACM)  | 26%           | 29%           |               |               |                   |
-| 40685542 (AKP)  | 22%           | 13%           |               |               |                   |
-| **Total**       | **100%**      | **100%**      |               |               |                   |
+| 40685558 (LPMZ) | 26%           | 29%           |  30%          |               |                   |
+| 40685545 (EEHS) | 26%           | 29%           |  30%          |               |                   |
+| 40685540 (ACM)  | 26%           | 29%           |  30%          |               |                   |
+| 40685542 (AKP)  | 22%           | 13%           |  10%          |               |                   |
+| **Total**       | **100%**      | **100%**      |  **100%**     |               |                   |
 
 ## Basic Principles and Values
 
