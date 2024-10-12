@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * The Country_report class provides printing methods to generate country reports.
+ * This class has printing methods for country reports
  */
 public class Country_report {
     public CountryDAO countryDAO;
     private final NumberFormat numberFormat;
 
     /**
-     * Constructor to initialize CountryDAO with a connection
+     * Constructor
      *
-     * @param con
+     * @param con Connection object
      */
     public Country_report(Connection con) {
         this.countryDAO = new CountryDAO(con);
@@ -23,7 +23,7 @@ public class Country_report {
     }
 
     /**
-     * Utility method to print a header for the country report
+     * Printing header
      */
     private void printReportHeader() {
         System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -31,209 +31,23 @@ public class Country_report {
     }
 
     /**
-     * 1) Get all countries by population
-     */
-    public void printAllCountriesByPopulation() {
-        System.out.println("**********************************************");
-        System.out.println("** 1) ALL COUNTRIES BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
-
-        List<Country> allCountries = countryDAO.getAllCountriesByPopulation();
-
-        if (allCountries == null) {
-            System.out.println("No data available (null)");
-            return;
-        }
-
-        if (allCountries.isEmpty()) {
-            System.out.println("No countries found (empty list)");
-            return;
-        }
-
-        for (Country country : allCountries) {
-            if (country == null) {
-                System.out.println("Encountered a null country in the list");
-                continue;
-            }
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
-                    country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()),
-                    country.getCapitalName());
-        }
-    }
-
-
-    /**
-     * 2) Get countries by continent
+     * Printing country data
      *
-     * @param continent
+     * @param countries List of countries to print
+     * @param title     Report title
      */
-    public void printAllCountriesByContinent(String continent) {
+    private void printCountryReport(List<Country> countries, String title) {
         System.out.println("\n**********************************************");
-        System.out.println("** 2) ALL COUNTRIES IN " + continent.toUpperCase() + " BY POPULATION **");
+        System.out.println("** " + title.toUpperCase() + " **");
         System.out.println("**********************************************");
         printReportHeader();
 
-        List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
-
-        if (countriesInContinent == null) {
-            System.out.println("No country data by continent available (null)");
+        if (countries == null || countries.isEmpty()) {
+            System.out.println("No data available.");
             return;
         }
 
-        if (countriesInContinent.isEmpty()) {
-            System.out.println("No countries found in " + continent);
-            return;
-        }
-
-        for (Country country : countriesInContinent) {
-            if (country == null) {
-                System.out.println("Encountered a null country in the list");
-                continue;
-            }
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
-                    country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()),
-                    country.getCapitalName());
-        }
-    }
-
-
-    /**
-     * 3) Get countries by region
-     *
-     * @param region
-     */
-    public void printAllCountriesByRegion(String region) {
-        System.out.println("\n**********************************************");
-        System.out.println("** 3) ALL COUNTRIES IN " + region.toUpperCase() + " BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
-
-        List<Country> countriesInRegion = countryDAO.getCountriesByRegion(region);
-
-        if (countriesInRegion == null) {
-            System.out.println("No data available (null)");
-            return;
-        }
-
-        if (countriesInRegion.isEmpty()) {
-            System.out.println("No countries found in " + region);
-            return;
-        }
-
-        for (Country country : countriesInRegion) {
-            if (country == null) {
-                System.out.println("Encountered a null country in the list");
-                continue;
-            }
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
-                    country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()),
-                    country.getCapitalName());
-        }
-    }
-
-
-    /**
-     * 4) Get top N populated countries in the world
-     *
-     * @param N
-     */
-    public void printTopNCountries(int N) {
-        System.out.println("\n**********************************************");
-        System.out.println("** 4) TOP " + N + " POPULATED COUNTRIES **");
-        System.out.println("**********************************************");
-        printReportHeader();
-
-        List<Country> topNCountries = countryDAO.getTopNPopulatedCountries(N);
-
-        if (topNCountries == null) {
-            System.out.println("No data available (null)");
-            return;
-        }
-
-        if (topNCountries.isEmpty()) {
-            System.out.println("No countries found in the top " + N);
-            return;
-        }
-
-        for (Country country : topNCountries) {
-            if (country == null) {
-                System.out.println("Encountered a null country in the list");
-                continue;
-            }
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
-                    country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()),
-                    country.getCapitalName());
-        }
-    }
-
-
-    /**
-     * 5) Get top N populated countries in a continent
-     *
-     * @param N
-     * @param continent
-     */
-    public void printTopNCountriesByContinent(int N, String continent) {
-        System.out.println("\n**********************************************");
-        System.out.println("** 5) TOP " + N + " POPULATED COUNTRIES IN " + continent.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
-
-        List<Country> topNInContinent = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
-
-        if (topNInContinent == null) {
-            System.out.println("No data available (null)");
-            return;
-        }
-
-        if (topNInContinent.isEmpty()) {
-            System.out.println("No countries found in the top " + N + " in " + continent);
-            return;
-        }
-
-        for (Country country : topNInContinent) {
-            if (country == null) {
-                System.out.println("Encountered a null country in the list");
-                continue;
-            }
-            System.out.printf("%-5s %-40s %-15s %-30s %-15s %-30s%n",
-                    country.getCode(), country.getName(), country.getContinent(),
-                    country.getRegion(), numberFormat.format(country.getPopulation()),
-                    country.getCapitalName());
-        }
-    }
-
-
-    /**
-     * 6) Get top N populated countries in a region
-     *
-     * @param N
-     * @param region
-     */
-    public void printTopNCountriesByRegion(int N, String region) {
-        System.out.println("\n**********************************************");
-        System.out.println("** 6) TOP " + N + " POPULATED COUNTRIES IN " + region.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
-
-        List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
-
-        if (topNInRegion == null) {
-            System.out.println("No data available (null)");
-            return;
-        }
-
-        if (topNInRegion.isEmpty()) {
-            System.out.println("No countries found in the top " + N + " in " + region);
-            return;
-        }
-
-        for (Country country : topNInRegion) {
+        for (Country country : countries) {
             if (country == null) {
                 System.out.println("Encountered a null country in the list");
                 continue;
@@ -246,4 +60,63 @@ public class Country_report {
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
     }
 
+    /**
+     * Get all countries by population
+     */
+    public void printAllCountriesByPopulation() {
+        List<Country> allCountries = countryDAO.getAllCountriesByPopulation();
+        printCountryReport(allCountries, "1) All countries by population");
+    }
+
+    /**
+     * Get countries by continent
+     *
+     * @param continent The name of the continent
+     */
+    public void printAllCountriesByContinent(String continent) {
+        List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
+        printCountryReport(countriesInContinent, "2) All countries in " + continent + " by population");
+    }
+
+    /**
+     * Get countries by region
+     *
+     * @param region The name of the region
+     */
+    public void printAllCountriesByRegion(String region) {
+        List<Country> countriesInRegion = countryDAO.getCountriesByRegion(region);
+        printCountryReport(countriesInRegion, "3) All countries in " + region + " by population");
+    }
+
+    /**
+     * Get top N populated countries
+     *
+     * @param N Number of top populated countries to retrieve
+     */
+    public void printTopNCountries(int N) {
+        List<Country> topNCountries = countryDAO.getTopNPopulatedCountries(N);
+        printCountryReport(topNCountries, "4) Top " + N + " populated countries");
+    }
+
+    /**
+     * Get top N populated countries in a continent
+     *
+     * @param N         Number of top populated countries
+     * @param continent The continent name
+     */
+    public void printTopNCountriesByContinent(int N, String continent) {
+        List<Country> topNInContinent = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
+        printCountryReport(topNInContinent, "5) Top " + N + " populated countries in " + continent);
+    }
+
+    /**
+     * Get top N populated countries in a region
+     *
+     * @param N      Number of top populated countries
+     * @param region The region name
+     */
+    public void printTopNCountriesByRegion(int N, String region) {
+        List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
+        printCountryReport(topNInRegion, "6) Top " + N + " populated countries in " + region);
+    }
 }
