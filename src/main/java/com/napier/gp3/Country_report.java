@@ -33,8 +33,8 @@ public class Country_report {
     /**
      * Printing country data
      *
-     * @param countries List of countries to print
-     * @param title     Report title
+     * @param countries List of countries
+     * @param title     Title
      */
     private void printCountryReport(List<Country> countries, String title) {
         System.out.println("\n**********************************************");
