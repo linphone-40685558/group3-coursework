@@ -23,7 +23,7 @@ public class Country_report {
      */
     public Country_report(Connection con) {
         this.countryDAO = new CountryDAO(con);
-        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
+        this.numberFormat = NumberFormat.getInstance(Locale.US);
     }
 
     /**
@@ -67,10 +67,10 @@ public class Country_report {
     /**
      * Outputs the country list to a Markdown file, with an option to append.
      *
-     * @param countries List of countries to output.
-     * @param filename  Name of the file to save the output.
-     * @param title     Title to be included in the markdown report.
-     * @param append    Whether to append to the existing file.
+     * @param countries Countries list
+     * @param filename  Markdown file name
+     * @param title     Table title
+     * @param append    To be appended to md or not
      */
     public void outputCountriesByPopulationMarkdown(List<Country> countries, String filename, String title, boolean append) {
         if (countries == null || countries.isEmpty()) {
@@ -83,7 +83,7 @@ public class Country_report {
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
-        // Loop through the list of countries
+        // Loop
         for (Country country : countries) {
             if (country == null) continue;
             sb.append("| ")
@@ -95,7 +95,7 @@ public class Country_report {
                     .append(country.getCapitalName()).append(" |\r\n");
         }
 
-        // Write the content to the file
+        // Write the content to md file
         try {
             new File("./reports/").mkdir();
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename), append));

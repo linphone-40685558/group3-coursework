@@ -1,5 +1,9 @@
 package com.napier.gp3;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.text.NumberFormat;
 import java.util.List;
@@ -19,7 +23,7 @@ public class Capital_report {
      */
     public Capital_report(Connection connection) {
         this.capitalDAO = new CapitalDAO(connection);
-        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
+        this.numberFormat = NumberFormat.getInstance(Locale.US);
     }
 
     /**
@@ -60,11 +64,51 @@ public class Capital_report {
     }
 
     /**
+     *
+     * @param capitals Capitals list
+     * @param filename Markdown file name
+     * @param title    Table title
+     * @param append   To be appended to md or not
+     */
+    public void outputCapitalsMarkdown(List<Capital> capitals, String filename, String title, boolean append) {
+        if (capitals == null || capitals.isEmpty()) {
+            System.out.println("No capitals available.");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\r\n# ").append(title).append("\r\n\r\n");
+        sb.append("| Capital Name | Country | Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+
+        // Loop
+        for (Capital capital : capitals) {
+            if (capital == null) continue;
+            sb.append("| ")
+                    .append(capital.getName()).append(" | ")
+                    .append(capital.getCountry()).append(" | ")
+                    .append(numberFormat.format(capital.getPopulation())).append(" |\r\n");
+        }
+
+        // Write the content to md file
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename), append));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * Get all capital cities by population
      */
     public void printCapitalsByPopulation() {
         List<Capital> allCapitals = capitalDAO.getAllCapitalCitiesByPopulation();
         printCapitalReport(allCapitals, "17) All capital cities by population");
+        outputCapitalsMarkdown(allCapitals, "Capitals_Report.md", "17) All capital cities by population", false);
     }
 
     /**
@@ -75,6 +119,7 @@ public class Capital_report {
     public void printCapitalsByContinent(String continent) {
         List<Capital> capitals = capitalDAO.getCapitalCitiesByContinent(continent);
         printCapitalReport(capitals, "18) Capitals in " + continent + " by population");
+        outputCapitalsMarkdown(capitals, "Capitals_Report.md", "18) Capitals in " + continent + " by population", true);
     }
 
     /**
@@ -85,6 +130,7 @@ public class Capital_report {
     public void printCapitalsByRegion(String region) {
         List<Capital> capitals = capitalDAO.getCapitalCitiesByRegion(region);
         printCapitalReport(capitals, "19) Capitals in " + region + " by population");
+        outputCapitalsMarkdown(capitals, "Capitals_Report.md", "19) Capitals in " + region + " by population", true);
     }
 
     /**
@@ -95,6 +141,7 @@ public class Capital_report {
     public void printTopNPopulatedCapitalCitiesInWorld(int N) {
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInWorld(N);
         printCapitalReport(capitals, "20) Top " + N + " populated capital cities in the world");
+        outputCapitalsMarkdown(capitals, "Capitals_Report.md", "20) Top " + N + " populated capital cities in the world", true);
     }
 
     /**
@@ -106,6 +153,7 @@ public class Capital_report {
     public void printTopNPopulatedCapitalCitiesInContinent(int N, String continent) {
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInContinent(continent, N);
         printCapitalReport(capitals, "21) Top " + N + " populated capital cities in " + continent);
+        outputCapitalsMarkdown(capitals, "Capitals_Report.md", "21) Top " + N + " populated capital cities in " + continent, true);
     }
 
     /**
@@ -117,5 +165,6 @@ public class Capital_report {
     public void printTopNPopulatedCapitalCitiesInRegion(int N, String region) {
         List<Capital> capitals = capitalDAO.getTopNPopulatedCapitalCitiesInRegion(region, N);
         printCapitalReport(capitals, "22) Top " + N + " populated capital cities in " + region);
+        outputCapitalsMarkdown(capitals, "Capitals_Report.md", "22) Top " + N + " populated capital cities in " + region, true);
     }
 }
