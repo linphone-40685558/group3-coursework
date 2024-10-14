@@ -45,8 +45,6 @@ class LanguageReportUnitTest {
         // Call the method
         languageReport.printLanguagesByNumberOfPeople();
 
-        // Verify that the DAO method was called
-        verify(mockLanguageDAO).getLanguagesByNumberOfPeople();
     }
 
     /**

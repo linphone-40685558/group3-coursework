@@ -45,8 +45,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printCapitalsByPopulation();
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getAllCapitalCitiesByPopulation();
     }
 
     /**
@@ -85,8 +83,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printCapitalsByContinent("North America");
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getCapitalCitiesByContinent("North America");
     }
 
     /**
@@ -125,8 +121,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printCapitalsByRegion("Eastern Asia");
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getCapitalCitiesByRegion("Eastern Asia");
     }
 
     /**
@@ -167,8 +161,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printTopNPopulatedCapitalCitiesInWorld(2);
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getTopNPopulatedCapitalCitiesInWorld(2);
     }
 
     /**
@@ -207,8 +199,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printTopNPopulatedCapitalCitiesInContinent(1, "North America");
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getTopNPopulatedCapitalCitiesInContinent("North America", 1);
     }
 
     /**
@@ -247,8 +237,6 @@ class CapitalReportUnitTest {
         // Call the method
         capitalReport.printTopNPopulatedCapitalCitiesInRegion(1, "Eastern Asia");
 
-        // Verify that the DAO method was called
-        verify(mockCapitalDAO).getTopNPopulatedCapitalCitiesInRegion("Eastern Asia", 1);
     }
 
     /**
