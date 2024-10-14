@@ -86,7 +86,7 @@ public class App {
 
         // Connect to the world.sql database
         if (args.length < 1) {
-            conn.connect_function("localhost:33060", 10000);
+            conn.connect_function("localhost:33060", 2000);
         } else {
             conn.connect_function(args[0], Integer.parseInt(args[1]));
         }
@@ -96,6 +96,7 @@ public class App {
         City_report cityReport = new City_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
         Language_report languageReport = new Language_report(conn.con);
+        Population_report populationReport = new Population_report(conn.con);
 
         // Parameter values for easy changes
         String continent = "Asia";
@@ -110,6 +111,7 @@ public class App {
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
+        generatePopulationReport(populationReport, continent, region, countryCode, district);
 
 
         // Disconnect from the database
@@ -174,6 +176,24 @@ public class App {
         capitalReport.printTopNPopulatedCapitalCitiesInWorld(number);
         capitalReport.printTopNPopulatedCapitalCitiesInContinent(number, continent);
         capitalReport.printTopNPopulatedCapitalCitiesInRegion(number, region);
+    }
+
+    /**
+     * Generates the population report
+     *
+     * @param populationReport
+     * @param continent
+     * @param region
+     * @param countryCode
+     * @param district
+     */
+    private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district) {
+        // Call each function and display results for population (1 - 5)
+        populationReport.printWorldPopulation(); // 1. World population
+        populationReport.printPopulationByContinent(continent); // 2. Population by continent
+        populationReport.printPopulationByRegion(region); // 3. Population by region
+        populationReport.printPopulationByCountry(countryCode); // 4. Population by country
+        populationReport.printPopulationByDistrict(district); // 5. Population by district
     }
 
     /**

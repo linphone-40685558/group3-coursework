@@ -3,11 +3,11 @@ package com.napier.gp3;
 public class Population {
 
     private String name;
-    private int totalPopulation;
-    private int urbanPopulation;
-    private int ruralPopulation;
+    private Long totalPopulation;  // Change this to Long
+    private Long urbanPopulation;   // Change this to Long
+    private Long ruralPopulation;    // Change this to Long
 
-    public Population(String name, int totalPopulation, int urbanPopulation, int ruralPopulation) {
+    public Population(String name, Long totalPopulation, Long urbanPopulation, Long ruralPopulation) {
         this.name = name;
         this.totalPopulation = totalPopulation;
         this.urbanPopulation = urbanPopulation;
@@ -18,15 +18,15 @@ public class Population {
         return name;
     }
 
-    public int getTotalPopulation() {
+    public Long getTotalPopulation() {
         return totalPopulation;
     }
 
-    public int getUrbanPopulation() {
+    public Long getUrbanPopulation() {
         return urbanPopulation;
     }
 
-    public int getRuralPopulation() {
+    public Long getRuralPopulation() {
         return ruralPopulation;
     }
 }

@@ -36,7 +36,7 @@ public class PopulationDAO {
     }
 
 
-    /** 26 Method to get the population in the world
+    /** Method to get the population in the world
      *
      * @return
      */
@@ -51,9 +51,9 @@ public class PopulationDAO {
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int totalPopulation = rset.getInt("TotalPopulation");
-                int urbanPopulation = rset.getInt("UrbanPopulation");
-                int ruralPopulation = totalPopulation - urbanPopulation;
+                long totalPopulation = rset.getLong("TotalPopulation");
+                long urbanPopulation = rset.getLong("UrbanPopulation");
+                long ruralPopulation = totalPopulation - urbanPopulation;
                 populations.add(new Population("World", totalPopulation, urbanPopulation, ruralPopulation));
             }
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class PopulationDAO {
         return populations;
     }
 
-    /** 27 Method to get total population of continent
+    /** Method to get total population of continent
      *
      * @param continent
      * @return
@@ -80,9 +80,9 @@ public class PopulationDAO {
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int totalPopulation = rset.getInt("TotalPopulation");
-                int urbanPopulation = rset.getInt("UrbanPopulation");
-                int ruralPopulation = totalPopulation - urbanPopulation;
+                long totalPopulation = rset.getLong("TotalPopulation");
+                long urbanPopulation = rset.getLong("UrbanPopulation");
+                long ruralPopulation = totalPopulation - urbanPopulation;
                 populations.add(new Population(
                         continent,
                         totalPopulation,
@@ -97,7 +97,7 @@ public class PopulationDAO {
     }
 
 
-    /** 28 Method to get total population of region
+    /** Method to get total population of region
      *
      * @param region
      * @return
@@ -115,9 +115,9 @@ public class PopulationDAO {
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int totalPopulation = rset.getInt("TotalPopulation");
-                int urbanPopulation = rset.getInt("UrbanPopulation");
-                int ruralPopulation = totalPopulation - urbanPopulation;
+                long totalPopulation = rset.getLong("TotalPopulation");
+                long urbanPopulation = rset.getLong("UrbanPopulation");
+                long ruralPopulation = totalPopulation - urbanPopulation;
                 populations.add(new Population(
                         region,
                         totalPopulation,
@@ -132,30 +132,31 @@ public class PopulationDAO {
     }
 
 
-    /** 29 Method to get total population of country
+    /** Method to get total population of country
      *
-     * @param countryName
+     * @param countryCode
      * @return
      */
-    public List<Population> getPopulationByCountry(String countryName) {
+    public List<Population> getPopulationByCountry(String countryCode) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
         try {
+            // Updated SQL query to filter by country code instead of country name
             String strSelect = "SELECT country.Name AS CountryName, " +
                     "SUM(country.Population) AS TotalPopulation, " +
                     "(SELECT SUM(city.Population) FROM city WHERE city.CountryCode = country.Code) AS UrbanPopulation " +
-                    "FROM country WHERE country.Name = ?";
+                    "FROM country WHERE country.Code = ? GROUP BY country.Code";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
-            pstmt.setString(1, countryName);
+            pstmt.setString(1, countryCode);
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int totalPopulation = rset.getInt("TotalPopulation");
-                int urbanPopulation = rset.getInt("UrbanPopulation");
-                int ruralPopulation = totalPopulation - urbanPopulation;
+                long totalPopulation = rset.getLong("TotalPopulation");
+                long urbanPopulation = rset.getLong("UrbanPopulation");
+                long ruralPopulation = totalPopulation - urbanPopulation;
 
                 populations.add(new Population(
-                        countryName,  // Return the country name
+                        rset.getString("CountryName"),
                         totalPopulation,
                         urbanPopulation,
                         ruralPopulation
@@ -166,10 +167,7 @@ public class PopulationDAO {
         }
         return populations;
     }
-
-
-
-    /** 30 Method to get total population of a district
+    /** Method to get total population of a district
      *
      * @param district
      * @return
@@ -185,9 +183,9 @@ public class PopulationDAO {
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int urbanPopulation = rset.getInt("UrbanPopulation");
-                int totalPopulation = urbanPopulation;
-                int ruralPopulation = 0;
+                long urbanPopulation = rset.getLong("UrbanPopulation");
+                long totalPopulation = urbanPopulation;
+                long ruralPopulation = 0;
                 populations.add(new Population(
                         district,
                         totalPopulation,
@@ -202,7 +200,7 @@ public class PopulationDAO {
     }
 
 
-    /** 31 Method to get total population of  city
+    /** Method to get total population of a city
      *
      * @param cityName
      * @return
@@ -217,9 +215,9 @@ public class PopulationDAO {
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                int urbanPopulation = rset.getInt("Population");
-                int totalPopulation = urbanPopulation;
-                int ruralPopulation = 0;
+                long urbanPopulation = rset.getLong("Population");
+                long totalPopulation = urbanPopulation;
+                long ruralPopulation = 0;
                 populations.add(new Population(
                         cityName,
                         totalPopulation,
