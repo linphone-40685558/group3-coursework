@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PopulationDAO has database manipulations to retrieve related information.
+ * It has methods to fetch population by world, continent, region, country, and district
+ */
 public class PopulationDAO {
     private Connection con;
 
@@ -11,11 +15,10 @@ public class PopulationDAO {
         this.con = connection;
     }
 
-    /**
-     * Methods to get population data organized by various categories.
+    /** Method to get the total population in world
+     *
+     * @return
      */
-
-    //  Method to get the total population of the world
     public long getTotalWorldPopulation() {
         long totalPopulation = 0;
         try {
@@ -32,7 +35,11 @@ public class PopulationDAO {
         return totalPopulation;
     }
 
-    //  26 Method to get the population of the world
+
+    /** 26 Method to get the population in the world
+     *
+     * @return
+     */
     public List<Population> getWorldPopulation() {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
@@ -55,7 +62,11 @@ public class PopulationDAO {
         return populations;
     }
 
-    // 27 Method to get the total population of a continent
+    /** 27 Method to get total population of continent
+     *
+     * @param continent
+     * @return
+     */
     public List<Population> getPopulationByContinent(String continent) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
@@ -85,7 +96,12 @@ public class PopulationDAO {
         return populations;
     }
 
-    // 28 Method to get the total population of a region
+
+    /** 28 Method to get total population of region
+     *
+     * @param region
+     * @return
+     */
     public List<Population> getPopulationByRegion(String region) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
@@ -115,25 +131,31 @@ public class PopulationDAO {
         return populations;
     }
 
-    // 29 Method to get the total population of a country
-    public List<Population> getPopulationByCountry(String countryCode) {
+
+    /** 29 Method to get total population of country
+     *
+     * @param countryName
+     * @return
+     */
+    public List<Population> getPopulationByCountry(String countryName) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
         try {
-            String strSelect = "SELECT SUM(Population) AS TotalPopulation, " +
-                    "(SELECT SUM(city.Population) FROM city WHERE city.CountryCode = ?) AS UrbanPopulation " +
-                    "FROM country WHERE country.Code = ?";
+            String strSelect = "SELECT country.Name AS CountryName, " +
+                    "SUM(country.Population) AS TotalPopulation, " +
+                    "(SELECT SUM(city.Population) FROM city WHERE city.CountryCode = country.Code) AS UrbanPopulation " +
+                    "FROM country WHERE country.Name = ?";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
-            pstmt.setString(1, countryCode);
-            pstmt.setString(2, countryCode);
+            pstmt.setString(1, countryName);
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
                 int totalPopulation = rset.getInt("TotalPopulation");
                 int urbanPopulation = rset.getInt("UrbanPopulation");
                 int ruralPopulation = totalPopulation - urbanPopulation;
+
                 populations.add(new Population(
-                        countryCode,
+                        countryName,  // Return the country name
                         totalPopulation,
                         urbanPopulation,
                         ruralPopulation
@@ -145,7 +167,13 @@ public class PopulationDAO {
         return populations;
     }
 
-    // 30 Method to get the total population of a district
+
+
+    /** 30 Method to get total population of a district
+     *
+     * @param district
+     * @return
+     */
     public List<Population> getPopulationByDistrict(String district) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
@@ -158,9 +186,8 @@ public class PopulationDAO {
 
             if (rset.next()) {
                 int urbanPopulation = rset.getInt("UrbanPopulation");
-                // Assuming total population includes only urban; adjust as necessary
-                int totalPopulation = urbanPopulation; // Adjust this based on actual logic needed
-                int ruralPopulation = 0; // Assuming no rural population data for districts
+                int totalPopulation = urbanPopulation;
+                int ruralPopulation = 0;
                 populations.add(new Population(
                         district,
                         totalPopulation,
@@ -174,7 +201,12 @@ public class PopulationDAO {
         return populations;
     }
 
-    // 7 Method to get the total population of a city
+
+    /** 31 Method to get total population of  city
+     *
+     * @param cityName
+     * @return
+     */
     public List<Population> getPopulationByCity(String cityName) {
         List<Population> populations = new ArrayList<>();
         long worldPopulation = getTotalWorldPopulation();
@@ -186,9 +218,8 @@ public class PopulationDAO {
 
             if (rset.next()) {
                 int urbanPopulation = rset.getInt("Population");
-                // Assuming total population includes only urban; adjust as necessary
-                int totalPopulation = urbanPopulation; // Adjust this based on actual logic needed
-                int ruralPopulation = 0; // Assuming no rural population data for cities
+                int totalPopulation = urbanPopulation;
+                int ruralPopulation = 0;
                 populations.add(new Population(
                         cityName,
                         totalPopulation,
