@@ -6,24 +6,24 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * The City_report class provides printing methods to generate city reports.
+ * The class has printing methods for city reports.
  */
 public class City_report {
     public CityDAO cityDAO;
     private final NumberFormat numberFormat;
 
     /**
-     * Constructor to initialize CityDAO with a connection
+     * Constructor
      *
-     * @param con
+     * @param con Connection object
      */
     public City_report(Connection con) {
         this.cityDAO = new CityDAO(con);
-        this.numberFormat = NumberFormat.getInstance(Locale.US); // (comma separated)
+        this.numberFormat = NumberFormat.getInstance(Locale.US); // Set number format for US style (comma separated)
     }
 
     /**
-     * Utility method to print a header for the city report
+     * Printing header
      */
     private void printReportHeader() {
         System.out.printf("%-40s %-40s %-30s %-30s%n", "Name", "Country", "District", "Population");
@@ -31,188 +31,133 @@ public class City_report {
     }
 
     /**
-     * 7) Get all cities by population
+     * Printing city data
+     *
+     * @param cities List of cities
+     * @param title  Title
+     */
+    private void printCityReport(List<City> cities, String title) {
+        System.out.println("\n**********************************************");
+        System.out.println("** " + title.toUpperCase() + " **");
+        System.out.println("**********************************************");
+        printReportHeader();
+
+        if (cities == null || cities.isEmpty()) {
+            System.out.println("No data available.");
+            return;
+        }
+
+        for (City city : cities) {
+            if (city == null) {
+                System.out.println("Encountered a null city in the list");
+                continue;
+            }
+            System.out.printf("%-40s %-40s %-30s %-30s%n",
+                    city.getName(), city.getCountry(),
+                    city.getDistrict(), numberFormat.format(city.getPopulation()));
+        }
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+    }
+
+    /**
+     * Get all cities by population
      */
     public void printAllCitiesByPopulation() {
-        System.out.println("**********************************************");
-        System.out.println("** 7) ALL CITIES BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> allCities = cityDAO.getAllCitiesByPopulation();
-        for (City city : allCities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
-        }
+        printCityReport(allCities, "7) All cities by population");
     }
 
     /**
-     * 8) Get cities by continent
+     * Get cities by continent
      *
-     * @param continent
+     * @param continent The name of the continent
      */
     public void printCitiesByContinent(String continent) {
-        System.out.println("**********************************************");
-        System.out.println("** 8) CITIES IN " + continent.toUpperCase() + " BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getCitiesByContinent(continent);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
-        }
+        printCityReport(cities, "8) Cities in " + continent + " by population");
     }
 
     /**
-     * 9) Get cities by region
+     * Get cities by region
      *
-     * @param region
+     * @param region The name of the region
      */
     public void printCitiesByRegion(String region) {
-        System.out.println("**********************************************");
-        System.out.println("** 9) CITIES IN " + region.toUpperCase() + " BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getCitiesByRegion(region);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
-        }
+        printCityReport(cities, "9) Cities in " + region + " by population");
     }
 
     /**
-     * 10) Get cities by country
+     * Get cities by country
      *
-     * @param countryCode
+     * @param countryCode The country code
      */
     public void printCitiesByCountry(String countryCode) {
-        System.out.println("**********************************************");
-        System.out.println("** 10) CITIES IN COUNTRY CODE '" + countryCode.toUpperCase() + "' BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getCitiesByCountry(countryCode);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
-        }
+        printCityReport(cities, "10) Cities in country code '" + countryCode.toUpperCase() + "' by population");
     }
 
     /**
-     * 11) Get cities by district
+     * Get cities by district
      *
-     * @param district
+     * @param district The name of the district
      */
     public void printCitiesByDistrict(String district) {
-        System.out.println("**********************************************");
-        System.out.println("** 11) CITIES IN DISTRICT '" + district.toUpperCase() + "' BY POPULATION **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getCitiesByDistrict(district);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation())); // Format population with commas
-        }
+        printCityReport(cities, "11) Cities in district '" + district.toUpperCase() + "' by population");
     }
 
     /**
-     * 12) Get Top N populated cities around the world
+     * Get Top N populated cities around the world
      *
-     * @param N
+     * @param N Number of top populated cities
      */
     public void printTopNPopulatedCitiesInWorld(int N) {
-        System.out.println("**********************************************");
-        System.out.println("** 12) TOP "+ N + " POPULATED CITIES IN THE WORLD **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInWorld(N);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation()));
-        }
+        printCityReport(cities, "12) Top " + N + " populated cities in the world");
     }
 
-
     /**
-     * 13) Get Top N populated cities in a Continent
+     * Get Top N populated cities in a continent
      *
-     * @param continent
-     * @param N
+     * @param continent The name of the continent
+     * @param N         Number of top populated cities
      */
     public void printTopNPopulatedCitiesInContinent(String continent, int N) {
-        System.out.println("**********************************************");
-        System.out.println("** 13) TOP "+ N + " POPULATED CITIES IN " + continent.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInContinent(continent, N);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation()));
-        }
+        printCityReport(cities, "13) Top " + N + " populated cities in " + continent);
     }
 
     /**
-     * 14) Get Top N populated cities in a region
+     * Get Top N populated cities in a region
      *
-     * @param region
-     * @param N
+     * @param region The name of the region
+     * @param N      Number of top populated cities
      */
     public void printTopNPopulatedCitiesInRegion(String region, int N) {
-        System.out.println("**********************************************");
-        System.out.println("** 14) TOP "+ N + " POPULATED CITIES IN " + region.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInRegion(region, N);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation()));
-        }
+        printCityReport(cities, "14) Top " + N + " populated cities in " + region);
     }
 
     /**
-     * 15) Get Top N populated cities in a country
+     * Get Top N populated cities in a country
      *
-     * @param country
-     * @param N
+     * @param countryCode The country code
+     * @param N           Number of top populated cities
      */
-
     public void printTopNPopulatedCitiesInCountry(String countryCode, int N) {
-        System.out.println("**********************************************");
-        System.out.println("** 15) TOP "+ N + " POPULATED CITIES IN " + countryCode.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInCountry(countryCode, N);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation()));
-        }
+        printCityReport(cities, "15) Top " + N + " populated cities in " + countryCode);
     }
 
-
     /**
-     * 16) Get Top N populated cities in a district
+     * Get Top N populated cities in a district
      *
-     * @param district
-     * @param N
+     * @param district The name of the district
+     * @param N        Number of top populated cities
      */
     public void printTopNPopulatedCitiesInDistrict(String district, int N) {
-        System.out.println("**********************************************");
-        System.out.println("** 16) TOP "+ N + " POPULATED CITIES IN " + district.toUpperCase() + " **");
-        System.out.println("**********************************************");
-        printReportHeader();
         List<City> cities = cityDAO.getTopNPopulatedCitiesInDistrict(district, N);
-        for (City city : cities) {
-            System.out.printf("%-40s %-40s %-30s %-30s%n",
-                    city.getName(), city.getCountry(),
-                    city.getDistrict(), numberFormat.format(city.getPopulation()));
-        }
+        printCityReport(cities, "16) Top " + N + " populated cities in " + district);
     }
-
 }

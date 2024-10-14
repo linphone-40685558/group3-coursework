@@ -47,47 +47,26 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing all countries with null list
+     * Test printing all countries by population with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintAllCountriesByPopulation_NullList() {
-        // Define behavior for the mock DAO
+    void testPrintAllCountriesByPopulation_NullEmptyAndNullMembers() {
+        // Test with null
         when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(null);
-
-        // Call the method
         countryReport.printAllCountriesByPopulation();
-    }
 
-    /**
-     * Test printing all countries with empty list
-     */
-    @Test
-    void testPrintAllCountriesByPopulation_EmptyList() {
-        // Define behavior for the mock DAO to return an empty list
+        // Test with empty list
         when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(new ArrayList<>());
+        countryReport.printAllCountriesByPopulation();
 
-        // Call the method
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountriesWithNullMembers);
         countryReport.printAllCountriesByPopulation();
     }
 
-    /**
-     * Test printing all countries with null member in list
-     */
-    @Test
-    void testPrintAllCountriesByPopulation_ListWithNullMember() {
-        // Create arraylist
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example data and null member
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountries);
-
-        // Call the method
-        countryReport.printAllCountriesByPopulation();
-    }
 
 
     /**
@@ -107,47 +86,26 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing countries in continent with null list
+     * Test printing all countries by continent with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintAllCountriesByContinent_NullList() {
-        // Define behavior for the mock DAO
+    void testPrintAllCountriesByContinent_NullEmptyAndNullMembers() {
+        // Test with null
         when(mockCountryDAO.getCountriesByContinent("North America")).thenReturn(null);
-
-        // Call the method
         countryReport.printAllCountriesByContinent("North America");
-    }
 
-    /**
-     * Test print countries in continent with empty list
-     */
-    @Test
-    void testPrintAllCountriesByContinent_EmptyList() {
-        // Define behavior for the mock DAO
+        // Test with empty list
         when(mockCountryDAO.getCountriesByContinent("North America")).thenReturn(new ArrayList<>());
+        countryReport.printAllCountriesByContinent("North America");
 
-        // Call the method
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getCountriesByContinent("North America")).thenReturn(mockCountriesWithNullMembers);
         countryReport.printAllCountriesByContinent("North America");
     }
 
-    /**
-     * Test print countries in continent with null member in list
-     */
-    @Test
-    void testPrintAllCountriesByContinent_ListWithNullMember() {
-        // Create arraylist
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example data and null member
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getCountriesByContinent("North America")).thenReturn(mockCountries);
-
-        // Call the method
-        countryReport.printAllCountriesByContinent("North America");
-    }
 
 
     /**
@@ -167,47 +125,26 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing all countries by region with null list
+     * Test printing all countries by region with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintAllCountriesByRegion_NullList() {
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getCountriesByRegion("Southeast Asia")).thenReturn(null);
+    void testPrintAllCountriesByRegion_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCountryDAO.getCountriesByRegion("Northern America")).thenReturn(null);
+        countryReport.printAllCountriesByRegion("Northern America");
 
-        // Call the method
-        countryReport.printAllCountriesByRegion("Southeast Asia");
+        // Test with empty list
+        when(mockCountryDAO.getCountriesByRegion("Northern America")).thenReturn(new ArrayList<>());
+        countryReport.printAllCountriesByRegion("Northern America");
+
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getCountriesByRegion("Northern America")).thenReturn(mockCountriesWithNullMembers);
+        countryReport.printAllCountriesByRegion("Northern America");
     }
 
-    /**
-     * Test printing all countries by region with empty list
-     */
-    @Test
-    void testPrintAllCountriesByRegion_EmptyList() {
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getCountriesByRegion("Southeast Asia")).thenReturn(new ArrayList<>());
-
-        // Call the method
-        countryReport.printAllCountriesByRegion("Southeast Asia");
-    }
-
-    /**
-     * Test printing all countries by region with null member in list
-     */
-    @Test
-    void testPrintAllCountriesByRegion_ListWithNullMember() {
-        // Create arraylist
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example data and null member
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getCountriesByRegion("Southeast Asia")).thenReturn(mockCountries);
-
-        // Call the method
-        countryReport.printAllCountriesByRegion("Southeast Asia");
-    }
 
 
     /**
@@ -228,47 +165,26 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing top n populated countries around the world with null list
+     * Test printing top n populated countries with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintTopNCountries_NullList() {
-        // Define behavior for the mock DAO
+    void testPrintTopNCountries_NullEmptyAndNullMembers() {
+        // Test with null
         when(mockCountryDAO.getTopNPopulatedCountries(2)).thenReturn(null);
-
-        // Call the method
         countryReport.printTopNCountries(2);
-    }
 
-    /**
-     * Test printing top n populated countries around the world with empty list
-     */
-    @Test
-    void testPrintTopNCountries_EmptyList() {
-        // Define behavior for the mock DAO
+        // Test with empty list
         when(mockCountryDAO.getTopNPopulatedCountries(2)).thenReturn(new ArrayList<>());
+        countryReport.printTopNCountries(2);
 
-        // Call the method
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000, 1891, "Beijing"));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getTopNPopulatedCountries(2)).thenReturn(mockCountriesWithNullMembers);
         countryReport.printTopNCountries(2);
     }
 
-    /**
-     * Test printing top n populated countries around the world with null member in list
-     */
-    @Test
-    void testPrintTopNCountries_ListWithNullMember() {
-        // Create arraylist
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example data and null member
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountries(2)).thenReturn(mockCountries);
-
-        // Call the method
-        countryReport.printTopNCountries(2);
-    }
 
 
     /**
@@ -288,45 +204,26 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing top n populated countries by continent with null list
+     * Test printing top n populated countries by continent with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintTopNCountriesByContinent_NullList() {
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 2)).thenReturn(null);
+    void testPrintTopNCountriesByContinent_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 1)).thenReturn(null);
+        countryReport.printTopNCountriesByContinent(1, "North America");
 
-        // Call the method
-        countryReport.printTopNCountriesByContinent(2, "North America");
+        // Test with empty list
+        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 1)).thenReturn(new ArrayList<>());
+        countryReport.printTopNCountriesByContinent(1, "North America");
+
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 1)).thenReturn(mockCountriesWithNullMembers);
+        countryReport.printTopNCountriesByContinent(1, "North America");
     }
 
-    /**
-     * Test printing top n populated countries by continent with empty list
-     */
-    @Test
-    void testPrintTopNCountriesByContinent_EmptyList() {
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 2)).thenReturn(null);
-
-        // Call the method
-        countryReport.printTopNCountriesByContinent(2, "North America");
-    }
-
-    /**
-     * Test printing top n populated countries by continent with null member in list
-     */
-    @Test
-    void testPrintTopNCountriesByContinent_ListWithNullMember() {
-
-        // Create array list
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example object and null
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-        when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 2)).thenReturn(mockCountries);
-        countryReport.printTopNCountriesByContinent(2, "North America");
-    }
 
 
     /**
@@ -346,48 +243,24 @@ class CountryReportUnitTest {
     }
 
     /**
-     * Test printing top n populated countries by region with null list
+     * Test printing top n populated countries by region with null, empty list, and null members in the list.
      */
     @Test
-    void testPrintTopNCountriesByRegion_NullList() {
+    void testPrintTopNCountriesByRegion_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Northern America", 1)).thenReturn(null);
+        countryReport.printTopNCountriesByRegion(1, "Northern America");
 
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Southeast Asia", 2)).thenReturn(null);
+        // Test with empty list
+        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Northern America", 1)).thenReturn(new ArrayList<>());
+        countryReport.printTopNCountriesByRegion(1, "Northern America");
 
-        // Call the method
-        countryReport.printTopNCountriesByRegion(2, "Southeast Asia");
+        // Test with null member
+        List<Country> mockCountriesWithNullMembers = new ArrayList<>();
+        mockCountriesWithNullMembers.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
+        mockCountriesWithNullMembers.add(null);
+        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Northern America", 1)).thenReturn(mockCountriesWithNullMembers);
+        countryReport.printTopNCountriesByRegion(1, "Northern America");
     }
 
-    /**
-     * Test printing top n populated countries by region with empty list
-     */
-    @Test
-    void testPrintTopNCountriesByRegion_EmptyList() {
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Southeast Asia", 2)).thenReturn(null);
-
-        // Call the method
-        countryReport.printTopNCountriesByRegion(2, "Southeast Asia");
-    }
-
-    /**
-     * Test printing top n populated countries by region with null member in list
-     */
-    @Test
-    void testPrintTopNCountriesByRegion_ListWithNullMember() {
-
-        // Create array list
-        List<Country> mockCountries = new ArrayList<>();
-
-        // add example member and null member
-        mockCountries.add(new Country("USA", "United States", "North America", "Northern America", 331000000, 3426, "Washington D.C."));
-        mockCountries.add(null);
-
-        // Define behavior for the mock DAO
-        when(mockCountryDAO.getTopNPopulatedCountriesInRegion("Southeast Asia", 2)).thenReturn(mockCountries);
-
-        // Call the method
-        countryReport.printTopNCountriesByRegion(2, "Southeast Asia");
-    }
 }
