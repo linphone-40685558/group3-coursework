@@ -58,6 +58,7 @@ class CountryReportUnitTest {
         // Test with empty list
         when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(new ArrayList<>());
         countryReport.printAllCountriesByPopulation();
+        ArrayList<Country> EmptyCountries = new ArrayList<>();
 
         // Test with null member
         List<Country> mockCountriesWithNullMembers = new ArrayList<>();
@@ -66,7 +67,6 @@ class CountryReportUnitTest {
         when(mockCountryDAO.getAllCountriesByPopulation()).thenReturn(mockCountriesWithNullMembers);
         countryReport.printAllCountriesByPopulation();
     }
-
 
 
     /**
@@ -107,7 +107,6 @@ class CountryReportUnitTest {
     }
 
 
-
     /**
      * Test printing all countries by region
      */
@@ -144,7 +143,6 @@ class CountryReportUnitTest {
         when(mockCountryDAO.getCountriesByRegion("Northern America")).thenReturn(mockCountriesWithNullMembers);
         countryReport.printAllCountriesByRegion("Northern America");
     }
-
 
 
     /**
@@ -186,7 +184,6 @@ class CountryReportUnitTest {
     }
 
 
-
     /**
      * Test printing top n populated countries by continent
      */
@@ -223,7 +220,6 @@ class CountryReportUnitTest {
         when(mockCountryDAO.getTopNPopulatedCountriesInContinent("North America", 1)).thenReturn(mockCountriesWithNullMembers);
         countryReport.printTopNCountriesByContinent(1, "North America");
     }
-
 
 
     /**

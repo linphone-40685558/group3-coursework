@@ -113,7 +113,7 @@ public class App {
 
 
         // Disconnect from the database
-        conn.disconnect_function();
+        // conn.disconnect_function();
     }
 
     /**
