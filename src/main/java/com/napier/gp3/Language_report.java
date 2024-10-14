@@ -37,7 +37,19 @@ public class Language_report {
         System.out.println("**********************************************");
         printReportHeader();
         List<Language> languages = languageDAO.getLanguagesByNumberOfPeople();
+
+        if (languages == null || languages.isEmpty()) {
+            System.out.println("No data available.");
+            return;
+        }
+
         for (Language language : languages) {
+
+            if (language == null) {
+                System.out.println("Encountered a null language in the list");
+                continue;
+            }
+
             System.out.printf("%-20s %-30s %-6.2f%%%n",
                     language.getLanguage(),
                     numberFormat.format(language.getNumberOfPeople()), // Format number of speakers with commas
