@@ -1,5 +1,9 @@
 package com.napier.gp3;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.text.NumberFormat;
 import java.util.List;
@@ -61,11 +65,55 @@ public class Country_report {
     }
 
     /**
+     * Outputs the country list to a Markdown file, with an option to append.
+     *
+     * @param countries List of countries to output.
+     * @param filename  Name of the file to save the output.
+     * @param title     Title to be included in the markdown report.
+     * @param append    Whether to append to the existing file.
+     */
+    public void outputCountriesByPopulationMarkdown(List<Country> countries, String filename, String title, boolean append) {
+        if (countries == null || countries.isEmpty()) {
+            System.out.println("No countries available.");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\r\n# ").append(title).append("\r\n\r\n");
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+
+        // Loop through the list of countries
+        for (Country country : countries) {
+            if (country == null) continue;
+            sb.append("| ")
+                    .append(country.getCode()).append(" | ")
+                    .append(country.getName()).append(" | ")
+                    .append(country.getContinent()).append(" | ")
+                    .append(country.getRegion()).append(" | ")
+                    .append(numberFormat.format(country.getPopulation())).append(" | ")
+                    .append(country.getCapitalName()).append(" |\r\n");
+        }
+
+        // Write the content to the file
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename), append));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * Get all countries by population
      */
     public void printAllCountriesByPopulation() {
         List<Country> allCountries = countryDAO.getAllCountriesByPopulation();
         printCountryReport(allCountries, "1) All countries by population");
+        outputCountriesByPopulationMarkdown(allCountries, "Country_Report.md", "1) All countries by population", false);
     }
 
     /**
@@ -76,6 +124,7 @@ public class Country_report {
     public void printAllCountriesByContinent(String continent) {
         List<Country> countriesInContinent = countryDAO.getCountriesByContinent(continent);
         printCountryReport(countriesInContinent, "2) All countries in " + continent + " by population");
+        outputCountriesByPopulationMarkdown(countriesInContinent, "Country_Report.md", "2) All countries in " + continent + " by population", true);
     }
 
     /**
@@ -86,6 +135,7 @@ public class Country_report {
     public void printAllCountriesByRegion(String region) {
         List<Country> countriesInRegion = countryDAO.getCountriesByRegion(region);
         printCountryReport(countriesInRegion, "3) All countries in " + region + " by population");
+        outputCountriesByPopulationMarkdown(countriesInRegion, "Country_Report.md", "3) All countries in " + region + " by popularion", true);
     }
 
     /**
@@ -96,6 +146,7 @@ public class Country_report {
     public void printTopNCountries(int N) {
         List<Country> topNCountries = countryDAO.getTopNPopulatedCountries(N);
         printCountryReport(topNCountries, "4) Top " + N + " populated countries");
+        outputCountriesByPopulationMarkdown(topNCountries, "Country_Report.md", "4) Top " + N + " populated countries", true);
     }
 
     /**
@@ -107,6 +158,7 @@ public class Country_report {
     public void printTopNCountriesByContinent(int N, String continent) {
         List<Country> topNInContinent = countryDAO.getTopNPopulatedCountriesInContinent(continent, N);
         printCountryReport(topNInContinent, "5) Top " + N + " populated countries in " + continent);
+        outputCountriesByPopulationMarkdown(topNInContinent, "Country_Report.md", "5) Top " + N + " populated countries in " + continent + " by population", true);
     }
 
     /**
@@ -118,5 +170,6 @@ public class Country_report {
     public void printTopNCountriesByRegion(int N, String region) {
         List<Country> topNInRegion = countryDAO.getTopNPopulatedCountriesInRegion(region, N);
         printCountryReport(topNInRegion, "6) Top " + N + " populated countries in " + region);
+        outputCountriesByPopulationMarkdown(topNInRegion, "Country_Report.md", "6) Top " + N + " populated countries in " + region + " by population", true);
     }
 }
