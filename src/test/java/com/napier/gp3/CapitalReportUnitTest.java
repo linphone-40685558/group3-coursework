@@ -50,6 +50,27 @@ class CapitalReportUnitTest {
     }
 
     /**
+     * Test printing all capital cities by population with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintCapitalsByPopulation_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getAllCapitalCitiesByPopulation()).thenReturn(null);
+        capitalReport.printCapitalsByPopulation();
+
+        // Test with empty list
+        when(mockCapitalDAO.getAllCapitalCitiesByPopulation()).thenReturn(new ArrayList<>());
+        capitalReport.printCapitalsByPopulation();
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getAllCapitalCitiesByPopulation()).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printCapitalsByPopulation();
+    }
+
+    /**
      * Test printing capital cities by continent
      */
     @Test
@@ -66,6 +87,27 @@ class CapitalReportUnitTest {
 
         // Verify that the DAO method was called
         verify(mockCapitalDAO).getCapitalCitiesByContinent("North America");
+    }
+
+    /**
+     * Test printing capital cities by continent with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintCapitalsByContinent_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getCapitalCitiesByContinent("North America")).thenReturn(null);
+        capitalReport.printCapitalsByContinent("North America");
+
+        // Test with empty list
+        when(mockCapitalDAO.getCapitalCitiesByContinent("North America")).thenReturn(new ArrayList<>());
+        capitalReport.printCapitalsByContinent("North America");
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getCapitalCitiesByContinent("North America")).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printCapitalsByContinent("North America");
     }
 
     /**
@@ -88,6 +130,28 @@ class CapitalReportUnitTest {
     }
 
     /**
+     * Test printing capital cities by region with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintCapitalsByRegion_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getCapitalCitiesByRegion("Eastern Asia")).thenReturn(null);
+        capitalReport.printCapitalsByRegion("Eastern Asia");
+
+        // Test with empty list
+        when(mockCapitalDAO.getCapitalCitiesByRegion("Eastern Asia")).thenReturn(new ArrayList<>());
+        capitalReport.printCapitalsByRegion("Eastern Asia");
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getCapitalCitiesByRegion("Eastern Asia")).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printCapitalsByRegion("Eastern Asia");
+    }
+
+
+    /**
      * Test printing top n populated capital cities in the world
      */
     @Test
@@ -105,6 +169,27 @@ class CapitalReportUnitTest {
 
         // Verify that the DAO method was called
         verify(mockCapitalDAO).getTopNPopulatedCapitalCitiesInWorld(2);
+    }
+
+    /**
+     * Test printing top n populated capital cities in the world with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintTopNPopulatedCapitalCitiesInWorld_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInWorld(2)).thenReturn(null);
+        capitalReport.printTopNPopulatedCapitalCitiesInWorld(2);
+
+        // Test with empty list
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInWorld(2)).thenReturn(new ArrayList<>());
+        capitalReport.printTopNPopulatedCapitalCitiesInWorld(2);
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInWorld(2)).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printTopNPopulatedCapitalCitiesInWorld(2);
     }
 
     /**
@@ -127,6 +212,27 @@ class CapitalReportUnitTest {
     }
 
     /**
+     * Test printing top n populated capital cities by continent with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintTopNPopulatedCapitalCitiesInContinent_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInContinent("North America", 1)).thenReturn(null);
+        capitalReport.printTopNPopulatedCapitalCitiesInContinent(1, "North America");
+
+        // Test with empty list
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInContinent("North America", 1)).thenReturn(new ArrayList<>());
+        capitalReport.printTopNPopulatedCapitalCitiesInContinent(1, "North America");
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(1, "Washington D.C.", "United States", "USA", "District of Columbia", 705749));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInContinent("North America", 1)).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printTopNPopulatedCapitalCitiesInContinent(1, "North America");
+    }
+
+    /**
      * Test printing top n populated capital cities by region
      */
     @Test
@@ -143,5 +249,26 @@ class CapitalReportUnitTest {
 
         // Verify that the DAO method was called
         verify(mockCapitalDAO).getTopNPopulatedCapitalCitiesInRegion("Eastern Asia", 1);
+    }
+
+    /**
+     * Test printing top n populated capital cities by region with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintTopNPopulatedCapitalCitiesInRegion_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInRegion("Eastern Asia", 1)).thenReturn(null);
+        capitalReport.printTopNPopulatedCapitalCitiesInRegion(1, "Eastern Asia");
+
+        // Test with empty list
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInRegion("Eastern Asia", 1)).thenReturn(new ArrayList<>());
+        capitalReport.printTopNPopulatedCapitalCitiesInRegion(1, "Eastern Asia");
+
+        // Test with null member
+        List<Capital> mockCapitalsWithNullMembers = new ArrayList<>();
+        mockCapitalsWithNullMembers.add(new Capital(2, "Beijing", "China", "CHN", "Beijing", 21540000));
+        mockCapitalsWithNullMembers.add(null);
+        when(mockCapitalDAO.getTopNPopulatedCapitalCitiesInRegion("Eastern Asia", 1)).thenReturn(mockCapitalsWithNullMembers);
+        capitalReport.printTopNPopulatedCapitalCitiesInRegion(1, "Eastern Asia");
     }
 }
