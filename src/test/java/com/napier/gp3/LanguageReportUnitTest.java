@@ -48,4 +48,25 @@ class LanguageReportUnitTest {
         // Verify that the DAO method was called
         verify(mockLanguageDAO).getLanguagesByNumberOfPeople();
     }
+
+    /**
+     * Test printing languages by the number of people with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintLanguagesByNumberOfPeople_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockLanguageDAO.getLanguagesByNumberOfPeople()).thenReturn(null);
+        languageReport.printLanguagesByNumberOfPeople();
+
+        // Test with empty list
+        when(mockLanguageDAO.getLanguagesByNumberOfPeople()).thenReturn(new ArrayList<>());
+        languageReport.printLanguagesByNumberOfPeople();
+
+        // Test with null member
+        List<Language> mockLanguagesWithNullMembers = new ArrayList<>();
+        mockLanguagesWithNullMembers.add(new Language("Chinese", 1200000000, 15.00));
+        mockLanguagesWithNullMembers.add(null);
+        when(mockLanguageDAO.getLanguagesByNumberOfPeople()).thenReturn(mockLanguagesWithNullMembers);
+        languageReport.printLanguagesByNumberOfPeople();
+    }
 }
