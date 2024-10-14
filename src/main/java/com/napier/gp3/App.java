@@ -1,19 +1,18 @@
 package com.napier.gp3;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The App class is to connect the MySQL database server from world.sql
- * And to produce reports
- * Implement the error handling method
- */
-
+@SpringBootApplication
+@RestController
 public class App {
-    /**
-     * Make a connection to the database
-     */
-    private Connection con = null;
+    private static Connection con = null;
 
     /**
      * Connection object
@@ -26,11 +25,8 @@ public class App {
 
     /**
      * Connect function to make a connection
-     *
-     * @param location Local/Docker
-     * @param delay    Before connecting to database
      */
-    public void connect_function(String location, int delay) {
+    public static void connect_function(String location, int delay) {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -61,127 +57,159 @@ public class App {
     }
 
     /**
-     * Disconnect function to disconnect from the MySQL database.
-     */
-    public void disconnect_function() {
-        if (con != null) {
-            try {
-                // Close connection
-                con.close();
-            } catch (Exception e) {
-                System.out.println("Error closing connection to database");
-            }
-        }
-    }
-
-    /**
-     * Main class to call connect function, discount function
-     * and reports producing
-     *
-     * @param args Arguments
+     * Main class
      */
     public static void main(String[] args) {
-        // Create a new App instance
-        App conn = new App();
-
-        // Connect to the world.sql database
+        // Connect to database
         if (args.length < 1) {
-            conn.connect_function("localhost:33060", 10000);
+            connect_function("localhost:33060", 0);
         } else {
-            conn.connect_function(args[0], Integer.parseInt(args[1]));
+            connect_function(args[0], Integer.parseInt(args[1]));
         }
 
-        // Create reports instances
-        Country_report countryReport = new Country_report(conn.con);
-        City_report cityReport = new City_report(conn.con);
-        Capital_report capitalReport = new Capital_report(conn.con);
-        Language_report languageReport = new Language_report(conn.con);
-
-        // Parameter values for easy changes
-        String continent = "Asia";
-        String region = "Southeast Asia";
-        String countryCode = "MMR";
-        String country = "Myanmar";
-        String district = "Mandalay";
-        int number = 5;
-
-        // Generate Reports
-        generateCountryReport(countryReport, continent, region, number);
-        generateCityReport(cityReport, continent, region, countryCode, district, number);
-        generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
-        generateLanguageReport(languageReport);
-
-
-        // Disconnect from the database
-        // conn.disconnect_function();
+        // Running App
+        SpringApplication.run(App.class, args);
     }
 
     /**
-     * Generates the country report
-     *
-     * @param countryReport Country Report Instance
-     * @param continent     Continent
-     * @param region        Region
-     * @param number        Top N
+     * Utility
      */
-    private static void generateCountryReport(Country_report countryReport, String continent, String region, int number) {
-        // Call each function and display results (1 - 6)
-        countryReport.printAllCountriesByPopulation();
-        countryReport.printAllCountriesByContinent(continent);
-        countryReport.printAllCountriesByRegion(region);
-        countryReport.printTopNCountries(number);
-        countryReport.printTopNCountriesByContinent(number, continent);
-        countryReport.printTopNCountriesByRegion(number, region);
+    private long getTotalWorldPopulation() {
+        long population = 0;
+        try {
+            String strSelect = "SELECT SUM(population) AS total_population FROM country";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+                population = rset.getLong("total_population");
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get total world population: " + e.getMessage());
+        }
+        return population;
     }
 
-    /**
-     * Generates the city report
-     *
-     * @param cityReport  City Report Instance
-     * @param continent   Continent
-     * @param region      Region
-     * @param countryCode Country Code
-     * @param district    Districe
-     */
-    private static void generateCityReport(City_report cityReport, String continent, String region, String countryCode, String district, int number) {
-        // Call each function and display results (7 - 16)
-        cityReport.printAllCitiesByPopulation();
-        cityReport.printCitiesByContinent(continent);
-        cityReport.printCitiesByRegion(region);
-        cityReport.printCitiesByCountry(countryCode);
-        cityReport.printCitiesByDistrict(district);
-        cityReport.printTopNPopulatedCitiesInWorld(number);
-        cityReport.printTopNPopulatedCitiesInContinent(continent, number);
-        cityReport.printTopNPopulatedCitiesInRegion(region, number);
-        cityReport.printTopNPopulatedCitiesInCountry(countryCode, number);
-        cityReport.printTopNPopulatedCitiesInDistrict(district, number);
+    // Define the method to handle requests to "/hello"
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello World";
     }
 
-    /**
-     * Generates the capital city report
-     *
-     * @param capitalReport Capital Report Instance
-     * @param continent     Continent
-     * @param region        Region
-     * @param countryCode   Country Code
-     * @param district      Districe
-     */
-    private static void generateCapitalCityReport(Capital_report capitalReport, String continent, String region, String countryCode, String district, int number) {
-        // Call each function and display results (17 - 22)
-        capitalReport.printCapitalsByPopulation();
-        capitalReport.printCapitalsByContinent(continent);
-        capitalReport.printCapitalsByRegion(region);
-        capitalReport.printTopNPopulatedCapitalCitiesInWorld(number);
-        capitalReport.printTopNPopulatedCapitalCitiesInContinent(number, continent);
-        capitalReport.printTopNPopulatedCapitalCitiesInRegion(number, region);
+    // Expose the endpoint directly in App.java
+    @GetMapping("/countries")
+    public List<Country> getCountriesByPopulation() {
+        System.out.println("Getting countries by population");
+        List<Country> countries = new ArrayList<>();
+        try {
+            String strSelect =
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital, city.Name AS CapitalName " +
+                            "FROM country " +
+                            "LEFT JOIN city ON country.Capital = city.ID " +
+                            "ORDER BY country.Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                countries.add(new Country(
+                        rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getLong("Population"),
+                        rset.getInt("Capital"),
+                        rset.getString("CapitalName")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get countries: " + e.getMessage());
+        }
+        return countries;
     }
 
-    /**
-     * Generates the language report.
-     *
-     * @param languageReport Language Report Instance
-     */
-    private static void generateLanguageReport(Language_report languageReport) {
-        languageReport.printLanguagesByNumberOfPeople();
+    @GetMapping("/cities")
+    public List<City> getCitiesByPopulation() {
+        List<City> cities = new ArrayList<>();
+        try {
+            String strSelect = "SELECT city.*, country.Name AS CountryName" +
+                    " FROM city" +
+                    " JOIN country" +
+                    " ON city.CountryCode = country.Code" +
+                    " ORDER BY city.Population DESC";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new City(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryName"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get cities: " + e.getMessage());
+        }
+        return cities;
     }
+
+    @GetMapping("/capitals")
+    public List<Capital> getCapitalsByPopulation() {
+        List<Capital> cities = new ArrayList<>();
+        try {
+            String strSelect = "SELECT city.*, country.Name AS CountryName " +
+                    "FROM city " +
+                    "JOIN country ON city.ID = country.Capital " +
+                    "ORDER BY city.Population DESC";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                cities.add(new Capital(
+                        rset.getInt("ID"),
+                        rset.getString("Name"),
+                        rset.getString("CountryName"),
+                        rset.getString("CountryCode"),
+                        rset.getString("District"),
+                        rset.getInt("Population")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get capital cities: " + e.getMessage());
+        }
+        return cities;
+    }
+
+    @GetMapping("/languages")
+    public List<Language> getLanguagesByPopulation() {
+        List<Language> languages = new ArrayList<>();
+        try {
+            // Query to total number of people who spoke in selected language, ordered by the number of people in descending order
+            String strSelect = "SELECT language, SUM(country.population) AS numberOfPeople " +
+                    "FROM countrylanguage " +
+                    "JOIN country ON countrylanguage.CountryCode = country.Code " +
+                    "WHERE language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') " +
+                    "GROUP BY language " +
+                    "ORDER BY numberOfPeople DESC";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            ResultSet rset = pstmt.executeQuery();
+
+            // Get the total world population
+            long worldPopulation = getTotalWorldPopulation();
+            while (rset.next()) {
+                languages.add(new Language(
+                        rset.getString("language"),
+                        rset.getLong("numberOfPeople"),
+                        (rset.getLong("numberOfPeople") / (double) worldPopulation) * 100
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to get total number of people who speak in selected languages: " + e.getMessage());
+        }
+        return languages;
+    }
+
 }
