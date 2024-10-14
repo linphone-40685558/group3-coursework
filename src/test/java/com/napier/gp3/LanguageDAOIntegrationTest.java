@@ -18,7 +18,7 @@ public class LanguageDAOIntegrationTest {
         // Initialize the database connection
         try {
             App conn = new App();
-            conn.connect_function("localhost:33060", 15000);
+            conn.connect_function("localhost:33060", 5000);
             con = conn.getCon();
             assertNotNull(con, "Database connection should not be null");
             languageDAO = new LanguageDAO(con);
