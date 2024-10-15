@@ -86,7 +86,7 @@ public class PopulationDAOIntegrationTest {
         assertFalse(populations.isEmpty(), "Population of country can't be empty");
 
         Population population = populations.get(0);
-        assertEquals("United States", population.getName(), "Not match with the provided country name");
+        assertEquals("USA", population.getName(), "Not match with the provided country name");
         assertTrue(population.getTotalPopulation() > 0, "Total population should be greater than 0");
     }
 

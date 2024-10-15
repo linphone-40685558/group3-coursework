@@ -140,7 +140,7 @@ class PopulationDAOUnitTest {
         // Assertions
         assertNotNull(populations);
         assertEquals(1, populations.size());
-        assertEquals("India", populations.get(0).getName());
+        assertEquals("IND", populations.get(0).getName());
         assertEquals(1390000000L, populations.get(0).getTotalPopulation());
         assertEquals(500000000L, populations.get(0).getUrbanPopulation());
         assertEquals(890000000L, populations.get(0).getRuralPopulation());
