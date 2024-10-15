@@ -42,7 +42,7 @@ public class Population_report {
      */
     private void printPopulationReport(List<Population> populations, String title) {
         System.out.println("\n**********************************************");
-        System.out.println("** Population of " + populations.get(0).getName().toUpperCase() + " **");
+        System.out.println("** Population of " + title + " **");
         System.out.println("**********************************************");
         printReportHeader();
 

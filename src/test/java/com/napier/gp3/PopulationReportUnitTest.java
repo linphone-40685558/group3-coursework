@@ -55,12 +55,12 @@ class PopulationReportUnitTest {
     @Test
     void testPrintWorldPopulation_NullEmptyAndNullMembers() {
         // Test with null
-//        when(mockPopulationDAO.getWorldPopulation()).thenReturn(null);
-//        populationReport.printWorldPopulation();
-//
-//        // Test with empty list
-//        when(mockPopulationDAO.getWorldPopulation()).thenReturn(new ArrayList<>());
-//        populationReport.printWorldPopulation();
+        when(mockPopulationDAO.getWorldPopulation()).thenReturn(null);
+        populationReport.printWorldPopulation();
+
+        // Test with empty list
+        when(mockPopulationDAO.getWorldPopulation()).thenReturn(new ArrayList<>());
+        populationReport.printWorldPopulation();
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
@@ -95,12 +95,12 @@ class PopulationReportUnitTest {
     @Test
     void testPrintPopulationByContinent_NullEmptyAndNullMembers() {
 //        // Test with null
-//        when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(null);
-//        populationReport.printPopulationByContinent("North America");
-//
+        when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(null);
+        populationReport.printPopulationByContinent("North America");
+
 //        // Test with empty list
-//        when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(new ArrayList<>());
-//        populationReport.printPopulationByContinent("North America");
+        when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(new ArrayList<>());
+        populationReport.printPopulationByContinent("North America");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
@@ -134,13 +134,13 @@ class PopulationReportUnitTest {
      */
     @Test
     void testPrintPopulationByRegion_NullEmptyAndNullMembers() {
-//        // Test with null
-//        when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(null);
-//        populationReport.printPopulationByRegion("Northern America");
-//
-//        // Test with empty list
-//        when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(new ArrayList<>());
-//        populationReport.printPopulationByRegion("Northern America");
+        // Test with null
+        when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(null);
+        populationReport.printPopulationByRegion("Northern America");
+
+        // Test with empty list
+        when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(new ArrayList<>());
+        populationReport.printPopulationByRegion("Northern America");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
@@ -174,13 +174,13 @@ class PopulationReportUnitTest {
      */
     @Test
     void testPrintPopulationByCountry_NullEmptyAndNullMembers() {
-//        // Test with null
-//        when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(null);
-//        populationReport.printPopulationByCountry("USA");
-//
-//        // Test with empty list
-//        when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(new ArrayList<>());
-//        populationReport.printPopulationByCountry("USA");
+        // Test with null
+        when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(null);
+        populationReport.printPopulationByCountry("USA");
+
+        // Test with empty list
+        when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(new ArrayList<>());
+        populationReport.printPopulationByCountry("USA");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
@@ -214,13 +214,13 @@ class PopulationReportUnitTest {
      */
     @Test
     void testPrintPopulationByDistrict_NullEmptyAndNullMembers() {
-//        // Test with null
-//        when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(null);
-//        populationReport.printPopulationByDistrict("California");
-//
-//        // Test with empty list
-//        when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(new ArrayList<>());
-//        populationReport.printPopulationByDistrict("California");
+        // Test with null
+        when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(null);
+        populationReport.printPopulationByDistrict("California");
+
+        // Test with empty list
+        when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(new ArrayList<>());
+        populationReport.printPopulationByDistrict("California");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
@@ -255,12 +255,12 @@ class PopulationReportUnitTest {
     @Test
     void testPrintPopulationByCity_NullEmptyAndNullMembers() {
         // Test with null
-//        when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(null);
-//        populationReport.printPopulationByCity("Los Angeles");
-//
-//        // Test with empty list
-//        when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(new ArrayList<>());
-//        populationReport.printPopulationByCity("Los Angeles");
+        when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(null);
+        populationReport.printPopulationByCity("Los Angeles");
+
+        // Test with empty list
+        when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(new ArrayList<>());
+        populationReport.printPopulationByCity("Los Angeles");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
