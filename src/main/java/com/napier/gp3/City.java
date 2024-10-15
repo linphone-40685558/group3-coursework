@@ -5,18 +5,24 @@ package com.napier.gp3;
  * countryCode,district, population
  */
 public class City {
-    private int id;
-    private String name;
-    private String country;
-    private String countryCode;
-    private String district;
-    private int population;
+    private int id;               // Unique identifier for the city
+    private String name;          // Name of the city
+    private String country;       // Name of the country the city is located in
+    private String countryCode;   // ISO code of the country
+    private String district;      // Name of the district the city is in
+    private int population;       // Population of the city
 
 
     /**
      * Constructs a City object with the specified attributes.
+     *
+     * @param id
+     * @param name
+     * @param country
+     * @param countryCode
+     * @param district
+     * @param population
      */
-
     public City(int id, String name, String country, String countryCode, String district, int population) {
         this.id = id;
         this.name = name;
@@ -26,58 +32,25 @@ public class City {
         this.population = population;
     }
 
-    /**
-     * Getter and Setter code of City table
-     */
-    // Getters and Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
 
     public String getDistrict() {
         return district;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
-    }
 
     public int getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
-        this.population = population;
-    }
 }
 
 

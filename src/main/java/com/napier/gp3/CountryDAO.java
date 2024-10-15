@@ -11,11 +11,20 @@ import java.util.List;
 public class CountryDAO {
     private Connection con;
 
+    /**
+     * Country Data Access Object constructor
+     *
+     * @param connection
+     */
     public CountryDAO(Connection connection) {
         this.con = connection;
     }
 
-    // 1) Method to get all countries by population with capital name
+    /**
+     * 1) Method to get all countries by population with capital name
+     *
+     * @return
+     */
     public List<Country> getAllCountriesByPopulation() {
         List<Country> countries = new ArrayList<>();
         try {
@@ -46,7 +55,12 @@ public class CountryDAO {
         return countries;
     }
 
-    // 2) Method to get all countries by continent with capital name
+    /**
+     * 2) Method to get all countries by continent with capital name
+     *
+     * @param continent
+     * @return
+     */
     public List<Country> getCountriesByContinent(String continent) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -79,7 +93,12 @@ public class CountryDAO {
         return countries;
     }
 
-    // 3) Method to get all countries by region with capital name
+    /**
+     * 3) Method to get all countries by region with capital name
+     *
+     * @param region
+     * @return
+     */
     public List<Country> getCountriesByRegion(String region) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -112,7 +131,12 @@ public class CountryDAO {
         return countries;
     }
 
-    // 4) Method to get top N populated countries in the world
+    /**
+     * 4) Method to get top N populated countries in the world
+     *
+     * @param N
+     * @return
+     */
     public List<Country> getTopNPopulatedCountries(int N) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -144,7 +168,13 @@ public class CountryDAO {
         return countries;
     }
 
-    // 5) Method to get top N populated countries in a continent
+    /**
+     * 5) Method to get top N populated countries in a continent
+     *
+     * @param continent
+     * @param N
+     * @return
+     */
     public List<Country> getTopNPopulatedCountriesInContinent(String continent, int N) {
         List<Country> countries = new ArrayList<>();
         try {
@@ -178,7 +208,13 @@ public class CountryDAO {
         return countries;
     }
 
-    // 6) Method to get top N populated countries in a region
+    /**
+     * 6) Method to get top N populated countries in a region
+     *
+     * @param region
+     * @param N
+     * @return
+     */
     public List<Country> getTopNPopulatedCountriesInRegion(String region, int N) {
         List<Country> countries = new ArrayList<>();
         try {
