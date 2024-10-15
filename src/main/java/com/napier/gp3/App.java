@@ -96,6 +96,7 @@ public class App {
         City_report cityReport = new City_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
         Language_report languageReport = new Language_report(conn.con);
+        EachPopulation_report eachPopulationReport = new EachPopulation_report(conn.con);
         Population_report populationReport = new Population_report(conn.con);
 
         // Parameter values for easy changes
@@ -112,6 +113,7 @@ public class App {
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
         generateLanguageReport(languageReport);
+        generateEachPopulationReport(eachPopulationReport);
         generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
 
 
@@ -196,6 +198,11 @@ public class App {
         populationReport.printPopulationByCountry(countryCode);
         populationReport.printPopulationByDistrict(district);
         populationReport.printPopulationByCity(cityName);
+    }
+
+    private static void generateEachPopulationReport(EachPopulation_report eachpopulationReport) {
+        // Call each function and display results for population (1 - )
+        eachpopulationReport.printPopulationByEachContinent();
     }
 
     /**
