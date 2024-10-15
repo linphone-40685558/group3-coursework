@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,7 @@ class PopulationReportUnitTest {
     void testPrintWorldPopulation() {
         // Prepare mock data
         List<Population> mockWorldPopulation = new ArrayList<>();
-        mockWorldPopulation.add(new Population("World", 7800000000L, 4000000000L, 3800000000L));
+        mockWorldPopulation.add(new Population("World", 7800000000L, 4000000000L, 3800000000L, (4000000000L / 7800000000f) * 100, (3800000000L / 7800000000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getWorldPopulation()).thenReturn(mockWorldPopulation);
@@ -64,7 +63,7 @@ class PopulationReportUnitTest {
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("World", 7800000000L, 4000000000L, 3800000000L));
+        mockPopulationsWithNullMembers.add(new Population("World", 7800000000L, 4000000000L, 3800000000L, (4000000000L / 7800000000f) * 100, (3800000000L / 7800000000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getWorldPopulation()).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printWorldPopulation();
@@ -77,7 +76,7 @@ class PopulationReportUnitTest {
     void testPrintPopulationByContinent() {
         // Prepare mock data
         List<Population> mockContinentPopulation = new ArrayList<>();
-        mockContinentPopulation.add(new Population("North America", 579000000L, 330000000L, 249000000L));
+        mockContinentPopulation.add(new Population("North America", 579000000L, 330000000L, 249000000L, (330000000L / 579000000f) * 100, (249000000L / 579000000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(mockContinentPopulation);
@@ -94,17 +93,17 @@ class PopulationReportUnitTest {
      */
     @Test
     void testPrintPopulationByContinent_NullEmptyAndNullMembers() {
-//        // Test with null
+        // Test with null
         when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(null);
         populationReport.printPopulationByContinent("North America");
 
-//        // Test with empty list
+        // Test with empty list
         when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(new ArrayList<>());
         populationReport.printPopulationByContinent("North America");
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("North America", 579000000L, 330000000L, 249000000L));
+        mockPopulationsWithNullMembers.add(new Population("North America", 579000000L, 330000000L, 249000000L, (330000000L / 579000000f) * 100, (249000000L / 579000000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getPopulationByContinent("North America")).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printPopulationByContinent("North America");
@@ -117,7 +116,7 @@ class PopulationReportUnitTest {
     void testPrintPopulationByRegion() {
         // Prepare mock data
         List<Population> mockRegionPopulation = new ArrayList<>();
-        mockRegionPopulation.add(new Population("Northern America", 331000000L, 330000000L, 1000000L));
+        mockRegionPopulation.add(new Population("Northern America", 331000000L, 330000000L, 1000000L, (330000000L / 331000000f) * 100, (1000000L / 331000000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(mockRegionPopulation);
@@ -144,7 +143,7 @@ class PopulationReportUnitTest {
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("Northern America", 331000000L, 330000000L, 1000000L));
+        mockPopulationsWithNullMembers.add(new Population("Northern America", 331000000L, 330000000L, 1000000L, (330000000L / 331000000f) * 100, (1000000L / 331000000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getPopulationByRegion("Northern America")).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printPopulationByRegion("Northern America");
@@ -157,7 +156,7 @@ class PopulationReportUnitTest {
     void testPrintPopulationByCountry() {
         // Prepare mock data
         List<Population> mockCountryPopulation = new ArrayList<>();
-        mockCountryPopulation.add(new Population("USA", 331000000L, 329000000L, 2000000L));
+        mockCountryPopulation.add(new Population("USA", 331000000L, 329000000L, 2000000L, (329000000L / 331000000f) * 100, (2000000L / 331000000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(mockCountryPopulation);
@@ -184,7 +183,7 @@ class PopulationReportUnitTest {
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("USA", 331000000L, 329000000L, 2000000L));
+        mockPopulationsWithNullMembers.add(new Population("USA", 331000000L, 329000000L, 2000000L, (329000000L / 331000000f) * 100, (2000000L / 331000000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getPopulationByCountry("USA")).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printPopulationByCountry("USA");
@@ -197,7 +196,7 @@ class PopulationReportUnitTest {
     void testPrintPopulationByDistrict() {
         // Prepare mock data
         List<Population> mockDistrictPopulation = new ArrayList<>();
-        mockDistrictPopulation.add(new Population("California", 39500000L, 39000000L, 500000L));
+        mockDistrictPopulation.add(new Population("California", 39500000L, 39000000L, 500000L, (39000000L / 39500000f) * 100, (500000L / 39500000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(mockDistrictPopulation);
@@ -224,7 +223,7 @@ class PopulationReportUnitTest {
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("California", 39500000L, 39000000L, 500000L));
+        mockPopulationsWithNullMembers.add(new Population("California", 39500000L, 39000000L, 500000L, (39000000L / 39500000f) * 100, (500000L / 39500000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getPopulationByDistrict("California")).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printPopulationByDistrict("California");
@@ -237,7 +236,7 @@ class PopulationReportUnitTest {
     void testPrintPopulationByCity() {
         // Prepare mock data
         List<Population> mockCityPopulation = new ArrayList<>();
-        mockCityPopulation.add(new Population("Los Angeles", 4000000L, 3900000L, 100000L));
+        mockCityPopulation.add(new Population("Los Angeles", 4000000L, 3900000L, 100000L, (3900000L / 4000000f) * 100, (100000L / 4000000f) * 100));
 
         // Define behavior for the mock DAO
         when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(mockCityPopulation);
@@ -264,7 +263,7 @@ class PopulationReportUnitTest {
 
         // Test with null member
         List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
-        mockPopulationsWithNullMembers.add(new Population("Los Angeles", 4000000L, 3900000L, 100000L));
+        mockPopulationsWithNullMembers.add(new Population("Los Angeles", 4000000L, 3900000L, 100000L, (3900000L / 4000000f) * 100, (100000L / 4000000f) * 100));
         mockPopulationsWithNullMembers.add(null);
         when(mockPopulationDAO.getPopulationByCity("Los Angeles")).thenReturn(mockPopulationsWithNullMembers);
         populationReport.printPopulationByCity("Los Angeles");

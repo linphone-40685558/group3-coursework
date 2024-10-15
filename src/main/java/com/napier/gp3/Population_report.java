@@ -30,9 +30,12 @@ public class Population_report {
      * Printing report header.
      */
     private void printReportHeader() {
-        System.out.printf("%-15s %-20s %-20s %-15s%n", "Location", "Total Population", "Urban Population", "Rural Population");
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
+                "Location", "Total Population", "Urban Population",
+                "Rural Population", "Urban Population (%)", "Rural Population (%)");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
     }
+
 
     /**
      * Printing population data.
@@ -57,14 +60,17 @@ public class Population_report {
                 continue;
             }
 
-            System.out.printf("%-15s %-20s %-20s %-15s%n",
+            System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
                     population.getName(),
                     numberFormat.format(population.getTotalPopulation()),
                     numberFormat.format(population.getUrbanPopulation()),
-                    numberFormat.format(population.getRuralPopulation()));
+                    numberFormat.format(population.getRuralPopulation()),
+                    String.format("%.2f%%", population.getUrbanPopulationPercentage()),
+                    String.format("%.2f%%", population.getRuralPopulationPercentage()));
         }
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
     }
+
 
     /**
      * Outputs the population data to a Markdown file, with an option to append.
@@ -82,10 +88,9 @@ public class Population_report {
 
         StringBuilder sb = new StringBuilder();
         sb.append("\r\n# ").append(title.toUpperCase()).append("\r\n\r\n");
-        sb.append("| Location | Total Population | Urban Population | Rural Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| Location | Total Population | Urban Population | Rural Population | Urban Population Percentage | Rural Population Percentage |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
-        // Loop through the list of populations
         for (Population population : populations) {
             if (population == null) continue;
 
@@ -93,10 +98,12 @@ public class Population_report {
                     .append(population.getName()).append(" | ")
                     .append(numberFormat.format(population.getTotalPopulation())).append(" | ")
                     .append(numberFormat.format(population.getUrbanPopulation())).append(" | ")
-                    .append(numberFormat.format(population.getRuralPopulation())).append(" |\r\n");
+                    .append(numberFormat.format(population.getRuralPopulation())).append(" | ")
+                    .append(String.format("%.2f%%", population.getUrbanPopulationPercentage())).append(" | ")
+                    .append(String.format("%.2f%%", population.getRuralPopulationPercentage())).append(" |\r\n");
         }
 
-        // Write the content to the file
+        // Write content to file
         try {
             new File("./reports/").mkdirs(); // Ensure directory exists
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename), append))) {
@@ -107,13 +114,14 @@ public class Population_report {
         }
     }
 
+
     /**
      * Get total world population report.
      */
     public void printWorldPopulation() {
         List<Population> worldPopulation = populationDAO.getWorldPopulation();
         printPopulationReport(worldPopulation, "26) Total World Population");
-        outputPopulationMarkdown(worldPopulation, "Population_Report.md", "1) Total World Population", false);
+        outputPopulationMarkdown(worldPopulation, "Population_Report.md", "26) Total World Population", false);
     }
 
     /**

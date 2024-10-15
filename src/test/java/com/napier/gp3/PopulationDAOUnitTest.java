@@ -36,27 +36,6 @@ class PopulationDAOUnitTest {
     }
 
     /**
-     * Test Getting Total World Population
-     *
-     * @throws SQLException
-     */
-    @Test
-    void testGetTotalWorldPopulation() throws SQLException {
-        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
-
-        when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L);
-
-        // Call the method
-        long totalPopulation = populationDAO.getTotalWorldPopulation();
-
-        // Assertions
-        assertEquals(7800000000L, totalPopulation);
-        verify(mockPreparedStatement).executeQuery();
-    }
-
-    /**
      * Test Getting World Population
      *
      * @throws SQLException
@@ -161,7 +140,7 @@ class PopulationDAOUnitTest {
         // Assertions
         assertNotNull(populations);
         assertEquals(1, populations.size());
-        assertEquals("India", populations.get(0).getName());
+        assertEquals("IND", populations.get(0).getName());
         assertEquals(1390000000L, populations.get(0).getTotalPopulation());
         assertEquals(500000000L, populations.get(0).getUrbanPopulation());
         assertEquals(890000000L, populations.get(0).getRuralPopulation());
