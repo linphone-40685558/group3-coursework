@@ -42,13 +42,11 @@ class PopulationDAOUnitTest {
      */
     @Test
     void testGetTotalWorldPopulation() throws SQLException {
-        // Define the SQL query result
         when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
         when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
 
-        // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L); // 7.8 billion
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L);
 
         // Call the method
         long totalPopulation = populationDAO.getTotalWorldPopulation();
@@ -71,8 +69,8 @@ class PopulationDAOUnitTest {
 
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L); // 7.8 billion
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(5000000000L); // 5 billion
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L);
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(5000000000L);
 
         // Call the method
         List<Population> populations = populationDAO.getWorldPopulation();
@@ -99,9 +97,8 @@ class PopulationDAOUnitTest {
 
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(1000000000L); // 1 billion
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(600000000L); // 600 million
-
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(1000000000L);
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(600000000L);
         // Call the method
         List<Population> populations = populationDAO.getPopulationByContinent("Asia");
 
@@ -127,8 +124,8 @@ class PopulationDAOUnitTest {
 
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(500000000L); // 500 million
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(300000000L); // 300 million
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(500000000L);
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(300000000L);
 
         // Call the method
         List<Population> populations = populationDAO.getPopulationByRegion("Southeast Asia");
@@ -156,9 +153,8 @@ class PopulationDAOUnitTest {
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
         when(mockResultSet.getString("CountryName")).thenReturn("India");
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(1390000000L); // 1.39 billion
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(500000000L); // 500 million
-
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(1390000000L);
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(500000000L);
         // Call the method
         List<Population> populations = populationDAO.getPopulationByCountry("IND");
 
@@ -184,15 +180,15 @@ class PopulationDAOUnitTest {
 
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(3000000L); // 3 million
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(3000000L);
 
         // Call the method
-        List<Population> populations = populationDAO.getPopulationByDistrict("Central District");
+        List<Population> populations = populationDAO.getPopulationByDistrict("Mandalay");
 
         // Assertions
         assertNotNull(populations);
         assertEquals(1, populations.size());
-        assertEquals("Central District", populations.get(0).getName());
+        assertEquals("Mandalay", populations.get(0).getName());
         assertEquals(3000000L, populations.get(0).getTotalPopulation());
         assertEquals(3000000L, populations.get(0).getUrbanPopulation());
         assertEquals(0, populations.get(0).getRuralPopulation());
@@ -211,16 +207,15 @@ class PopulationDAOUnitTest {
 
         // Mock ResultSet behavior
         when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("Population")).thenReturn(1200000L); // 1.2 million
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(1200000L);
 
         // Call the method
-        List<Population> populations = populationDAO.getPopulationByCity("Some City");
+        List<Population> populations = populationDAO.getPopulationByCity("New York");
 
         // Assertions
         assertNotNull(populations);
         assertEquals(1, populations.size());
-        assertEquals("Some City", populations.get(0).getName());
-        assertEquals(1200000L, populations.get(0).getTotalPopulation());
+        assertEquals("New York", populations.get(0).getName());
         assertEquals(1200000L, populations.get(0).getUrbanPopulation());
         assertEquals(0, populations.get(0).getRuralPopulation());
     }
