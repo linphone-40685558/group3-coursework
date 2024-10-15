@@ -81,7 +81,7 @@ public class Population_report {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append("Population of " + populations.get(0).getName().toUpperCase()).append("\r\n\r\n");
+        sb.append("\r\n# ").append("Population of " + title).append("\r\n\r\n");
         sb.append("| Location | Total Population | Urban Population | Rural Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
 
