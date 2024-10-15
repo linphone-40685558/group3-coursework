@@ -104,7 +104,7 @@ public class App {
         String countryCode = "MMR";
         String country = "Myanmar";
         String district = "Mandalay";
-        String cityName = "New York";
+        String cityName = "Myingyan";
         int number = 5;
 
         // Generate Reports
