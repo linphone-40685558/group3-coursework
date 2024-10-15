@@ -3,10 +3,6 @@ package com.napier.gp3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.Connection;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -61,7 +57,7 @@ class PopulationReportUnitTest {
         // Test with null
 //        when(mockPopulationDAO.getWorldPopulation()).thenReturn(null);
 //        populationReport.printWorldPopulation();
-
+//
 //        // Test with empty list
 //        when(mockPopulationDAO.getWorldPopulation()).thenReturn(new ArrayList<>());
 //        populationReport.printWorldPopulation();
