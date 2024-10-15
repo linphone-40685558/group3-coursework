@@ -105,16 +105,15 @@ public class App {
         String countryCode = "MMR";
         String country = "Myanmar";
         String district = "Mandalay";
-        String cityName = "New York";
+        String cityName = "Myingyan";
         int number = 5;
 
         // Generate Reports
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
-        generateLanguageReport(languageReport);
-        generateEachPopulationReport(eachPopulationReport);
         generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
+        generateLanguageReport(languageReport);
 
 
         // Disconnect from the database

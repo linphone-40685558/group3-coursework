@@ -21,7 +21,7 @@ public class Language_report {
      */
     public Language_report(Connection con) {
         this.languageDAO = new LanguageDAO(con);
-        this.numberFormat = NumberFormat.getInstance(Locale.US); // Format numbers with commas
+        this.numberFormat = NumberFormat.getInstance(Locale.US);
     }
 
     /**
@@ -29,7 +29,7 @@ public class Language_report {
      */
     private void printReportHeader() {
         System.out.printf("%-20s %-30s %-30s%n", "Language", "Number of People", "Percentage of World Population");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     /**
@@ -96,12 +96,13 @@ public class Language_report {
                     numberFormat.format(language.getNumberOfPeople()),
                     language.getPopulation_percentage());
         }
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     public void printLanguagesByNumberOfPeople() {
         List<Language> languages = languageDAO.getLanguagesByNumberOfPeople();
         printLanguageReport(languages, "32) NUMBER OF PEOPLE WHO SPEAK IN SELECTED LANGUAGE");
-        outputLanguagesByNumberOfPeopleMarkdown(languages, "Language_Report.md", "32) NUMBER OF PEOPLE WHO SPEAK IN SELECTED LANGUAGE", true);
+        outputLanguagesByNumberOfPeopleMarkdown(languages, "Language_Report.md", "32) NUMBER OF PEOPLE WHO SPEAK IN SELECTED LANGUAGE", false);
     }
 
 }
