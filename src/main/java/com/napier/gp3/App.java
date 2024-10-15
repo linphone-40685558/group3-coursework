@@ -104,14 +104,15 @@ public class App {
         String countryCode = "MMR";
         String country = "Myanmar";
         String district = "Mandalay";
+        String cityName = "Myingyan";
         int number = 5;
 
         // Generate Reports
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
+        generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
         generateLanguageReport(languageReport);
-        generatePopulationReport(populationReport, continent, region, countryCode, district);
 
 
         // Disconnect from the database
@@ -187,13 +188,14 @@ public class App {
      * @param countryCode
      * @param district
      */
-    private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district) {
+    private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district, String cityName) {
         // Call each function and display results for population (1 - 5)
-        populationReport.printWorldPopulation(); // 1. World population
-        populationReport.printPopulationByContinent(continent); // 2. Population by continent
-        populationReport.printPopulationByRegion(region); // 3. Population by region
-        populationReport.printPopulationByCountry(countryCode); // 4. Population by country
-        populationReport.printPopulationByDistrict(district); // 5. Population by district
+        populationReport.printWorldPopulation();
+        populationReport.printPopulationByContinent(continent);
+        populationReport.printPopulationByRegion(region);
+        populationReport.printPopulationByCountry(countryCode);
+        populationReport.printPopulationByDistrict(district);
+        populationReport.printPopulationByCity(cityName);
     }
 
     /**

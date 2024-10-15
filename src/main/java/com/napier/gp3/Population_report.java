@@ -13,7 +13,7 @@ import java.util.Locale;
  * This class handles printing and outputting population reports.
  */
 public class Population_report {
-    private final PopulationDAO populationDAO;
+    public PopulationDAO populationDAO;
     private final NumberFormat numberFormat;
 
     /**
@@ -30,19 +30,22 @@ public class Population_report {
      * Printing report header.
      */
     private void printReportHeader() {
-        System.out.printf("%-40s %-15s %-30s %-15s%n", "Location", "Total Population", "Urban Population", "Rural Population");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
+                "Location", "Total Population", "Urban Population",
+                "Rural Population", "Urban Population (%)", "Rural Population (%)");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
     }
+
 
     /**
      * Printing population data.
      *
      * @param populations List of population data
-     * @param title      Title of the report
+     * @param title       Title of the report
      */
     private void printPopulationReport(List<Population> populations, String title) {
         System.out.println("\n**********************************************");
-        System.out.println("** Population of " + populations.get(0).getName().toUpperCase() + " **");
+        System.out.println("** " + title.toUpperCase() + " **");
         System.out.println("**********************************************");
         printReportHeader();
 
@@ -57,14 +60,17 @@ public class Population_report {
                 continue;
             }
 
-            System.out.printf("%-40s %-15s %-30s %-15s%n",
+            System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
                     population.getName(),
                     numberFormat.format(population.getTotalPopulation()),
                     numberFormat.format(population.getUrbanPopulation()),
-                    numberFormat.format(population.getRuralPopulation()));
+                    numberFormat.format(population.getRuralPopulation()),
+                    String.format("%.2f%%", population.getUrbanPopulationPercentage()),
+                    String.format("%.2f%%", population.getRuralPopulationPercentage()));
         }
-        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
     }
+
 
     /**
      * Outputs the population data to a Markdown file, with an option to append.
@@ -81,11 +87,10 @@ public class Population_report {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append("Population of " + populations.get(0).getName().toUpperCase()).append("\r\n\r\n");
-        sb.append("| Location | Total Population | Urban Population | Rural Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("\r\n# ").append(title.toUpperCase()).append("\r\n\r\n");
+        sb.append("| Location | Total Population | Urban Population | Rural Population | Urban Population Percentage | Rural Population Percentage |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
-        // Loop through the list of populations
         for (Population population : populations) {
             if (population == null) continue;
 
@@ -93,10 +98,12 @@ public class Population_report {
                     .append(population.getName()).append(" | ")
                     .append(numberFormat.format(population.getTotalPopulation())).append(" | ")
                     .append(numberFormat.format(population.getUrbanPopulation())).append(" | ")
-                    .append(numberFormat.format(population.getRuralPopulation())).append(" |\r\n");
+                    .append(numberFormat.format(population.getRuralPopulation())).append(" | ")
+                    .append(String.format("%.2f%%", population.getUrbanPopulationPercentage())).append(" | ")
+                    .append(String.format("%.2f%%", population.getRuralPopulationPercentage())).append(" |\r\n");
         }
 
-        // Write the content to the file
+        // Write content to file
         try {
             new File("./reports/").mkdirs(); // Ensure directory exists
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename), append))) {
@@ -107,13 +114,14 @@ public class Population_report {
         }
     }
 
+
     /**
      * Get total world population report.
      */
     public void printWorldPopulation() {
         List<Population> worldPopulation = populationDAO.getWorldPopulation();
-        printPopulationReport(worldPopulation, "1) Total World Population");
-        outputPopulationMarkdown(worldPopulation, "Population_Report.md", "1) Total World Population", false);
+        printPopulationReport(worldPopulation, "26) Total World Population");
+        outputPopulationMarkdown(worldPopulation, "Population_Report.md", "26) Total World Population", false);
     }
 
     /**
@@ -123,8 +131,8 @@ public class Population_report {
      */
     public void printPopulationByContinent(String continent) {
         List<Population> continentPopulation = populationDAO.getPopulationByContinent(continent);
-        printPopulationReport(continentPopulation, "2) Population in " + continent);
-        outputPopulationMarkdown(continentPopulation, "Population_Report.md", "2) Population in " + continent, true);
+        printPopulationReport(continentPopulation, "27) Total Population in " + continent);
+        outputPopulationMarkdown(continentPopulation, "Population_Report.md", "27) Total Population in " + continent, true);
     }
 
     /**
@@ -134,8 +142,8 @@ public class Population_report {
      */
     public void printPopulationByRegion(String region) {
         List<Population> regionPopulation = populationDAO.getPopulationByRegion(region);
-        printPopulationReport(regionPopulation, "3) Population in " + region);
-        outputPopulationMarkdown(regionPopulation, "Population_Report.md", "3) Population in " + region, true);
+        printPopulationReport(regionPopulation, "28) Total Population in " + region);
+        outputPopulationMarkdown(regionPopulation, "Population_Report.md", "28) Total Population in " + region, true);
     }
 
     /**
@@ -145,8 +153,8 @@ public class Population_report {
      */
     public void printPopulationByCountry(String countryCode) {
         List<Population> countryPopulation = populationDAO.getPopulationByCountry(countryCode);
-        printPopulationReport(countryPopulation, "4) Population in " + countryCode);
-        outputPopulationMarkdown(countryPopulation, "Population_Report.md", "4) Population in " + countryCode, true);
+        printPopulationReport(countryPopulation, "29) Total Population in " + countryCode);
+        outputPopulationMarkdown(countryPopulation, "Population_Report.md", "29) Total Population in " + countryCode, true);
     }
 
     /**
@@ -156,8 +164,8 @@ public class Population_report {
      */
     public void printPopulationByDistrict(String district) {
         List<Population> districtPopulation = populationDAO.getPopulationByDistrict(district);
-        printPopulationReport(districtPopulation, "5) Population in " + district);
-        outputPopulationMarkdown(districtPopulation, "Population_Report.md", "5) Population in " + district, true);
+        printPopulationReport(districtPopulation, "30) Total Population in " + district);
+        outputPopulationMarkdown(districtPopulation, "Population_Report.md", "30) Total Population in " + district, true);
     }
 
     /**
@@ -167,7 +175,7 @@ public class Population_report {
      */
     public void printPopulationByCity(String cityName) {
         List<Population> cityPopulation = populationDAO.getPopulationByCity(cityName);
-        printPopulationReport(cityPopulation, "6) Population in " + cityName);
-        outputPopulationMarkdown(cityPopulation, "Population_Report.md", "6) Population in " + cityName, true);
+        printPopulationReport(cityPopulation, "31) Total Population in " + cityName);
+        outputPopulationMarkdown(cityPopulation, "Population_Report.md", "31) Total Population in " + cityName, true);
     }
 }
