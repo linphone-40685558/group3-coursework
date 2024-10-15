@@ -216,6 +216,7 @@ class PopulationDAOUnitTest {
         assertNotNull(populations);
         assertEquals(1, populations.size());
         assertEquals("New York", populations.get(0).getName());
+        assertEquals(1200000L, populations.get(0).getTotalPopulation());
         assertEquals(1200000L, populations.get(0).getUrbanPopulation());
         assertEquals(0, populations.get(0).getRuralPopulation());
     }
