@@ -111,8 +111,8 @@ public class App {
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
-        generateLanguageReport(languageReport);
         generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
+        generateLanguageReport(languageReport);
 
 
         // Disconnect from the database

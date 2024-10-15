@@ -1,19 +1,37 @@
 package com.napier.gp3;
 
+/**
+ * Population Class
+ */
 public class Population {
 
+    // Attributes
     private String name;
-    private Long totalPopulation;  // Change this to Long
-    private Long urbanPopulation;   // Change this to Long
-    private Long ruralPopulation;    // Change this to Long
+    private Long totalPopulation;
+    private Long urbanPopulation;
+    private Long ruralPopulation;
+    private float urbanPopulationPercentage;
+    private float ruralPopulationPercentage;
 
-    public Population(String name, Long totalPopulation, Long urbanPopulation, Long ruralPopulation) {
+    /**
+     * Constructor
+     * @param name Name will be continent, region, country, etc
+     * @param totalPopulation Total Population
+     * @param urbanPopulation Urban Population
+     * @param ruralPopulation Rural Population
+     * @param urbanPopulationPercentage Urban population percentage
+     * @param ruralPopulationPercentage Rural population percentage
+     */
+    public Population(String name, Long totalPopulation, Long urbanPopulation, Long ruralPopulation, float urbanPopulationPercentage, float ruralPopulationPercentage) {
         this.name = name;
         this.totalPopulation = totalPopulation;
         this.urbanPopulation = urbanPopulation;
         this.ruralPopulation = ruralPopulation;
+        this.urbanPopulationPercentage = urbanPopulationPercentage;
+        this.ruralPopulationPercentage = ruralPopulationPercentage;
     }
 
+    // Getters and setters
     public String getName() {
         return name;
     }
@@ -28,5 +46,21 @@ public class Population {
 
     public Long getRuralPopulation() {
         return ruralPopulation;
+    }
+
+    public float getUrbanPopulationPercentage() {
+        return urbanPopulationPercentage;
+    }
+
+    public void setUrbanPopulationPercentage(float urbanPopulationPercentage) {
+        this.urbanPopulationPercentage = urbanPopulationPercentage;
+    }
+
+    public float getRuralPopulationPercentage() {
+        return ruralPopulationPercentage;
+    }
+
+    public void setRuralPopulationPercentage(float ruralPopulationPercentage) {
+        this.ruralPopulationPercentage = ruralPopulationPercentage;
     }
 }

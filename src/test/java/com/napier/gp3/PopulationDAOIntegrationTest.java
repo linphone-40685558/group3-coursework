@@ -32,15 +32,6 @@ public class PopulationDAOIntegrationTest {
     }
 
     /**
-     * test to get total world population
-     */
-    @Test
-    public void testGetTotalWorldPopulation() {
-        long worldPopulation = populationDAO.getTotalWorldPopulation();
-        assertTrue(worldPopulation > 0, "World population must greater than 0");
-    }
-
-    /**
      * test to get population of the world
      */
     @Test
