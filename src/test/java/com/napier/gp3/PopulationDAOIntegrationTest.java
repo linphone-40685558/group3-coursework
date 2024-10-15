@@ -137,7 +137,7 @@ public class PopulationDAOIntegrationTest {
                 con.close();
             }
         } catch (Exception e) {
-            fail("Failed to close database connection: " + e.getMessage());
+            fail("Failed to tear down the database connection!!: " + e.getMessage());
         }
     }
 }

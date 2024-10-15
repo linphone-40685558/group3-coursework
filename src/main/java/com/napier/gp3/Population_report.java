@@ -13,7 +13,7 @@ import java.util.Locale;
  * This class handles printing and outputting population reports.
  */
 public class Population_report {
-    private final PopulationDAO populationDAO;
+    public PopulationDAO populationDAO;
     private final NumberFormat numberFormat;
 
     /**
