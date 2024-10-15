@@ -27,27 +27,34 @@ body:
       value: "A bug happened!"
     validations:
       required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "Please specify the environment (OS, version, etc.)"
   - type: dropdown
     id: version
     attributes:
       label: Version
-      description: What version of our software are you running?
+      description: What version of JDK is applied in the development?
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+        - latest (Default)
+        - JDK 20
+        - JDK 17
+        - JDK 11
       default: 0
     validations:
       required: true
   - type: dropdown
     id: browsers
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: Where are you seeing the problem on?
       multiple: true
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+        - Console
+        - Terminal
+        - Browsers
+        - Others
   - type: textarea
     id: logs
     attributes:
