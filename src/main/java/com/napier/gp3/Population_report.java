@@ -13,7 +13,7 @@ import java.util.Locale;
  * This class handles printing and outputting population reports.
  */
 public class Population_report {
-    private final PopulationDAO populationDAO;
+    public PopulationDAO populationDAO;
     private final NumberFormat numberFormat;
 
     /**
@@ -42,7 +42,7 @@ public class Population_report {
      */
     private void printPopulationReport(List<Population> populations, String title) {
         System.out.println("\n**********************************************");
-        System.out.println("** Population of " + populations.get(0).getName().toUpperCase() + " **");
+        System.out.println("** Population of " + title + " **");
         System.out.println("**********************************************");
         printReportHeader();
 
@@ -81,7 +81,7 @@ public class Population_report {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append("Population of " + populations.get(0).getName().toUpperCase()).append("\r\n\r\n");
+        sb.append("\r\n# ").append("Population of " + title).append("\r\n\r\n");
         sb.append("| Location | Total Population | Urban Population | Rural Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
 

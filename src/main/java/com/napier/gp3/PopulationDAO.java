@@ -167,6 +167,7 @@ public class PopulationDAO {
         }
         return populations;
     }
+
     /** Method to get total population of a district
      *
      * @param district
@@ -174,7 +175,6 @@ public class PopulationDAO {
      */
     public List<Population> getPopulationByDistrict(String district) {
         List<Population> populations = new ArrayList<>();
-        long worldPopulation = getTotalWorldPopulation();
         try {
             String strSelect = "SELECT SUM(city.Population) AS UrbanPopulation " +
                     "FROM city WHERE city.District = ?";
@@ -185,7 +185,8 @@ public class PopulationDAO {
             if (rset.next()) {
                 long urbanPopulation = rset.getLong("UrbanPopulation");
                 long totalPopulation = urbanPopulation;
-                long ruralPopulation = 0;
+                long ruralPopulation = totalPopulation - urbanPopulation;
+
                 populations.add(new Population(
                         district,
                         totalPopulation,
@@ -199,7 +200,6 @@ public class PopulationDAO {
         return populations;
     }
 
-
     /** Method to get total population of a city
      *
      * @param cityName
@@ -207,17 +207,18 @@ public class PopulationDAO {
      */
     public List<Population> getPopulationByCity(String cityName) {
         List<Population> populations = new ArrayList<>();
-        long worldPopulation = getTotalWorldPopulation();
         try {
-            String strSelect = "SELECT Population FROM city WHERE city.Name = ?";
+            String strSelect = "SELECT Population AS UrbanPopulation " +
+                    "FROM city WHERE city.Name = ?";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             pstmt.setString(1, cityName);
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                long urbanPopulation = rset.getLong("Population");
+                long urbanPopulation = rset.getLong("UrbanPopulation");
                 long totalPopulation = urbanPopulation;
-                long ruralPopulation = 0;
+                long ruralPopulation = totalPopulation - urbanPopulation;
+
                 populations.add(new Population(
                         cityName,
                         totalPopulation,
