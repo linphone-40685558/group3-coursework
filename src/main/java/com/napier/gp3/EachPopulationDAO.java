@@ -33,13 +33,10 @@ public class EachPopulationDAO {
                 long urbanPopulation = rset.getLong("UrbanPopulation");
                 long ruralPopulation = totalPopulation - urbanPopulation;
 
-                // Add to your list of populations
-                populations.add(new Population(
-                        continent,
-                        totalPopulation,
-                        urbanPopulation,
-                        ruralPopulation
-                ));
+                // Percentage calculation
+                float urbanPercentage = ((float) urbanPopulation / totalPopulation) * 100;
+                float ruralPercentage = ((float) ruralPopulation / totalPopulation) * 100;
+                populations.add(new Population("World", totalPopulation, urbanPopulation, ruralPopulation, urbanPercentage, ruralPercentage));
             }
         } catch (SQLException e) {
             System.out.println("Failed to get population by continent: " + e.getMessage());

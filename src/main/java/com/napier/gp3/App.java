@@ -1,7 +1,8 @@
 package com.napier.gp3;
 
-import java.sql.*;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * The App class is to connect the MySQL database server from world.sql
@@ -112,12 +113,13 @@ public class App {
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
+        generateEachPopulationReport(eachPopulationReport);
         generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
         generateLanguageReport(languageReport);
 
 
         // Disconnect from the database
-         conn.disconnect_function();
+        conn.disconnect_function();
     }
 
     /**
