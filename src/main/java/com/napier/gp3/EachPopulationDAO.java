@@ -12,6 +12,7 @@ public class EachPopulationDAO {
 
     /**
      * Get population for every continent
+     *
      * @return
      */
     public List<Population> getPopulationByEachContinent() {
@@ -60,6 +61,12 @@ public class EachPopulationDAO {
         }
         return populations;
     }
+
+    /**
+     * get population for every region
+     *
+     * @return
+     */
 
     public List<Population> getPopulationByEachRegion() {
         List<Population> populations = new ArrayList<>();

@@ -23,7 +23,7 @@ public class EachPopulation_report {
      * Printing report header of the table on console
      */
     private void printReportHeader() {
-        System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
+        System.out.printf("%-25s %-20s %-20s %-20s %-25s %-25s%n",
                 "Location", "Total Population", "Urban Population",
                 "Rural Population", "Urban Population (%)", "Rural Population (%)");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
@@ -36,9 +36,9 @@ public class EachPopulation_report {
      * @param title      Title of the report
      */
     private void printEachPopulationReport(List<Population> populations, String title) {
-        System.out.println("\n**********************************************");
+        System.out.println("\n***************************************");
         System.out.println("** " + title.toUpperCase() + " **");
-        System.out.println("**********************************************");
+        System.out.println("*****************************************");
         printReportHeader();
 
         if (populations == null || populations.isEmpty()) {
@@ -52,7 +52,7 @@ public class EachPopulation_report {
                 continue;
             }
 
-            System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
+            System.out.printf("%-25s %-20s %-20s %-20s %-25s %-25s%n",
                     population.getName(),
                     numberFormat.format(population.getTotalPopulation()),
                     numberFormat.format(population.getUrbanPopulation()),
@@ -115,5 +115,17 @@ public class EachPopulation_report {
         List<Population> eachContinentPopulation = eachPopulationDAO.getPopulationByEachContinent();
         printEachPopulationReport(eachContinentPopulation, "23) Population For Each Continent");
         outputEachPopulationMarkdown(eachContinentPopulation, "Population_Report.md", "23) Population For Each Continent", true);
+    }
+
+    /**
+     *
+     * Get population for every region from SQL query
+     *
+     * there is no param
+     */
+    public void printPopulationByEachRegion() {
+        List<Population> eachRegionPopulation = eachPopulationDAO.getPopulationByEachRegion();
+        printEachPopulationReport(eachRegionPopulation, "24) Population For Each Region");
+        outputEachPopulationMarkdown(eachRegionPopulation, "Population_Report.md", "24) Population For Each Region", true);
     }
 }
