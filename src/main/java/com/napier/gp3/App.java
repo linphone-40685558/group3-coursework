@@ -192,7 +192,7 @@ public class App {
      * @param district
      */
     private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district, String cityName) {
-        // Call each function and display results for population (1 - 5)
+        // Call each function and display results for population (26 - 31)
         populationReport.printWorldPopulation();
         populationReport.printPopulationByContinent(continent);
         populationReport.printPopulationByRegion(region);
@@ -202,9 +202,10 @@ public class App {
     }
 
     private static void generateEachPopulationReport(EachPopulation_report eachpopulationReport) {
-        // Call each function and display results for population (1 - )
+        // Call each function and display results for population (23 - 25)
         eachpopulationReport.printPopulationByEachContinent();
         eachpopulationReport.printPopulationByEachRegion();
+        eachpopulationReport.printPopulationByEachCountry();
     }
 
     /**
