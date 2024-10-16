@@ -61,6 +61,8 @@ class PopulationDAOUnitTest {
         assertEquals(7800000000L, populations.get(0).getTotalPopulation());
         assertEquals(5000000000L, populations.get(0).getUrbanPopulation());
         assertEquals(2800000000L, populations.get(0).getRuralPopulation());
+        assertEquals(64.1f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(35.9f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -88,6 +90,8 @@ class PopulationDAOUnitTest {
         assertEquals(1000000000L, populations.get(0).getTotalPopulation());
         assertEquals(600000000L, populations.get(0).getUrbanPopulation());
         assertEquals(400000000L, populations.get(0).getRuralPopulation());
+        assertEquals(60.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(40.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -116,6 +120,8 @@ class PopulationDAOUnitTest {
         assertEquals(500000000L, populations.get(0).getTotalPopulation());
         assertEquals(300000000L, populations.get(0).getUrbanPopulation());
         assertEquals(200000000L, populations.get(0).getRuralPopulation());
+        assertEquals(60.0f, populations.get(0).getUrbanPercentage(), 0.1f);
+        assertEquals(40.0f, populations.get(0).getRuralPercentage(), 0.1f);
     }
 
     /**
@@ -144,6 +150,8 @@ class PopulationDAOUnitTest {
         assertEquals(1390000000L, populations.get(0).getTotalPopulation());
         assertEquals(500000000L, populations.get(0).getUrbanPopulation());
         assertEquals(890000000L, populations.get(0).getRuralPopulation());
+        assertEquals(36.0f, populations.get(0).getUrbanPercentage(), 0.1f);
+        assertEquals(64.0f, populations.get(0).getRuralPercentage(), 0.1f);
     }
 
     /**
