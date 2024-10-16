@@ -18,25 +18,38 @@ public class EachPopulationDAO {
         List<Population> populations = new ArrayList<>();
 
         try {
-            String strSelect = "SELECT SUM(country.Population) AS TotalPopulation, country.Continent AS Continent," +
-                    " (SELECT SUM(city.Population) FROM city JOIN country ON city.CountryCode = country.Code WHERE country.Continent = Continent) AS UrbanPopulation ) " +
-                    " FROM country GROUP BY country.Continent";
+            // first query for total population
+            String strSelect1 = "SELECT country.Continent AS continent, SUM(country.Population) AS TotalPopulation " +
+                    "FROM country GROUP BY country.Continent";
 
-            PreparedStatement pstmt = con.prepareStatement(strSelect);
-            ResultSet rset = pstmt.executeQuery();
+            PreparedStatement pstmt1 = con.prepareStatement(strSelect1);
+            ResultSet rset1 = pstmt1.executeQuery();
 
-            // Iterate over each continent's result
-            while (rset.next()) {
-                String continent = rset.getString("Continent");
-                long totalPopulation = rset.getLong("TotalPopulation");
-                long urbanPopulation = rset.getLong("UrbanPopulation");
-                long ruralPopulation = totalPopulation - urbanPopulation;
+            // Iterate over total population each continent's result
+            while (rset1.next()) {
+                String continent = rset1.getString("Continent");
+                long totalPopulation = rset1.getLong("TotalPopulation");
 
+                long urbanPopulation = 0;
                 float urbanPercentage = 0;
                 float ruralPercentage = 0;
 
+                // second query for urban population
+                String strSelect2 = "SELECT SUM(city.Population) AS UrbanPopulation FROM city JOIN country ON city.CountryCode = country.Code WHERE country.Continent = ? ";
+
+                PreparedStatement pstmt2 = con.prepareStatement(strSelect2);
+                pstmt2.setString(1, continent);
+                ResultSet rset2 = pstmt2.executeQuery();
+
+                if (rset2.next()) {
+                    urbanPopulation = rset2.getLong("UrbanPopulation");
+                }
+
+                // rural population each continent's result
+                long ruralPopulation = totalPopulation - urbanPopulation;
+
+                // Percentage calculation for urban population and rural population
                 if (totalPopulation > 0) {
-                    // Percentage calculation for urban population and rural population
                     urbanPercentage = ((float) urbanPopulation / totalPopulation) * 100;
                     ruralPercentage = ((float) ruralPopulation / totalPopulation) * 100;
                 }
@@ -51,3 +64,6 @@ public class EachPopulationDAO {
 
 
 }
+
+
+
