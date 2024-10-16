@@ -18,10 +18,10 @@ public class EachPopulationDAO {
         List<Population> populations = new ArrayList<>();
 
         try {
-            String strSelect = "SELECT country.Continent AS Continent, " +
-                    "SUM(country.Population) AS TotalPopulation, " +
-                    "(SELECT SUM(city.Population) FROM city JOIN country ON city.CountryCode = country.Code WHERE country.Continent = Continent) AS UrbanPopulation " +
-                    "FROM country GROUP BY country.Continent";
+            String strSelect = "SELECT country.Continent AS Continent, SUM(country.Population) AS TotalPopulation, SUM(city.Population) AS UrbanPopulation" +
+                    " FROM country " +
+                    " LEFT JOIN city ON country.Code = city.CountryCode\n" +
+                    " GROUP BY country.Continent";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             ResultSet rset = pstmt.executeQuery();
@@ -36,13 +36,14 @@ public class EachPopulationDAO {
                 // Percentage calculation
                 float urbanPercentage = ((float) urbanPopulation / totalPopulation) * 100;
                 float ruralPercentage = ((float) ruralPopulation / totalPopulation) * 100;
-                populations.add(new Population("World", totalPopulation, urbanPopulation, ruralPopulation, urbanPercentage, ruralPercentage));
+                populations.add(new Population(continent, totalPopulation, urbanPopulation, ruralPopulation, urbanPercentage, ruralPercentage));
             }
         } catch (SQLException e) {
             System.out.println("Failed to get population by continent: " + e.getMessage());
         }
         return populations;
     }
+
 
 
 }

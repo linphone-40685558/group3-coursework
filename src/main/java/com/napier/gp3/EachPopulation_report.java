@@ -20,23 +20,24 @@ public class EachPopulation_report {
     }
 
     /**
-     * Printing report header.
+     * Printing report header of the table on console
      */
     private void printReportHeader() {
-        System.out.printf("%-40s %-15s %-30s %-15s%n", "Location", "Total Population", "Urban Population", "Rural Population");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
+                "Location", "Total Population", "Urban Population",
+                "Rural Population", "Urban Population (%)", "Rural Population (%)");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
     }
 
-
     /**
-     * Printing population data.
+     * Printing population data on console
      *
      * @param populations List of population data
      * @param title      Title of the report
      */
     private void printEachPopulationReport(List<Population> populations, String title) {
         System.out.println("\n**********************************************");
-        System.out.println("** Population " + title + " **");
+        System.out.println("** " + title.toUpperCase() + " **");
         System.out.println("**********************************************");
         printReportHeader();
 
@@ -51,11 +52,14 @@ public class EachPopulation_report {
                 continue;
             }
 
-            System.out.printf("%-40s %-15s %-30s %-15s%n",
+            System.out.printf("%-15s %-20s %-20s %-20s %-25s %-25s%n",
                     population.getName(),
                     numberFormat.format(population.getTotalPopulation()),
                     numberFormat.format(population.getUrbanPopulation()),
-                    numberFormat.format(population.getRuralPopulation()));
+                    numberFormat.format(population.getRuralPopulation()),
+                    String.format("%.2f%%", population.getUrbanPopulationPercentage()),
+                    String.format("%.2f%%", population.getRuralPopulationPercentage()));
+
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
     }
@@ -103,13 +107,13 @@ public class EachPopulation_report {
 
     /**
      *
-     * Get population for every continent
+     * Get population for every continent from SQL query
      *
      * there is no param
      */
     public void printPopulationByEachContinent() {
         List<Population> eachContinentPopulation = eachPopulationDAO.getPopulationByEachContinent();
-        printEachPopulationReport(eachContinentPopulation, "1) Population For Each Continent");
-        outputEachPopulationMarkdown(eachContinentPopulation, "Population_Report.md", "1) Population For Each Continent ", true);
+        printEachPopulationReport(eachContinentPopulation, "23) Population For Each Continent");
+        outputEachPopulationMarkdown(eachContinentPopulation, "Population_Report.md", "23) Population For Each Continent", true);
     }
 }
