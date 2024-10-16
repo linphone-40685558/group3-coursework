@@ -1,50 +1,70 @@
 package com.napier.gp3;
 
 import org.junit.jupiter.api.*;
+import org.mockito.Mockito;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EachPopulationDAOUnitTest {
-    static Connection con;
-    static EachPopulationDAO eachPopulationDAO;
 
-    @BeforeAll
-    void init(){
-        // Initialize the database connection
-        try {
-            App conn = new App();
-            conn.connect_function("localhost:33060", 5000);
-            con = conn.getCon();
-            assertNotNull(con, "Database connection can't be null");
-            eachPopulationDAO = new EachPopulationDAO(con);
-        } catch (Exception e) {
-            fail("Initializing the database connection Fail!!: " + e.getMessage());
-        }
-    }
-
-    @BeforeEach
-    void setUp(){
-        // Initialize EachPopulationDAO with the connection
-        eachPopulationDAO = new EachPopulationDAO(con);
-    }
-
+    private Connection mockConnection;
+    private EachPopulationDAO eachPopulationDAO;
+    private PreparedStatement mockPreparedStatement;
+    private ResultSet mockResultSet;
 
     /**
-     * test to get population of the world
+     * setup for testing
+     *
+     * @throws SQLException
+     */
+    @BeforeEach
+    void setUp() throws SQLException {
+        // mock the connection, PreparedStatement, and ResultSet
+        mockConnection = mock(Connection.class);
+        mockPreparedStatement = mock(PreparedStatement.class);
+        mockResultSet = mock(ResultSet.class);
+        // Initialize EachPopulationDAO with the connection
+        eachPopulationDAO = new EachPopulationDAO(mockConnection);
+    }
+
+    /**
+     * test to get population for each continent
+     *
+     * @throws SQLException
      */
     @Test
-    public void testGetPopulationByEachContinent() {
+    public void testGetPopulationByEachContinent() throws SQLException {
+        // Define the SQL query result
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Mock ResultSet behavior for multiple rows
+        when(mockResultSet.next()).thenReturn(true, true, false); // Two rows, then stop
+
+        // Mock the values that the ResultSet will return
+        when(mockResultSet.getString("Continent")).thenReturn("Asia", "Europe");
+        when(mockResultSet.getLong("TotalPopulation")).thenReturn(4600000000L, 740000000L);
+        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(2300000000L, 567000000L);
+
+        // Call the method to test
         List<Population> populations = eachPopulationDAO.getPopulationByEachContinent();
+
+        // Assertions
         assertNotNull(populations);
         assertFalse(populations.isEmpty(), "Population for each continent list can't be empty");
+        assertEquals(2, populations.size());
 
-        Population firstcontinentpopulation = populations.get(0);
-        assertEquals("North America", firstcontinentpopulation.getName(), "Name must be 'World'");
-        assertTrue(firstcontinentpopulation.getTotalPopulation() > 0, "Total population must greater than 0");
+
+        // Verify that the executeQuery method was called once
+        verify(mockPreparedStatement).executeQuery();
     }
 
 }
