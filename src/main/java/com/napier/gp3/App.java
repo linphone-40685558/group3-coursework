@@ -202,7 +202,7 @@ public class App {
     }
 
     private static void generateEachPopulationReport(EachPopulation_report eachpopulationReport) {
-        // Call each function and display results for population (23 - 25)
+        // Call each function and display results for each population (23 - 25)
         eachpopulationReport.printPopulationByEachContinent();
         eachpopulationReport.printPopulationByEachRegion();
         eachpopulationReport.printPopulationByEachCountry();
