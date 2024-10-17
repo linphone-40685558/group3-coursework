@@ -11,60 +11,86 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EachPopulationDAOUnitTest {
 
     private Connection mockConnection;
     private EachPopulationDAO eachPopulationDAO;
-    private PreparedStatement mockPreparedStatement;
-    private ResultSet mockResultSet;
+    private PreparedStatement mockPreparedStatement1;
+    private PreparedStatement mockPreparedStatement2;
+    private ResultSet mockResultSet1;
+    private ResultSet mockResultSet2;
 
-    /**
-     * setup for testing
-     *
-     * @throws SQLException
-     */
     @BeforeEach
-    void setUp() throws SQLException {
-        // mock the connection, PreparedStatement, and ResultSet
+    public void setUp() throws SQLException {
+        // Mock the database connection, prepared statement, and result set
         mockConnection = mock(Connection.class);
-        mockPreparedStatement = mock(PreparedStatement.class);
-        mockResultSet = mock(ResultSet.class);
-        // Initialize EachPopulationDAO with the connection
+        mockPreparedStatement1 = mock(PreparedStatement.class);
+        mockPreparedStatement2 = mock(PreparedStatement.class);
+        mockResultSet1 = mock(ResultSet.class);
+        mockResultSet2 = mock(ResultSet.class);
+
+        // Initialize the eachPopulationDAO
         eachPopulationDAO = new EachPopulationDAO(mockConnection);
     }
 
     /**
-     * test to get population for each continent
+     * test population for every continent
      *
      * @throws SQLException
      */
     @Test
     public void testGetPopulationByEachContinent() throws SQLException {
-        // Define the SQL query result
-        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+        // Mock the first query (total population per continent)
+        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement1);
+        when(mockPreparedStatement1.executeQuery()).thenReturn(mockResultSet1);
+        when(mockResultSet1.next()).thenReturn(true, true, false); // Two rows, then stop
 
-        // Mock ResultSet behavior for multiple rows
-        when(mockResultSet.next()).thenReturn(true, true, false); // Two rows, then stop
+        // Mock data for the first query
+        when(mockResultSet1.getString("Continent")).thenReturn("Asia").thenReturn("Europe"); // continent
+        when(mockResultSet1.getLong("TotalPopulation")).thenReturn(4600000000L).thenReturn(740000000L); // total population
 
-        // Mock the values that the ResultSet will return
-        when(mockResultSet.getString("Continent")).thenReturn("Asia", "Europe");
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(4600000000L, 740000000L);
-        when(mockResultSet.getLong("UrbanPopulation")).thenReturn(2300000000L, 567000000L);
+        // Mock the second query (urban population per continent)
+        when(mockConnection.prepareStatement(Mockito.contains("SUM(city.Population)"))).thenReturn(mockPreparedStatement2);
+        when(mockPreparedStatement2.executeQuery()).thenReturn(mockResultSet2);
+        when(mockResultSet2.next()).thenReturn(true, true, false); // Two rows, then stop
+
+        // Mock data for the second query
+        when(mockResultSet2.getLong("UrbanPopulation")).thenReturn(2300000000L).thenReturn(500000000L); // urban population
 
         // Call the method to test
         List<Population> populations = eachPopulationDAO.getPopulationByEachContinent();
 
         // Assertions
         assertNotNull(populations);
-        assertFalse(populations.isEmpty(), "Population for each continent list can't be empty");
-        assertEquals(2, populations.size());
+        assertEquals(2, populations.size()); // Two continents
 
+        // Verify first continent (Asia)
+        Population asiaPopulation = populations.get(0);
+        assertEquals("Asia", asiaPopulation.getName());
+        assertEquals(4600000000L, asiaPopulation.getTotalPopulation());
+        assertEquals(2300000000L, asiaPopulation.getUrbanPopulation());
+        assertEquals(2300000000L, asiaPopulation.getRuralPopulation());
+        assertEquals(50.0f, asiaPopulation.getUrbanPopulationPercentage());
+        assertEquals(50.0f, asiaPopulation.getRuralPopulationPercentage());
 
-        // Verify that the executeQuery method was called once
-        verify(mockPreparedStatement).executeQuery();
+        // Verify second continent (Europe)
+        Population europePopulation = populations.get(1);
+        assertEquals("Europe", europePopulation.getName());
+        assertEquals(740000000L, europePopulation.getTotalPopulation());
+        assertEquals(500000000L, europePopulation.getUrbanPopulation());
+        assertEquals(240000000L, europePopulation.getRuralPopulation());
+        assertEquals(67.57f, europePopulation.getUrbanPopulationPercentage(), 0.01);
+        assertEquals(32.43f, europePopulation.getRuralPopulationPercentage(), 0.01);
+
+        // Verify execution of SQL queries
+        verify(mockPreparedStatement1).executeQuery();
+        verify(mockPreparedStatement2, times(2)).executeQuery(); // Called twice for two continents
     }
 
 }
+
