@@ -69,4 +69,44 @@ public class EachPopulationReportUnitTest {
         eachPopulationReport.printPopulationByEachContinent();
     }
 
+    /**
+     * Test printing population per region
+     */
+    @Test
+    void testPrintPopulationByEachRegion() {
+        // Prepare mock data
+        List<Population> mockPopulationByEachRegion = new ArrayList<>();
+        mockPopulationByEachRegion.add(new Population("Eastern Europe", 4000000L, 3900000L, 100000L, (3900000L / 4000000f) * 100, (100000L / 4000000f) * 100));
+
+        // Define behavior for the mock DAO
+        when(mockEachPopulationDAO.getPopulationByEachRegion()).thenReturn(mockPopulationByEachRegion);
+
+        // Call the method
+        eachPopulationReport.printPopulationByEachRegion();
+
+        // Verify output methods were called
+        verify(mockEachPopulationDAO).getPopulationByEachRegion();
+    }
+
+    /**
+     * Test printing population per region with null, empty list, and null members in the list.
+     */
+    @Test
+    void testPrintPopulationByEachRegion_NullEmptyAndNullMembers() {
+        // Test with null
+        when(mockEachPopulationDAO.getPopulationByEachRegion()).thenReturn(null);
+        eachPopulationReport.printPopulationByEachRegion();
+
+        // Test with empty list
+        when(mockEachPopulationDAO.getPopulationByEachRegion()).thenReturn(new ArrayList<>());
+        eachPopulationReport.printPopulationByEachRegion();
+
+        // Test with null member
+        List<Population> mockPopulationsWithNullMembers = new ArrayList<>();
+        mockPopulationsWithNullMembers.add(new Population("Southeast Asia", 4000000L, 3900000L, 100000L, (3900000L / 4000000f) * 100, (100000L / 4000000f) * 100));
+        mockPopulationsWithNullMembers.add(null);
+        when(mockEachPopulationDAO.getPopulationByEachRegion()).thenReturn(mockPopulationsWithNullMembers);
+        eachPopulationReport.printPopulationByEachRegion();
+    }
+
 }
