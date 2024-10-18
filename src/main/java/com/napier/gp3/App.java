@@ -15,15 +15,6 @@ public class App {
     private static Connection con = null;
 
     /**
-     * Connection object
-     *
-     * @return Connection object
-     */
-    public Connection getCon() {
-        return con;
-    }
-
-    /**
      * Connect function to make a connection
      */
     public static void connect_function(String location, int delay) {
