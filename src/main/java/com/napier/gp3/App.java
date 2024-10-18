@@ -1,7 +1,8 @@
 package com.napier.gp3;
 
-import java.sql.*;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * The App class is to connect the MySQL database server from world.sql
@@ -96,6 +97,7 @@ public class App {
         City_report cityReport = new City_report(conn.con);
         Capital_report capitalReport = new Capital_report(conn.con);
         Language_report languageReport = new Language_report(conn.con);
+        EachPopulation_report eachPopulationReport = new EachPopulation_report(conn.con);
         Population_report populationReport = new Population_report(conn.con);
 
         // Parameter values for easy changes
@@ -111,12 +113,13 @@ public class App {
         generateCountryReport(countryReport, continent, region, number);
         generateCityReport(cityReport, continent, region, countryCode, district, number);
         generateCapitalCityReport(capitalReport, continent, region, countryCode, district, number);
-        generateLanguageReport(languageReport);
+        generateEachPopulationReport(eachPopulationReport);
         generatePopulationReport(populationReport, continent, region, countryCode, district, cityName);
+        generateLanguageReport(languageReport);
 
 
         // Disconnect from the database
-         conn.disconnect_function();
+        conn.disconnect_function();
     }
 
     /**
@@ -189,13 +192,20 @@ public class App {
      * @param district
      */
     private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district, String cityName) {
-        // Call each function and display results for population (1 - 5)
+        // Call each function and display results for population (26 - 31)
         populationReport.printWorldPopulation();
         populationReport.printPopulationByContinent(continent);
         populationReport.printPopulationByRegion(region);
         populationReport.printPopulationByCountry(countryCode);
         populationReport.printPopulationByDistrict(district);
         populationReport.printPopulationByCity(cityName);
+    }
+
+    private static void generateEachPopulationReport(EachPopulation_report eachpopulationReport) {
+        // Call each function and display results for each population (23 - 25)
+        eachpopulationReport.printPopulationByEachContinent();
+        eachpopulationReport.printPopulationByEachRegion();
+        eachpopulationReport.printPopulationByEachCountry();
     }
 
     /**

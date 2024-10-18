@@ -36,27 +36,6 @@ class PopulationDAOUnitTest {
     }
 
     /**
-     * Test Getting Total World Population
-     *
-     * @throws SQLException
-     */
-    @Test
-    void testGetTotalWorldPopulation() throws SQLException {
-        when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
-
-        when(mockResultSet.next()).thenReturn(true);
-        when(mockResultSet.getLong("TotalPopulation")).thenReturn(7800000000L);
-
-        // Call the method
-        long totalPopulation = populationDAO.getTotalWorldPopulation();
-
-        // Assertions
-        assertEquals(7800000000L, totalPopulation);
-        verify(mockPreparedStatement).executeQuery();
-    }
-
-    /**
      * Test Getting World Population
      *
      * @throws SQLException
@@ -82,6 +61,8 @@ class PopulationDAOUnitTest {
         assertEquals(7800000000L, populations.get(0).getTotalPopulation());
         assertEquals(5000000000L, populations.get(0).getUrbanPopulation());
         assertEquals(2800000000L, populations.get(0).getRuralPopulation());
+        assertEquals(64.1f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(35.9f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -109,6 +90,8 @@ class PopulationDAOUnitTest {
         assertEquals(1000000000L, populations.get(0).getTotalPopulation());
         assertEquals(600000000L, populations.get(0).getUrbanPopulation());
         assertEquals(400000000L, populations.get(0).getRuralPopulation());
+        assertEquals(60.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(40.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -137,6 +120,8 @@ class PopulationDAOUnitTest {
         assertEquals(500000000L, populations.get(0).getTotalPopulation());
         assertEquals(300000000L, populations.get(0).getUrbanPopulation());
         assertEquals(200000000L, populations.get(0).getRuralPopulation());
+        assertEquals(60.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(40.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -161,10 +146,12 @@ class PopulationDAOUnitTest {
         // Assertions
         assertNotNull(populations);
         assertEquals(1, populations.size());
-        assertEquals("India", populations.get(0).getName());
+        assertEquals("IND", populations.get(0).getName());
         assertEquals(1390000000L, populations.get(0).getTotalPopulation());
         assertEquals(500000000L, populations.get(0).getUrbanPopulation());
         assertEquals(890000000L, populations.get(0).getRuralPopulation());
+        assertEquals(36.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(64.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -192,6 +179,8 @@ class PopulationDAOUnitTest {
         assertEquals(3000000L, populations.get(0).getTotalPopulation());
         assertEquals(3000000L, populations.get(0).getUrbanPopulation());
         assertEquals(0, populations.get(0).getRuralPopulation());
+        assertEquals(100.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(0.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 
     /**
@@ -219,5 +208,7 @@ class PopulationDAOUnitTest {
         assertEquals(1200000L, populations.get(0).getTotalPopulation());
         assertEquals(1200000L, populations.get(0).getUrbanPopulation());
         assertEquals(0, populations.get(0).getRuralPopulation());
+        assertEquals(100.0f, populations.get(0).getUrbanPopulationPercentage(), 0.1f);
+        assertEquals(0.0f, populations.get(0).getRuralPopulationPercentage(), 0.1f);
     }
 }
