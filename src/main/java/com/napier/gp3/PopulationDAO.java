@@ -38,8 +38,6 @@ public class PopulationDAO {
                 long urbanPopulation = rset.getLong("UrbanPopulation");
                 long ruralPopulation = totalPopulation - urbanPopulation;
 
-                System.out.println();
-
                 // Percentage calculation
                 float urbanPercentage = ((float) urbanPopulation / totalPopulation) * 100;
                 float ruralPercentage = ((float) ruralPopulation / totalPopulation) * 100;
