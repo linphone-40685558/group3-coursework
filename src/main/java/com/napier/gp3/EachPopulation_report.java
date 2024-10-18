@@ -23,10 +23,10 @@ public class EachPopulation_report {
      * Printing report header of the table on console
      */
     private void printReportHeader() {
-        System.out.printf("%-30s %-20s %-20s %-20s %-25s %-25s%n",
+        System.out.printf("%-45s %-20s %-20s %-20s %-25s %-25s%n",
                 "Location", "Total Population", "Urban Population",
                 "Rural Population", "Urban Population (%)", "Rural Population (%)");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     /**
@@ -52,7 +52,7 @@ public class EachPopulation_report {
                 continue;
             }
 
-            System.out.printf("%-30s %-20s %-20s %-20s %-25s %-25s%n",
+            System.out.printf("%-45s %-20s %-20s %-20s %-25s %-25s%n",
                     population.getName(),
                     numberFormat.format(population.getTotalPopulation()),
                     numberFormat.format(population.getUrbanPopulation()),
@@ -61,7 +61,7 @@ public class EachPopulation_report {
                     String.format("%.2f%%", population.getRuralPopulationPercentage()));
 
         }
-        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     /**

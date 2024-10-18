@@ -104,7 +104,6 @@ public class App {
         String continent = "Asia";
         String region = "Southeast Asia";
         String countryCode = "MMR";
-        String country = "Myanmar";
         String district = "Mandalay";
         String cityName = "Myingyan";
         int number = 5;
@@ -185,11 +184,11 @@ public class App {
     /**
      * Generates the population report
      *
-     * @param populationReport
-     * @param continent
-     * @param region
-     * @param countryCode
-     * @param district
+     * @param populationReport Object
+     * @param continent Continent name
+     * @param region Region name
+     * @param countryCode Country code
+     * @param district District name
      */
     private static void generatePopulationReport(Population_report populationReport, String continent, String region, String countryCode, String district, String cityName) {
         // Call each function and display results for population (26 - 31)
