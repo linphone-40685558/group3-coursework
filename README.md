@@ -27,3 +27,4 @@ Key features include:
 - **Java** (JDK 17+)
 - **Maven**
 - **Docker**
+- **Some Text**
