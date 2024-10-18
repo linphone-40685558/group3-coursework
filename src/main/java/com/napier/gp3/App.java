@@ -90,13 +90,11 @@ public class App {
         return population;
     }
 
-    // Define the method to handle requests to "/hello"
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello World";
     }
 
-    // Expose the endpoint directly in App.java
     @GetMapping("/countries")
     public List<Country> getCountriesByPopulation() {
         System.out.println("Getting countries by population");
