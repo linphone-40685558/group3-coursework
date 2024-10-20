@@ -104,3 +104,13 @@ Each evidence is shown as below:
 | 32 | Number of people who speak the following languages, ranked from greatest to smallest, including percentage of the world population: Chinese, English, Hindi, Spanish, Arabic. | Yes | ![Image](./evidences/32.png) |
 
 ---
+
+# Individual Contribution
+
+| Matric No.      | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
+|-----------------|---------------|---------------|---------------|---------------|-------------------|
+| 40685558 (LPMZ) | 26%           | 29%           | 30%           | 26.5%         | 26.5%             |
+| 40685545 (EEHS) | 26%           | 29%           | 30%           | 26.5%         | 26.5%             |
+| 40685540 (ACM)  | 26%           | 29%           | 30%           | 26.5%         | 26.5%             |
+| 40685542 (AKP)  | 22%           | 13%           | 10%           | 20.5%         | 20.5%             |
+| **Total**       | **100%**      | **100%**      | **100%**      | **100%**      | **100%**          |

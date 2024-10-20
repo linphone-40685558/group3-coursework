@@ -4,16 +4,6 @@ This Code of Conduct outlines the professional standards and expected behavior f
 including developers, the product owner, the team lead, and stakeholders. It aims to create an environment of
 collaboration, morality, and transparency to ensure each participant can contribute to the project's success.
 
-# Individual Contribution
-
-| Matric No.      | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
-|-----------------|---------------|---------------|---------------|---------------|-------------------|
-| 40685558 (LPMZ) | 26%           | 29%           |  30%          |  26.5%        |                   |
-| 40685545 (EEHS) | 26%           | 29%           |  30%          |  26.5%        |                   |
-| 40685540 (ACM)  | 26%           | 29%           |  30%          |  26.5%        |                   |
-| 40685542 (AKP)  | 22%           | 13%           |  10%          |  20.5%        |                   |
-| **Total**       | **100%**      | **100%**      |  **100%**     |  **100%**     |                   |
-
 ## Basic Principles and Values
 
 - **Commitment**: We work hard together to deliver high-quality work and are committed to the team’s goals.
