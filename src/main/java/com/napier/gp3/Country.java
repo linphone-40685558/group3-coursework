@@ -4,13 +4,35 @@ package com.napier.gp3;
  * Represents a country with its attributes such as code, name, continent,
  * region, population, capital ID, and capital name.
  */
+
 public class Country {
+    /**
+     * @code
+     */
     private final String code;        // Unique code for the country (e.g., "MMR" for Myanmar)
+    /**
+     * @name
+     */
     private final String name;        // Name of the country (e.g., "Myanmar")
+    /**
+     * @continent
+     */
     private final String continent;   // Continent the country belongs to (e.g., "Asia")
+    /**
+     * @region
+     */
     private final String region;      // Specific region within the continent (e.g., "Southeast Asia")
+    /**
+     * @population
+     */
     private final long population;     // Population of the country
+    /**
+     * @capital
+     */
     private final int capital;        // Capital ID from the Country table
+    /**
+     * @capitalName
+     */
     private final String capitalName; // Name of the capital city from the City table
 
     /**

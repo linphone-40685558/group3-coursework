@@ -6,8 +6,17 @@ package com.napier.gp3;
  */
 
 public class Language {
+    /**
+     * @language
+     */
     private final String language;
+    /**
+     * @numberOfPeople
+     */
     private final long numberOfPeople;
+    /**
+     * @population_percentage
+     */
     private final double population_percentage;
 
     /**

@@ -5,11 +5,29 @@ package com.napier.gp3;
  * countryCode,district, population
  */
 public class Capital {
+    /**
+     * @id
+     */
     private final int id;
+    /**
+     * @name
+     */
     private final String name;
+    /**
+     * @country
+     */
     private final String country;
+    /**
+     * @countryCode
+     */
     private final String countryCode;
+    /**
+     * @district
+     */
     private final String district;
+    /**
+     * @population
+     */
     private final int population;
 
     /**

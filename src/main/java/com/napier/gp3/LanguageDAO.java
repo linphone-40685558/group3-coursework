@@ -4,7 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @LanguageDAO which will make generate query from world
+ */
 public class LanguageDAO {
+    /**
+     * @con connection for LanguageDAO
+     */
     private final Connection con;
 
     /**
