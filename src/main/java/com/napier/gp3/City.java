@@ -33,7 +33,6 @@ public class City {
 
     /**
      * Constructs a City object with the specified attributes.
-     *
      * @param id
      * @param name
      * @param country

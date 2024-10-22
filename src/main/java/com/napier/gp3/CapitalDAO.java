@@ -4,7 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @CapitalDAO
+ */
 public class CapitalDAO {
+    /**
+     * @con connection for capitalDAO
+     */
     private final Connection con;
 
     public CapitalDAO(Connection connection) {
