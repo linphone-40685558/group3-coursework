@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CapitalDAO {
-    private Connection con;
+    private final Connection con;
 
     public CapitalDAO(Connection connection) {
         this.con = connection;

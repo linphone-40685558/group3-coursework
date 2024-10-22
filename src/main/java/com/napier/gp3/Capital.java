@@ -5,12 +5,12 @@ package com.napier.gp3;
  * countryCode,district, population
  */
 public class Capital {
-    private int id;
-    private String name;
-    private String country;
-    private String countryCode;
-    private String district;
-    private int population;
+    private final int id;
+    private final String name;
+    private final String country;
+    private final String countryCode;
+    private final String district;
+    private final int population;
 
     /**
      * Constructs a City object with the specified attributes.

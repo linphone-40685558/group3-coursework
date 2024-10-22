@@ -6,7 +6,7 @@ import java.util.List;
 
 public class EachPopulationDAO {
 
-    private Connection con;
+    private final Connection con;
 
     public EachPopulationDAO(Connection connection) { this.con = connection; }
 

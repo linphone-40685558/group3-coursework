@@ -6,10 +6,10 @@ package com.napier.gp3;
 public class Population {
 
     // Attributes
-    private String name;
-    private Long totalPopulation;
-    private Long urbanPopulation;
-    private Long ruralPopulation;
+    private final String name;
+    private final Long totalPopulation;
+    private final Long urbanPopulation;
+    private final Long ruralPopulation;
     private float urbanPopulationPercentage;
     private float ruralPopulationPercentage;
 

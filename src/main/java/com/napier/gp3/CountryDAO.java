@@ -9,7 +9,7 @@ import java.util.List;
  * It has methods to fetch countries by population, continent, region, and top N populated countries.
  */
 public class CountryDAO {
-    private Connection con;
+    private final Connection con;
 
     /**
      * Country Data Access Object constructor

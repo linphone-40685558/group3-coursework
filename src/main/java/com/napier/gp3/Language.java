@@ -6,9 +6,9 @@ package com.napier.gp3;
  */
 
 public class Language {
-    private String language;
-    private long numberOfPeople;
-    private double population_percentage;
+    private final String language;
+    private final long numberOfPeople;
+    private final double population_percentage;
 
     /**
      * Constructs a Language object with the specified attributes.

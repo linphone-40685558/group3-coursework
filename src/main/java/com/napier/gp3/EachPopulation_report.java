@@ -78,10 +78,9 @@ public class EachPopulation_report {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append("Population of " + title).append("\r\n\r\n");
-        sb.append("| Location | Total Population | Urban Population | Rural Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        StringBuilder sb = new StringBuilder(200);
+        sb.append("\r\n# Population of ").append(title).append("\r\n\r\n")
+                .append("| Location | Total Population | Urban Population | Rural Population |\r\n| --- | --- | --- | --- |\r\n");
 
         // Loop through the list of populations
         for (Population population : populations) {

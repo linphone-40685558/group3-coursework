@@ -5,13 +5,13 @@ package com.napier.gp3;
  * region, population, capital ID, and capital name.
  */
 public class Country {
-    private String code;        // Unique code for the country (e.g., "MMR" for Myanmar)
-    private String name;        // Name of the country (e.g., "Myanmar")
-    private String continent;   // Continent the country belongs to (e.g., "Asia")
-    private String region;      // Specific region within the continent (e.g., "Southeast Asia")
-    private long population;     // Population of the country
-    private int capital;        // Capital ID from the Country table
-    private String capitalName; // Name of the capital city from the City table
+    private final String code;        // Unique code for the country (e.g., "MMR" for Myanmar)
+    private final String name;        // Name of the country (e.g., "Myanmar")
+    private final String continent;   // Continent the country belongs to (e.g., "Asia")
+    private final String region;      // Specific region within the continent (e.g., "Southeast Asia")
+    private final long population;     // Population of the country
+    private final int capital;        // Capital ID from the Country table
+    private final String capitalName; // Name of the capital city from the City table
 
     /**
      * Constructs a Country object with the specified attributes.

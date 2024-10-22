@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LanguageDAO {
-    private Connection con;
+    private final Connection con;
 
     /**
      * Language Data Access Object Constructor
