@@ -5,11 +5,29 @@ package com.napier.gp3;
  * countryCode,district, population
  */
 public class City {
+    /**
+     * @id 1
+     */
     private final int id;               // Unique identifier for the city
+    /**
+     * @name Citeyname
+     */
     private final String name;          // Name of the city
+    /**
+     * @country name of country
+     */
     private final String country;       // Name of the country the city is located in
+    /**
+     * @countryCode ISO code of country
+     */
     private final String countryCode;   // ISO code of the country
+    /**
+     * @district name of district
+     */
     private final String district;      // Name of the district the city is in
+    /**
+     * @population population of city
+     */
     private final int population;       // Population of the city
 
 
