@@ -9,10 +9,22 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * @PopulationReportUnitTest
+ */
 class PopulationReportUnitTest {
 
+    /**
+     * @populationReport
+     */
     private Population_report populationReport;
+    /**
+     * @mockPopulationDAO
+     */
     private PopulationDAO mockPopulationDAO;
+    /**
+     * @mockConnection
+     */
     private Connection mockConnection;
 
     /**

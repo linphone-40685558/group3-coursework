@@ -12,7 +12,7 @@ import java.util.List;
  * It has methods to fetch population by world, continent, region, country, and district
  */
 public class PopulationDAO {
-    private Connection con;
+    private final Connection con;
 
     public PopulationDAO(Connection connection) {
         this.con = connection;

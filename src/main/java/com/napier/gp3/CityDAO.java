@@ -15,7 +15,7 @@ import java.util.List;
  * All the cities in a district organised by largest population to smallest.
  */
 public class CityDAO {
-    private Connection con;
+    private final Connection con;
 
     /**
      * City Data Access Object Constructor

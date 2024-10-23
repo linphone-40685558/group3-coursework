@@ -4,9 +4,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @EachPopulationDAO
+ */
 public class EachPopulationDAO {
-
-    private Connection con;
+    /**
+     * @con for this DAO
+     */
+    private final Connection con;
 
     public EachPopulationDAO(Connection connection) { this.con = connection; }
 

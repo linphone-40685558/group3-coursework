@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CountryDAO has database manipulations to retrieve country-related information.
+ * @CountryDAO has database manipulations to retrieve country-related information.
  * It has methods to fetch countries by population, continent, region, and top N populated countries.
  */
 public class CountryDAO {
-    private Connection con;
+    /**
+     * @con connection for CountryDAO
+     */
+    private final Connection con;
 
     /**
      * Country Data Access Object constructor

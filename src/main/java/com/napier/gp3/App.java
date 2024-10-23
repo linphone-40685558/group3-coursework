@@ -14,7 +14,9 @@ public class App {
     /**
      * Make a connection to the database
      */
-    private Connection con = null;
+    private Connection con;
+    // private Connection con = null;
+
 
     /**
      * Connection object
