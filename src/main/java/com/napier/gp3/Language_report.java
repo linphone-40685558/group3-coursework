@@ -44,10 +44,10 @@ public class Language_report {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append(title).append("\r\n\r\n");
-        sb.append("| Language | Number of People | Population Percentage |\r\n");
-        sb.append("| --- | --- | --- |\r\n");
+        StringBuilder sb = new StringBuilder(100);
+        sb.append("\r\n# ").append(title).append("\r\n\r\n")
+                .append("| Language | Number of People | Population Percentage |\r\n| --- | --- | --- |\r\n");
+
 
         // Loop
         for (Language language : languages) {

@@ -9,12 +9,25 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
+/**
+ * @CityDAOUnitTest
+ */
 public class CityDAOUnitTest {
-
+    /**
+     * @cityDAO
+     */
     private CityDAO cityDAO;
+    /**
+     * @mockConnection
+     */
     private Connection mockConnection;
+    /**
+     * @mockPreparedStatement
+     */
     private PreparedStatement mockPreparedStatement;
+    /**
+     * @mockResultSet
+     */
     private ResultSet mockResultSet;
 
     /**

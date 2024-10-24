@@ -12,11 +12,26 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
+/**
+ * @PopulationDAOUnitTest
+ */
 class PopulationDAOUnitTest {
 
+    /**
+     * @populationDAO
+     */
     private PopulationDAO populationDAO;
+    /**
+     * @mockConnection
+     */
     private Connection mockConnection;
+    /**
+     * @mockPreparedStatement
+     */
     private PreparedStatement mockPreparedStatement;
+    /**
+     * @mockResultSet
+     */
     private ResultSet mockResultSet;
 
     /**

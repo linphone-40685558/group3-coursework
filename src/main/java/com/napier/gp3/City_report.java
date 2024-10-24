@@ -77,10 +77,9 @@ public class City_report {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append(title).append("\r\n\r\n");
-        sb.append("| City Name | Country | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        StringBuilder sb = new StringBuilder(100);
+        sb.append("\r\n# ").append(title).append("\r\n\r\n")
+                .append("| City Name | Country | District | Population |\r\n| --- | --- | --- | --- |\r\n");
 
         // Loop
         for (City city : cities) {

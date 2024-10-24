@@ -86,10 +86,10 @@ public class Population_report {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append(title.toUpperCase()).append("\r\n\r\n");
-        sb.append("| Location | Total Population | Urban Population | Rural Population | Urban Population Percentage | Rural Population Percentage |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        StringBuilder sb = new StringBuilder(200);
+        sb.append("\r\n# ").append(title.toUpperCase()).append("\r\n\r\n")
+                .append("| Location | Total Population | Urban Population | Rural Population | Urban Population Percentage | Rural Population Percentage |\r\n")
+                .append("| --- | --- | --- | --- | --- | --- |\r\n");
 
         for (Population population : populations) {
             if (population == null) continue;

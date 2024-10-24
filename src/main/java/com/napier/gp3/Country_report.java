@@ -78,10 +78,9 @@ public class Country_report {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\r\n# ").append(title).append("\r\n\r\n");
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        StringBuilder sb = new StringBuilder(200);
+        sb.append("\r\n# ").append(title).append("\r\n\r\n")
+                .append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n| --- | --- | --- | --- | --- | --- |\r\n");
 
         // Loop
         for (Country country : countries) {
